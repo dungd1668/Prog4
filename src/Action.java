@@ -1,13 +1,18 @@
 import java.sql.*;
 
 /**
- * To use Action, 1. Create an Action object by calling Action(String username,
- * String password, Connection dbconn) 2. Action.insert(relation, String[]) to
- * insert into the table relation with the attributes in the string array.
- * Action.call delete(relation, String PrimaryKey) to delete from a table
- * relation. (deleting from the ProductShipment will require the partial)
- *
+ * @formatter:off
+ * To use Action, 
+ * 		1. Create an Action object by calling 
+ * 		   Action(String username, String password, Connection dbconn) 
+ * 		2. Action.insert(relation, String[]) to insert into the table relation with the attributes in the string array.
+ * 		   Action.update(String relation, String PK, String PKValue, String[] fieldsToUpdate, String tempLine[])
+ * 		   			to update the fields with the primary key, PK = PKValue from a relation table.
+ *         Action.delete(relation, String PrimaryKey) to delete from a table relation. 
+ *         		(deleting from the ProductShipment will require the partial)
+ * @formatter:on
  */
+
 public class Action {
 
 	static final String oracleURL = "jdbc:oracle:thin:@aloe.cs.arizona.edu:1521:oracle";
@@ -35,10 +40,10 @@ public class Action {
 	 * @formatter:on
 	 */
 	public void insert(String relation, String tempLine[]) {
-		
+
 		String query = insertHelper(relation, tempLine);
 		executeQuery(query);
-		
+
 	} // end insert
 
 	private String insertHelper(String relation, String[] tempLine) {
@@ -124,9 +129,16 @@ public class Action {
 		return ret;
 	} // end updateHelper
 
-	public void delete() {
-
+	public void delete(String relation, String PK, String PKValue) {
+		String query = deleteHelper(relation, PK, PKValue);
+		executeQuery(query);
 	} // end delete
+
+	private String deleteHelper(String relation, String PK, String PKValue) {
+		String ret = "";
+		ret += "DELETE FROM " + relation + " WHERE " + PK + " = " + PKValue;
+		return ret;
+	}
 
 	private void executeQuery(String query) {
 		// create a statement
@@ -144,7 +156,7 @@ public class Action {
 			stmt.executeQuery(query);
 			stmt.close();
 		} catch (SQLException e) {
-			System.out.println(query);
+			System.out.println("Couldn't execute query: [" + query + "]");
 			e.printStackTrace();
 		}
 	}
