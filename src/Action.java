@@ -138,7 +138,7 @@ public class Action {
 		String ret = "";
 		ret += "DELETE FROM " + relation + " WHERE " + PK + " = " + PKValue;
 		return ret;
-	}
+	} // end delteHelper
 
 	private void executeQuery(String query) {
 		// create a statement
@@ -159,5 +159,5 @@ public class Action {
 			System.out.println("Couldn't execute query: [" + query + "]");
 			e.printStackTrace();
 		}
-	}
-}
+	} // end executeQuery
+} // end Action
