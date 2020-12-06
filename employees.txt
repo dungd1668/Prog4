@@ -1,0 +1,101 @@
+employeeID,firstName,lastName,gender,address,phoneNumber,groupID,salary
+1,Karoly,Barde,Female,41301 US Hwy 280% Sylacauga AL 35150,568803,0,12502
+2,Vevay,Karel,Female,13858 Rt 31 W% Albion NY 14411,805465,1,137045
+3,Hollyanne,Fraser,Female,6438 Basile Rowe% East Syracuse NY 13057,249967,1,101787
+4,Alisun,Urban,Female,340 East Meighan Blvd% Gadsden AL 35903,109268,1,29912
+5,Zonnya,Fredric,Female,301 Massachusetts Ave% Lunenburg MA 1462,980163,1,117372
+6,Jessamine,Ritchie,Male,155 Waterford Parkway No% Waterford CT 6385,540888,0,26454
+7,Shara,Windham,Female,851 Ann St% Montgomery AL 36107,992993,0,117647
+8,Florina,Der,Male,626 Olive Street Sw% Cullman AL 35055,738067,0,133097
+9,Emelyne,Town,Female,297 Grant Avenue% Auburn NY 13021,509132,2,121315
+10,Gypsy,Luther,Male,1706 Military Street South% Hamilton AL 35570,466905,0,105416
+11,Demetris,Jameson,Male,352 Palmer Road% Ware MA 1082,724087,2,58230
+12,Jean,Ax,Female,10710 Chantilly Pkwy% Montgomery AL 36117,748857,1,35614
+13,Binny,Hill,Female,2575 Us Hwy 43% Winfield AL 35594,464990,0,34868
+14,Carine,Francesco,Female,214 Haynes Street% Talladega AL 35160,704065,1,111741
+15,Daphne,Emory,Male,8551 Whitfield Ave% Leeds AL 35094,106802,1,121457
+16,Adiana,Elwyn,Female,3176 South Eufaula Avenue% Eufaula AL 36027,567618,2,13784
+17,Kitti,Rodd,Female,6438 Basile Rowe% East Syracuse NY 13057,240148,0,148883
+18,Tierney,Buddy,Female,150 Gold Star Hwy% Groton CT 6340,441590,0,148733
+19,Lavinie,Elia,Female,5919 Trussville Crossings Pkwy% Birmingham AL 35235,639778,1,103916
+20,Randa,Tailor,Male,844 No Colony Road% Wallingford CT 6492,563644,1,57410
+21,Rozanna,Otes,Female,1950 W Main St% Centre AL 35960,531629,1,21241
+22,Nisse,Gerrie,Female,3191 County rd 10% Canandaigua NY 14424,535671,1,19827
+23,Lela,Cull,Female,288 Larkin% Monroe NY 10950,337452,0,90041
+24,Gwenneth,Killy,Male,540 West Bypass% Andalusia AL 36420,658341,0,30100
+25,Caryl,Holt,Female,844 No Colony Road% Wallingford CT 6492,550527,0,143134
+26,Averil,Rad,Male,555 Hubbard Ave-Suite 12% Pittsfield MA 1201,657049,1,79199
+27,Kikelia,Virgilio,Male,3133 E Main St% Mohegan Lake NY 10547,377013,2,66715
+28,Kaycee,Horatius,Male,1365 Boston Post Road% Milford CT 6460,160002,2,96886
+29,Eveline,Randie,Female,233 5th Ave Ext% Johnstown NY 12095,653536,0,21399
+30,Mab,Alano,Male,103 North Caroline St% Herkimer NY 13350,902329,1,79086
+31,Ericka,Worthy,Male,2900 Pepperrell Pkwy% Opelika AL 36801,662353,1,46259
+32,Ardisj,Amby,Male,42417 Hwy 195% Haleyville AL 35565,135099,1,51426
+33,Yolanda,Hort,Female,235 Queen St% Southington CT 6489,917514,0,140313
+34,Shelby,Coop,Female,9248 Parkway East% Birmingham AL 35206,446370,2,129919
+35,Nonna,Bernie,Female,200 Dutch Meadows Ln% Glenville NY 12302,186519,1,97061
+36,Kelley,Caddric,Male,2900 Pepperrell Pkwy% Opelika AL 36801,464019,2,18558
+37,Fae,Si,Female,297 Grant Avenue% Auburn NY 13021,147164,2,65180
+38,Veronika,Clark,Male,15445 Highway 24% Moulton AL 35650,878180,2,83372
+39,Danya,Will,Female,517 West Avalon Ave% Muscle Shoals AL 35661,906084,1,66947
+40,Colette,Zerk,Male,1972 Hwy 431% Boaz AL 35957,645662,1,66146
+41,Yasmin,Ring,Male,27520 Hwy 98% Daphne AL 36526,501835,2,93838
+42,Lise,Raimund,Female,3801 Eastern Blvd% Montgomery AL 36116,237602,2,114108
+43,Laetitia,Enos,Male,4538 Us Hwy 231% Wetumpka AL 36092,678915,1,101210
+44,Anne,Currie,Female,600 Boll Weevil Circle% Enterprise AL 36330,948098,1,16643
+45,Ivonne,Jose,Male,2400 Route 9% Fishkill NY 12524,902186,1,129278
+46,Halimeda,Stanfield,Female,10710 Chantilly Pkwy% Montgomery AL 36117,432109,2,70436
+47,Belle,Graig,Female,11697 US Hwy 431% Guntersville AL 35976,332393,0,54619
+48,Ginger,Burl,Female,1180 Fall River Avenue% Seekonk MA 2771,836316,2,117638
+49,Maressa,Jasper,Male,1903 Cobbs Ford Rd% Prattville AL 36066,491110,1,124934
+50,Vivyan,Anton,Female,742 Main Street% North Oxford MA 1537,310354,2,86499
+51,Isa,Whitman,Male,1007 Red Farmer Drive% Hueytown AL 35023,287108,1,60362
+52,Adah,Sheppard,Male,2473 Hackworth Road% Adamsville AL 35005,711491,2,129935
+53,Nana,Vince,Male,1095 Industrial Pkwy% Saraland AL 36571,491968,1,51431
+54,Minna,Terrel,Female,6438 Basile Rowe% East Syracuse NY 13057,109430,1,22341
+55,Astrid,Torin,Female,2575 Us Hwy 43% Winfield AL 35594,677821,1,28359
+56,Karlotta,Merv,Female,750 Middle Country Road% Middle Island NY 11953,772776,0,73272
+57,Mei,Kerk,Female,690 Hwy 78% Sumiton AL 35148,145845,2,86581
+58,Fawn,Ewell,Female,11610 Memorial Pkwy South% Huntsville AL 35803,395281,2,135940
+59,Rey,Kevon,Female,1400 Farmington Ave% Bristol CT 6010,901536,1,71369
+60,Rona,Garrek,Female,2465 Hempstead Turnpike% East Meadow NY 11554,174213,0,79499
+61,Elsie,Ara,Female,5399 W Genesse St% Camillus NY 13031,368678,1,92599
+62,Chery,Schuyler,Male,1420 Us 231 South% Troy AL 36081,836079,0,32164
+63,Dorice,Kerr,Female,80 Town Line Rd% Rocky Hill CT 6067,566182,2,29322
+64,Gretta,Meredeth,Male,2643 Hwy 280 West% Alexander City AL 35010,639955,0,141374
+65,Raphaela,Findlay,Female,2041 Douglas Avenue% Brewton AL 36426,983930,2,36804
+66,Roseline,Keenan,Female,10675 Hwy 5% Brent AL 35034,705764,0,11677
+67,Kellina,Burnard,Female,180 River Rd% Lisbon CT 6351,866041,0,118146
+68,Wendy,Alvin,Male,555 East Main St% Orange MA 1364,703463,1,39031
+69,Angelica,Manny,Female,3018 East Ave% Central Square NY 13036,779794,1,82236
+70,Gusti,Keven,Female,750 Middle Country Road% Middle Island NY 11953,948418,1,120365
+71,Gwennie,Willem,Male,2181 Pelham Pkwy% Pelham AL 35124,766865,2,136740
+72,Merlina,Otis,Male,7100 Aaron Aronov Drive% Fairfield AL 35064,590811,1,90119
+73,Minny,Delano,Male,2900 Pepperrell Pkwy% Opelika AL 36801,874419,2,99329
+74,Nelly,Esdras,Female,2780 John Hawkins Pkwy% Hoover AL 35244,925279,2,24762
+75,Gennifer,Matt,Female,101 South Beltline Highway% Mobile AL 36606,904471,1,86728
+76,Alena,Stu,Female,250 Hartford Avenue% Bellingham MA 2019,746356,2,83004
+77,Alayne,Tim,Female,1916 Center Point Rd% Center Point AL 35215,258913,1,10735
+78,Jeanette,Dex,Male,844 No Colony Road% Wallingford CT 6492,709546,0,117198
+79,Sasha,Steven,Male,41301 US Hwy 280% Sylacauga AL 35150,646961,1,136396
+80,Tillie,Arri,Female,145 Kelley Blvd% Millbrook AL 36054,228997,0,100844
+81,Nertie,Berk,Female,280 Washington Street% Hudson MA 1749,236188,2,136052
+82,Zoe,Nichole,Female,4206 N College Ave% Jackson AL 36545,147260,2,85979
+83,Becki,Thayne,Female,4538 Us Hwy 231% Wetumpka AL 36092,491148,2,28626
+84,Leta,Myron,Male,121 Worcester Rd% Framingham MA 1701,639214,1,112705
+85,Loralyn,Mohandis,Female,1625 Pelham South% Jacksonville AL 36265,270387,1,23856
+86,Clemmy,Calv,Male,969 Us Hwy 80 West% Demopolis AL 36732,498405,1,132466
+87,Rosabel,Serge,Male,165 Vaughan Ln% Pell City AL 35125,843900,1,132545
+88,Papagena,Frannie,Female,2200 Sparkman Drive% Huntsville AL 35810,822377,1,107896
+89,Shanon,Abeu,Female,890 Odum Road% Gardendale AL 35071,921323,1,17141
+90,Barbi,Benoit,Male,103 North Caroline St% Herkimer NY 13350,911749,0,55565
+91,Zilvia,Hewie,Female,701 Mcmeans Ave% Bay Minette AL 36507,324414,1,94725
+92,Angelique,Kenon,Male,2055 Niagara Falls Blvd% Amherst NY 14228,764314,0,46074
+93,Marlee,Hunter,Male,333 Main Street% Tewksbury MA 1876,719164,2,37011
+94,Sharia,Neron,Female,3371 S Alabama Ave% Monroeville AL 36460,326825,0,93307
+95,Kizzie,Sanders,Female,5399 W Genesse St% Camillus NY 13031,907250,0,49707
+96,Wileen,Gerhardt,Female,2300 Dixwell Ave% Hamden CT 6514,432709,2,124647
+97,Alfie,Barn,Female,420 Buckland Hills Dr% Manchester CT 6040,943991,2,59260
+98,Dyanne,Peyton,Male,1916 Center Point Rd% Center Point AL 35215,306621,2,18171
+99,Tish,Reese,Female,470 Route 211 East% Middletown NY 10940,144063,2,37359
+100,Sheri,Uriel,Male,656 New Haven Ave% Derby CT 6418,519538,0,115220

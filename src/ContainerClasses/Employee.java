@@ -1,6 +1,7 @@
 package ContainerClasses;
 
 import java.util.Random;
+import java.util.stream.IntStream;
 
 public class Employee extends Container {
 	
@@ -13,7 +14,7 @@ public class Employee extends Container {
 	int groupID = 0;
 	int salary = 0;
 	
-	
+
 	public Employee() {
 		
 	}
@@ -35,6 +36,7 @@ public class Employee extends Container {
 	public Container GetNewRandom(int currID, boolean reroll) {
 		//random gender
 		Random rand = new Random();
+		
 		String gen = "";
 		if(rand.nextInt(2) == 0) {
 			gen = "Male";
@@ -42,10 +44,17 @@ public class Employee extends Container {
 		else
 			gen = "Female";
 		
+		IntStream phone = rand.ints(100000,999999);
+		
+		int group = rand.nextInt(3);
+		
+		IntStream salary = rand.ints(10000,150000);
+		
 		//make the new employee
 		Employee newEmp = new Employee(currID,GetRandomFirstName(),GetRandomLastName(),
-				gen,GetRandomAddress(),123,0,100);
-		
+				gen,GetRandomAddress(),phone.findFirst().getAsInt(),group,salary.findFirst().getAsInt());
+		phone.close();
+		salary.close();
 		//if its a duplicate dont increment id
 		if(reroll)
 			return newEmp;

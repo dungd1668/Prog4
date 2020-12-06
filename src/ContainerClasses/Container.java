@@ -111,6 +111,7 @@ public String GetRandomAddress() {
 		    scan.nextLine();
 		}
 		String r = scan.nextLine();
+		r = r.replace(",", "%");
 		scan.close();
 		return r;
 		
