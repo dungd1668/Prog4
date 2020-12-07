@@ -44,13 +44,13 @@ public abstract Container GetNewRandom();
 	}
 	
 	public String GetRandomPhone() {
-		String r = "";
+		String num = "";
 		Random ran = new Random();
-		int c = (int) (100 + ran.nextFloat() * (999 - 100));
-		System.out.println(c);
-		r += c;
-		
-		return r;
+		int a = (int) (100 + ran.nextFloat() * (999 - 100));
+		int b= (int) (100 + ran.nextFloat() * (999 - 100));
+		int c= (int) (100 + ran.nextFloat() * (999 - 100));
+		num = String.format("+1(%d)%d-%d",a,b,b);
+		return num;
 	}
 
 /***

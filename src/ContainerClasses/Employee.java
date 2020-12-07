@@ -51,7 +51,7 @@ public class Employee extends Container {
 		int group = rand.nextInt(3);
 		
 		float salary = minSalary + rand.nextFloat() * (maxSalary - minSalary);
-		
+		salary = (float) (Math.round(salary * 100.0)/100.0);
 		//make the new employee
 		Employee newEmp = new Employee(getRandID(),
 				GetRandomFirstName(),
