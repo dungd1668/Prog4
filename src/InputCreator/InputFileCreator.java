@@ -28,13 +28,13 @@ public class InputFileCreator {
 		
 		for (int i = 0; i < 100; i++) {
 
-			Employee randEmp = (Employee) employee.GetNewRandom(employee.getId(), false);
+			Employee randEmp = (Employee) employee.GetNewRandom();
 
 			// check for duplicates
-			while (IsDuplicateEmployee(randEmp) && generatedEmployees.size() < 1) {
+			while (IsDuplicateEmployee(randEmp) && generatedEmployees.size() > 1) {
 				System.out.println("Rerolling Duplicate Name");
 				duplicatedEmps++;
-				randEmp = (Employee) employee.GetNewRandom(employee.getId(), true);
+				randEmp = (Employee) employee.GetNewRandom();
 			}
 			// add it to our list
 			generatedEmployees.add(randEmp);
@@ -77,7 +77,7 @@ public class InputFileCreator {
 	 */
 	public static boolean IsDuplicateEmployee(Employee emp) {
 		for (Employee curr : generatedEmployees) {
-			if (emp.getEmployeeID() == curr.getEmployeeID()) {
+			if (emp.getEmployeeID().equals(curr.getEmployeeID())) {
 				return true;
 			}
 		}

@@ -24,10 +24,34 @@ public File addressesFile = new File("src/RawRandomData/addresses.txt");
  * 
  * @return
  */
-public abstract Container GetNewRandom(int currID, boolean reroll);
+public abstract Container GetNewRandom();
 
 
 
+
+
+
+//RETURNS a random 10 char string as a new ID
+	public String getRandID() {
+		String r = "";
+		Random ran = new Random();
+		for(int i = 0; i < 10; i++) {
+			char c = (char)(ran.nextInt(26) + 'a');
+			r += c;
+		}
+		return r;
+		
+	}
+	
+	public String GetRandomPhone() {
+		String r = "";
+		Random ran = new Random();
+		int c = (int) (100 + ran.nextFloat() * (999 - 100));
+		System.out.println(c);
+		r += c;
+		
+		return r;
+	}
 
 /***
  * returns a random name from our random first name list
@@ -111,7 +135,8 @@ public String GetRandomAddress() {
 		    scan.nextLine();
 		}
 		String r = scan.nextLine();
-		r = r.replace(",", "%");
+		//r = r.replace(",", "%");
+		r = "\"" + r + "\"";
 		scan.close();
 		return r;
 		

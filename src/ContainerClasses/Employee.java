@@ -5,23 +5,25 @@ import java.util.stream.IntStream;
 
 public class Employee extends Container {
 	
-	int employeeID = 0;
-	String firstName = "";
-	String lastName = "";
-	String gender = "";
-	String address = "";
-	int phoneNumber = 0;
-	int groupID = 0;
-	int salary = 0;
+	String employeeID;
+	String firstName;
+	String lastName;
+	String gender;
+	String address;
+	String phoneNumber;
+	int groupID;
+	float salary;
 	
+	float minSalary = 10000;
+	float maxSalary = 150000;
 
 	public Employee() {
 		
 	}
 	
 	//constructor that takes params for each field
-	public Employee(int newID, String f, String l, String g, String a
-			,int phone, int group, int sal) {
+	public Employee(String newID, String f, String l, String g, String a
+			,String phone, int group, float sal) {
 		employeeID = newID;
 		firstName = f;
 		lastName = l;
@@ -33,7 +35,7 @@ public class Employee extends Container {
 	}
 	
 	//returns a random employee
-	public Container GetNewRandom(int currID, boolean reroll) {
+	public Container GetNewRandom() {
 		//random gender
 		Random rand = new Random();
 		
@@ -48,28 +50,30 @@ public class Employee extends Container {
 		
 		int group = rand.nextInt(3);
 		
-		IntStream salary = rand.ints(10000,150000);
+		float salary = minSalary + rand.nextFloat() * (maxSalary - minSalary);
 		
 		//make the new employee
-		Employee newEmp = new Employee(currID,GetRandomFirstName(),GetRandomLastName(),
-				gen,GetRandomAddress(),phone.findFirst().getAsInt(),group,salary.findFirst().getAsInt());
+		Employee newEmp = new Employee(getRandID(),
+				GetRandomFirstName(),
+				GetRandomLastName(),
+				gen,
+				GetRandomAddress(),
+				GetRandomPhone(),
+				group,
+				salary
+				);
+		
 		phone.close();
-		salary.close();
 		//if its a duplicate dont increment id
-		if(reroll)
-			return newEmp;
-		id++;
 		return newEmp;
 	}
 	
-	
-	
 
-	public int getEmployeeID() {
+	public String getEmployeeID() {
 		return employeeID;
 	}
 
-	public void setEmployeeID(int employeeID) {
+	public void setEmployeeID(String employeeID) {
 		this.employeeID = employeeID;
 	}
 
@@ -105,11 +109,11 @@ public class Employee extends Container {
 		this.address = address;
 	}
 
-	public int getPhoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 
-	public void setPhoneNumber(int phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 
@@ -121,11 +125,11 @@ public class Employee extends Container {
 		this.groupID = groupID;
 	}
 
-	public int getSalary() {
+	public float getSalary() {
 		return salary;
 	}
 
-	public void setSalary(int salary) {
+	public void setSalary(float salary) {
 		this.salary = salary;
 	}
 
