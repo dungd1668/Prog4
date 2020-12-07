@@ -60,6 +60,14 @@ public abstract Container GetNewRandom();
 		int year = (int) (1950 + ran.nextFloat() * (2000 - 950));
 		return String.format("%d/%d/%d", day,month,year);
 	}
+	
+	public String GetRandomSaleDate() {
+		Random ran = new Random();
+		int day = ran.nextInt(29) + 1;
+		int month  = ran.nextInt(13);
+		int year = (int) (2018 + ran.nextFloat() * (2020 - 2018));
+		return String.format("%d/%d/%d", day,month,year);
+	}
 
 /***
  * returns a random name from our random first name list
