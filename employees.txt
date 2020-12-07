@@ -1,0 +1,101 @@
+employeeID,firstName,lastName,gender,address,phoneNumber,groupID,salary
+wqdznlfbyn,Ellissa,Winfred,Female,"1095 Industrial Pkwy, Saraland AL 36571",+1(768)976-976,2,75776.89
+nodelklntu,Lyndell,Radcliffe,Female,"700 Oak Street, Brockton MA 2301",+1(858)360-360,2,46916.91
+buqwfvbvyo,Liesa,Norrie,Male,"2200 Sparkman Drive, Huntsville AL 35810",+1(522)736-736,1,111566.15
+yeexncktfb,Olive,Thomas,Female,"1818 State Route 3, Fulton NY 13069",+1(835)495-495,2,11824.02
+pzzwztdefj,Erna,Noak,Female,"450 Highland Ave, Salem MA 1970",+1(324)942-942,2,37796.02
+gflxicbuce,Franciska,Shepard,Female,"3176 South Eufaula Avenue, Eufaula AL 36027",+1(715)341-341,2,103641.41
+muwtarkmtd,Kimmi,Ferdie,Male,"7100 Aaron Aronov Drive, Fairfield AL 35064",+1(913)510-510,0,76611.08
+xviotiytcb,Darby,Brandon,Female,"1950 W Main St, Centre AL 35960",+1(410)612-612,2,10199.94
+daiciqkhtw,Amie,Jerry,Male,"6438 Basile Rowe, East Syracuse NY 13057",+1(579)371-371,2,124485.1
+afckrpbavk,Cecil,Forrester,Male,"100 Elm Ridge Center Dr, Greece NY 14626",+1(786)386-386,1,94039.23
+mmybcohltl,Lelah,Hamnet,Male,"350 E Fairmount Ave, Lakewood NY 14750",+1(200)910-910,1,49443.98
+easlbnxgnh,Dosi,Gerome,Female,"2473 Hackworth Road, Adamsville AL 35005",+1(767)593-593,1,76396.45
+zpdodpvmck,Alissa,Shea,Male,"844 No Colony Road, Wallingford CT 6492",+1(920)982-982,1,58998.54
+isbgtskvuk,Kalila,Rufe,Male,"34301 Hwy 43, Thomasville AL 36784",+1(223)198-198,1,115373.8
+msuntcuicc,Audra,Jdavie,Female,"311 RT 9W, Glenmont NY 12077",+1(921)850-850,0,49198.73
+hjkudgvtis,Robbie,Rodolph,Female,"300 Colony Place, Plymouth MA 2360",+1(522)909-909,2,136005.38
+pqlkrzjbpv,Leona,Palm,Male,"2181 Pelham Pkwy, Pelham AL 35124",+1(843)204-204,1,44773.43
+yzkosfgvma,Lucille,Sebastian,Female,"5100 Hwy 31, Calera AL 35040",+1(211)126-126,2,21297.4
+yzpyjboppc,Jenni,Mychal,Male,"1400 Farmington Ave, Bristol CT 6010",+1(666)218-218,1,112463.52
+qovlunadhz,Dayna,Bar,Female,"1420 Us 231 South, Troy AL 36081",+1(679)536-536,0,115299.62
+znfuzkkbdd,Perrine,Hilton,Female,"233 5th Ave Ext, Johnstown NY 12095",+1(250)574-574,1,108430.79
+yecfelknkm,Katalin,Piggy,Male,"164 Danbury Rd, New Milford CT 6776",+1(138)760-760,1,89621.31
+xpzvmjxbbk,Louise,Paco,Male,"150 Barnum Avenue Cutoff, Stratford CT 6614",+1(843)183-183,1,97613.64
+ssxgxamyoy,Hilary,Maison,Female,"1300 Gilmer Ave, Tallassee AL 36078",+1(174)792-792,2,13008.11
+mjnlctgaib,Chrysa,Denver,Male,"5033 Transit Road, Clarence NY 14031",+1(677)151-151,1,140917.88
+witmmfadwd,Lacey,Aland,Female,"750 Academy Drive, Bessemer AL 35022",+1(489)717-717,0,136764.66
+rqmwvphqej,Shandie,Addie,Female,"161 Berlin Road, Cromwell CT 6416",+1(759)292-292,2,69406.2
+vjdrfujmoe,Chelsy,Granny,Male,"1501 Skyland Blvd E, Tuscaloosa AL 35405",+1(936)292-292,1,80239.82
+pcqwjmnnoj,Tamra,Victoir,Male,"137 Teaticket Hwy, East Falmouth MA 2536",+1(532)440-440,0,78024.72
+cnaxszivtu,Sasha,Rikki,Female,"1007 Red Farmer Drive, Hueytown AL 35023",+1(204)174-174,0,74368.84
+qgtuemzpue,Blanch,Zerk,Male,"80 Town Line Rd, Rocky Hill CT 6067",+1(320)150-150,1,138039.6
+iaeaprwmte,Cyndia,Yulma,Female,"777 Brockton Avenue, Abington MA 2351",+1(378)471-471,2,96322.69
+qzpbqgyzfh,Camella,Rurik,Female,"750 Middle Country Road, Middle Island NY 11953",+1(896)843-843,2,80592.01
+jsdkcvrznq,Sheila,Farleigh,Female,"501 Willow Lane, Greenville AL 36037",+1(537)682-682,1,48983.69
+ptputdpemd,Galina,Wynn,Female,"11 Jungle Road, Leominster MA 1453",+1(911)258-258,0,125902.54
+wgwczvtgce,Aubree,Joseph,Female,"13858 Rt 31 W, Albion NY 14411",+1(104)536-536,0,130646.05
+dwdxlqihfg,Georgina,Car,Female,"42417 Hwy 195, Haleyville AL 35565",+1(393)406-406,0,89103.43
+rhvwsnhqyp,Donetta,Peadar,Female,"5783 So Transit Road, Lockport NY 14094",+1(530)723-723,1,129725.89
+fdkqhnbcug,Grazia,Laird,Female,"5245 Rangeline Service Rd, Mobile AL 36619",+1(392)163-163,2,94985.88
+uhkxpmgzkv,Kristin,Alvy,Male,"1300 Gilmer Ave, Tallassee AL 36078",+1(726)403-403,0,29667.38
+lguoyrnint,Carmella,Simon,Female,"295 Plymouth Street, Halifax MA 2338",+1(528)557-557,0,89849.48
+jjjvvgjrrl,Euphemia,Brose,Female,"255 W Main St, Avon CT 6001",+1(721)339-339,2,28815.91
+ulhvynfhqb,Tanya,Grange,Female,"352 Palmer Road, Ware MA 1082",+1(951)759-759,2,133189.62
+helrlboelt,Ada,Robers,Male,"5100 Hwy 31, Calera AL 35040",+1(516)326-326,0,91304.48
+hkxqlnabsv,Lorine,Winny,Female,"297 Grant Avenue, Auburn NY 13021",+1(174)632-632,2,122276.68
+fkcyjzwymf,Shirl,Berny,Female,"5033 Transit Road, Clarence NY 14031",+1(752)205-205,0,122579.41
+qtttwffudr,Mabelle,Matthias,Male,"2900 Pepperrell Pkwy, Opelika AL 36801",+1(968)179-179,1,80488.03
+omkkvhziou,Patrica,Kristos,Female,"872 Route 13, Cortlandville NY 13045",+1(179)403-403,1,104019.9
+mpkfqlwgsx,Darcee,Martino,Female,"600 Boll Weevil Circle, Enterprise AL 36330",+1(303)329-329,2,122754.97
+fcjvzljuqd,Fredelia,Ellery,Female,"30 Catskill, Catskill NY 12414",+1(738)566-566,0,13505.88
+xrweevgrcf,Hailee,Quinton,Female,"41 Anawana Lake Road, Monticello NY 12701",+1(264)912-912,2,110274.87
+xjuclluket,Lisabeth,Andrey,Male,"11697 US Hwy 431, Guntersville AL 35976",+1(485)151-151,2,90355.62
+sczvtolbbo,Dalila,Irv,Male,"330 Sutton Rd, Huntsville AL 35763",+1(599)814-814,0,132392.56
+yxeafbfkld,Chastity,Foster,Female,"780 Lynnway, Lynn MA 1905",+1(701)238-238,1,48322.83
+nydfhpwfjw,Isadora,Bordy,Male,"1950 W Main St, Centre AL 35960",+1(794)269-269,2,116901.01
+zsvmdwqcry,Sile,Norris,Female,"150 Gold Star Hwy, Groton CT 6340",+1(718)569-569,2,103754.99
+kugcvhjoyo,Corine,Moishe,Male,"2200 South Mckenzie St, Foley AL 36535",+1(828)962-962,0,80900.32
+eeyjowpvxu,Cheryl,Humbert,Female,"5560 Mcclellan Blvd, Anniston AL 36206",+1(156)909-909,2,42833.27
+vwhpgwkhnk,Tamarah,Dunn,Male,"1970 S University Blvd, Mobile AL 36609",+1(276)109-109,1,92474.75
+zgzmgcqmdm,Arlyne,Wynn,Male,"27520 Hwy 98, Daphne AL 36526",+1(156)506-506,0,142594.23
+ydusxkbxct,Clary,Maurits,Male,"6265 Brockport Spencerport Rd, Brockport NY 14420",+1(344)711-711,2,54012.74
+nunnjwujta,Deeanne,Franchot,Male,"625 School Street, Putnam CT 6260",+1(981)677-677,0,60192.05
+trgbysnzgj,Shalna,Darrell,Female,"969 Us Hwy 80 West, Demopolis AL 36732",+1(887)485-485,2,87263.51
+istvyujhat,Katey,Ado,Male,"170 Fort Morgan Road, Gulf Shores AL 36542",+1(575)947-947,2,103126.09
+qgbhimrkyr,Ulla,Mel,Female,"465 Bridgeport Avenue, Shelton CT 6484",+1(655)466-466,2,144657.08
+yyblsjvhrs,Agnesse,Perren,Male,"2300 Dixwell Ave, Hamden CT 6514",+1(941)343-343,1,84454.47
+hnwjxvapoa,Geri,Saunderson,Female,"2900 Pepperrell Pkwy, Opelika AL 36801",+1(386)962-962,1,127600.16
+nugcbytpqg,Blakeley,Noam,Female,"900 Boston Post Road, Guilford CT 6437",+1(478)524-524,0,86275.58
+oyjxlunpyq,Dedra,Scotti,Male,"650 Main Ave, Norwalk CT 6851",+1(578)133-133,2,70118.69
+dgqberpxzp,Mada,Puff,Male,"42 Fairhaven Commons Way, Fairhaven MA 2719",+1(166)907-907,0,85813.27
+dxuoryzldr,Eadith,Joaquin,Female,"1180 Fall River Avenue, Seekonk MA 2771",+1(105)643-643,0,95891.51
+ohbxbeveir,Niki,Donalt,Female,"2800 Spring Avn SW, Decatur AL 35603",+1(924)290-290,2,36419.01
+pfavftdiac,Mikaela,Beauregard,Female,"780 Lynnway, Lynn MA 1905",+1(817)695-695,2,99994.05
+kcjcrkpswq,Olivette,Boycie,Female,"180 North King Street, Northhampton MA 1060",+1(574)377-377,0,20460.67
+aikvyuktpo,Robby,Rem,Female,"311 RT 9W, Glenmont NY 12077",+1(124)184-184,0,71224.11
+mzjgazlqjl,Alexandra,Page,Male,"340 East Meighan Blvd, Gadsden AL 35903",+1(583)890-890,1,132974.7
+sobhoocvas,Luce,Derick,Male,"1549 Rt 9, Halfmoon NY 12065",+1(735)919-919,2,17011.06
+uywwyrzkqb,Malina,Allie,Female,"350 E Fairmount Ave, Lakewood NY 14750",+1(222)741-741,1,141910.5
+uddokbdypa,Georgeanne,Dalton,Female,"5335 Hwy 280 South, Hoover AL 35242",+1(955)984-984,0,47208.94
+tknsgnsezp,Desiree,Quint,Male,"650 Main Ave, Norwalk CT 6851",+1(335)950-950,0,95971.18
+nhhrmymlpi,Correna,Erik,Male,"3949 Route 31, Clay NY 13041",+1(745)813-813,2,84640.9
+pijetvrgxp,Mariele,Zebadiah,Female,"10401 Bennett Road, Fredonia NY 14063",+1(661)602-602,0,101489.41
+nhegkygohh,Anabelle,Jesus,Female,"1011 US Hwy 72 East, Athens AL 35611",+1(743)133-133,0,103356.55
+ljnkhoxpwz,Hilda,Glen,Male,"2500 Dawes Road, Mobile AL 36695",+1(770)628-628,2,53573.59
+baqmegsyev,Mona,Martino,Male,"340 East Meighan Blvd, Gadsden AL 35903",+1(602)323-323,1,134656.78
+zvgordxkpa,Effie,Derron,Female,"6495 Atlanta Hwy, Montgomery AL 36117",+1(767)908-908,0,34379.24
+xcovtsmiue,Jennine,Thane,Male,"6350 Cottage Hill Road, Mobile AL 36609",+1(908)962-962,2,111575.32
+tfhsqeadgy,Dorolisa,Krishna,Male,"141 Washington Ave Extension, Albany NY 12205",+1(119)806-806,0,47284.96
+skyxlqeusl,Joana,Karlan,Female,"1818 State Route 3, Fulton NY 13069",+1(590)747-747,0,50863.69
+olqmnpcccp,Ame,Langston,Female,"625 School Street, Putnam CT 6260",+1(585)523-523,0,116694.13
+nzydhdptip,Paule,Arnuad,Male,"5100 Hwy 31, Calera AL 35040",+1(440)521-521,0,96711.98
+gfoiamcbzf,Avril,Harwell,Female,"3371 S Alabama Ave, Monroeville AL 36460",+1(816)995-995,0,137876.92
+bjjarioxoe,Clerissa,Vasily,Male,"2200 Sparkman Drive, Huntsville AL 35810",+1(910)610-610,2,17036.75
+hhheorunck,Hedvige,Stewart,Male,"11697 US Hwy 431, Guntersville AL 35976",+1(878)154-154,1,61186.61
+aawlyhcouc,Elsbeth,Patric,Male,"2181 Pelham Pkwy, Pelham AL 35124",+1(780)533-533,2,122859.38
+tnpztvblhk,Alika,Donall,Female,"1100 New Haven Road, Naugatuck CT 6770",+1(767)268-268,1,117005.94
+mtjejmikoo,Carley,Leif,Male,"2400 Route 9, Fishkill NY 12524",+1(793)886-886,1,116608.69
+gevczvpepr,Orelee,Izak,Male,"279 Troy Road, East Greenbush NY 12061",+1(426)796-796,1,23512.84
+tzwrnxrqqo,Gwenore,Torey,Female,"374 William S Canning Blvd, Fall River MA 2721",+1(869)668-668,2,146734.31
+hecbaxmiee,Anstice,Daniel,Female,"161 Berlin Road, Cromwell CT 6416",+1(710)410-410,2,33347.73
