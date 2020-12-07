@@ -58,9 +58,14 @@ public class Member extends Container {
 		//if its a duplicate dont increment id
 		return newEmp;
 	}
-	
 
+	public String getMemberID() {
+		return memberID;
+	}
 
+	public void setMemberID(String memberID) {
+		this.memberID = memberID;
+	}
 
 	public String getFirstName() {
 		return firstName;
@@ -78,7 +83,13 @@ public class Member extends Container {
 		this.lastName = lastName;
 	}
 
+	public String getDob() {
+		return dob;
+	}
 
+	public void setDob(String dob) {
+		this.dob = dob;
+	}
 
 	public String getAddress() {
 		return address;
@@ -95,6 +106,18 @@ public class Member extends Container {
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
+
+	public int getRewardPoints() {
+		return rewardPoints;
+	}
+
+	public void setRewardPoints(int rewardPoints) {
+		this.rewardPoints = rewardPoints;
+	}
+	
+
+
+
 
 
 	

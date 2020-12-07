@@ -55,7 +55,7 @@ public abstract Container GetNewRandom();
 	
 	public String GetRandomDOB() {
 		Random ran = new Random();
-		int day = ran.nextInt(30);
+		int day = ran.nextInt(29) + 1;
 		int month  = ran.nextInt(13);
 		int year = (int) (1950 + ran.nextFloat() * (2000 - 950));
 		return String.format("%d/%d/%d", day,month,year);
