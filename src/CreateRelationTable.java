@@ -1,3 +1,4 @@
+
 /**
  * 
  * CMD Instructions example:
@@ -22,7 +23,7 @@ public class CreateRelationTable {
 	static String query = ""; // a query string to create the table
 
 	public static void main(String[] args) {
-//		System.out.println("Running");
+		// System.out.println("Running");
 
 		// get username/password from cmd line args
 		if (args.length == 4) {
@@ -86,7 +87,7 @@ public class CreateRelationTable {
 						+ "dob varchar2(10),"
 						+ "address varchar2(35)," 
 						+ "phoneNumber varchar2(15)," 
-						+ "rewardPoingts integer(8),"
+						+ "rewardPoints integer(8),"
 						+ "address varchar2(100) )";
 			} else if (relation.contentEquals("Sale")) {
 				createTable = "CREATE TABLE Sale (" 
@@ -136,7 +137,7 @@ public class CreateRelationTable {
 
 			// check if the sql command was set
 			assert createTable != null;
-			
+
 			stmt.executeQuery(createTable);
 
 			// add the contents of the csv file to the sql table
@@ -212,7 +213,7 @@ public class CreateRelationTable {
 				tempLine = normalize(tempLine);
 				action.insert("Member", tempLine);
 
-//				System.out.println(query);
+				// System.out.println(query);
 				try {
 					stmt = dbconn.createStatement();
 					stmt.executeQuery(query);
@@ -331,34 +332,35 @@ public class CreateRelationTable {
 		return ret;
 	} // end normalize
 
-//	private static String generateMemberID() {
-//		Statement idToCheck = null;
-//		ResultSet answer = null;
-//		try {
-//			idToCheck = dbconn.createStatement();
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//
-//		// check if the generated ID already exists
-//		String idCheck = "SELECT memberID FROM Member WHERE EXISTS (" + "SELECT memberID FROM Member WHERE memberID = "
-//				+ idToCheck + ")";
-//		boolean idExists = false;
-//		try {
-//			answer = idToCheck.executeQuery(idCheck);
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//		try {
-//			if (answer != null) {
-//				answer.next();
-//				if (answer.getBoolean(columnLabel))
-//				idExists = true;
-//			}
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//
-//		return null;
-//	}
+	// private static String generateMemberID() {
+	// Statement idToCheck = null;
+	// ResultSet answer = null;
+	// try {
+	// idToCheck = dbconn.createStatement();
+	// } catch (SQLException e) {
+	// e.printStackTrace();
+	// }
+	//
+	// // check if the generated ID already exists
+	// String idCheck = "SELECT memberID FROM Member WHERE EXISTS (" + "SELECT
+	// memberID FROM Member WHERE memberID = "
+	// + idToCheck + ")";
+	// boolean idExists = false;
+	// try {
+	// answer = idToCheck.executeQuery(idCheck);
+	// } catch (SQLException e) {
+	// e.printStackTrace();
+	// }
+	// try {
+	// if (answer != null) {
+	// answer.next();
+	// if (answer.getBoolean(columnLabel))
+	// idExists = true;
+	// }
+	// } catch (SQLException e) {
+	// e.printStackTrace();
+	// }
+	//
+	// return null;
+	// }
 }

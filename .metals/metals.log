@@ -1,0 +1,8 @@
+2020.12.05 13:39:55 INFO  Started: Metals version 0.9.7 in workspace 'C:\Users\Graysen\Documents\CSC460Prog4\Prog4' for client vscode.
+2020.12.05 13:39:56 INFO  time: initialize in 1.5s
+2020.12.05 13:40:00 WARN  Build server is not auto-connectable.
+2020.12.05 13:40:00 WARN  no build tool detected in workspace 'C:\Users\Graysen\Documents\CSC460Prog4\Prog4'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+2020.12.06 16:32:50 INFO  Started: Metals version 0.9.7 in workspace 'C:\Users\Graysen\Documents\CSC460Prog4\Prog4' for client vscode.
+2020.12.06 16:32:51 INFO  time: initialize in 0.7s
+2020.12.06 16:32:56 WARN  Build server is not auto-connectable.
+2020.12.06 16:32:56 WARN  no build tool detected in workspace 'C:\Users\Graysen\Documents\CSC460Prog4\Prog4'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
