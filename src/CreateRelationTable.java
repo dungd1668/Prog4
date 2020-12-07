@@ -111,7 +111,7 @@ public class CreateRelationTable {
 						+ "gender varchar2(15),"
 						+ "address varchar2(35),"
 						+ "phoneNumber varchar2(15)," 
-						+ "groupID varchar2(10),"
+						+ "groupID integer(1),"
 						+ "salary decimal(8,2) )";
 			} else if (relation.contentEquals("Supplier")) {
 				createTable = "CREATE TABLE Supplier (" 
