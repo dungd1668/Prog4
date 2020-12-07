@@ -12,6 +12,7 @@ import java.util.List;
 
 import ContainerClasses.Employee;
 import ContainerClasses.Member;
+import ContainerClasses.Product;
 
 
 /**
@@ -40,10 +41,20 @@ public class InputFileCreator {
 	public static Member member = new Member();
 	public static List<Member> generatedMembers;
 	public static int duplicatedMembers = 0;
-
+	
+	//these containers will be responsible for product info
+	public static Product product = new Product();
+	public static List<Product> generatedProducts;
+	
+	
+	//triggers for making files
 	static boolean makeEmps = false;
-	static boolean makeMems = true;
-
+	static boolean makeMems = false;
+	static boolean makeProducts = true;
+	
+	
+	
+	
 	public static void main(String[] args) {
 
 		if (makeEmps) {
@@ -57,7 +68,7 @@ public class InputFileCreator {
 
 				// check for duplicates
 				while (IsDuplicateEmployee(randEmp) && generatedEmployees.size() > 1) {
-					System.out.println("Rerolling Duplicate Name");
+					System.out.println("Rerolling Duplicate ID");
 					duplicatedEmps++;
 					randEmp = (Employee) employee.GetNewRandom();
 				}
@@ -81,7 +92,34 @@ public class InputFileCreator {
 		// finished supplier
 
 		// generating product file
+		if(makeProducts) {
+			generatedProducts = new ArrayList<Product>();
+			
+			System.out.println("productID,name,retailPrice,category,membershipDiscount,stockInfo");
+			
+			for (int i = 0; i < 100; i++) {
 
+				Product randProd = (Product) product.GetNewRandom();
+
+				// check for duplicates
+				while (IsDuplicateProduct(randProd) && generatedProducts.size() > 1) {
+					System.out.println("Rerolling Duplicate Prodcut");
+					randProd = (Product) product.GetNewRandom();
+				}
+				// add it to our list
+				generatedProducts.add(randProd);
+				String memLine = GetProdString(randProd);
+				System.out.println(memLine);
+				//System.out.println("Duplicates Found:" + duplicatedEmps);
+			}
+
+			try {
+				WriteProducts();
+			} catch (IOException e) {
+				System.out.println("Failed to write employee.txt");
+			}
+			
+		}
 		// finished product file
 
 		// generating member file
@@ -95,8 +133,8 @@ public class InputFileCreator {
 				Member radMem = (Member) member.GetNewRandom();
 
 				// check for duplicates
-				while (IsDuplicateMember(radMem) && generatedEmployees.size() > 1) {
-					System.out.println("Rerolling Duplicate Name");
+				while (IsDuplicateMember(radMem) && generatedMembers.size() > 1) {
+					System.out.println("Rerolling Duplicate ID");
 					duplicatedEmps++;
 					radMem = (Member) member.GetNewRandom();
 				}
@@ -124,6 +162,17 @@ public class InputFileCreator {
 
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	/**
 	 * returns weather or not the employeeID already exists in the system
 	 * 
@@ -175,6 +224,17 @@ public class InputFileCreator {
 				+ randEmp.getGroupID() + "," + randEmp.getSalary();
 		return empLine;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	/**
@@ -229,4 +289,66 @@ public class InputFileCreator {
 		return memLine;
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/**
+	 * returns weather or not the product id already exists in the system
+	 * 
+	 * @param emp
+	 * @return
+	 */
+	public static boolean IsDuplicateProduct(Product p) {
+		for (Product curr : generatedProducts) {
+			if (p.getProductID().equals(curr.getProductID())) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	/**
+	 * writes the products to the product file
+	 * 
+	 * @param emp
+	 * @return
+	 */
+	private static void WriteProducts() throws IOException {
+
+		File fout = new File("products.txt");
+		FileOutputStream fos;
+		fos = new FileOutputStream(fout);
+
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
+		// write header
+		bw.write("productID,name,retailPrice,category,membershipDiscount,stockInfo");
+		bw.newLine();
+		// write all other employees
+		for (Product curr : generatedProducts) {
+			bw.write(GetProdString(curr));
+			bw.newLine();
+		}
+		bw.close();
+	}
+
+	/**
+	 * returns the properly formatted product string
+	 * 
+	 * @param emp
+	 * @return
+	 */
+	private static String GetProdString(Product randProd) {
+		String memLine = randProd.getProductID() + "," + randProd.getName() + "," + randProd.getRetailPrice() + ","
+				+ randProd.getCategory() + "," + randProd.getMembershipDiscount() + "," + randProd.getStockInfo();
+		return memLine;
+	}
+
+	
 }

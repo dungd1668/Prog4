@@ -17,7 +17,7 @@ public int id = 1;
 public File firstNameFile = new File("src/RawRandomData/first-names.txt");
 public File middleNameFile = new File("src/RawRandomData/middle-names.txt");
 public File addressesFile = new File("src/RawRandomData/addresses.txt");
-
+public File nounFile = new File("src/RawRandomData/nouns.txt");
 
 /***
  * returns a version of this container with random info 
@@ -143,6 +143,38 @@ public String GetRandomAddress() {
 		}
 		scan.close();
 		scan= new Scanner(addressesFile);
+		Random rand = new Random();
+		int name = rand.nextInt(count);
+		count = 0;
+		while (scan.hasNextLine() && count < name) {
+		    count++;
+		    scan.nextLine();
+		}
+		String r = scan.nextLine();
+		//r = r.replace(",", "%");
+		r = "\"" + r + "\"";
+		scan.close();
+		return r;
+		
+	} catch (FileNotFoundException e) {
+		System.out.println("Cant Find File");
+	}
+	return "null";
+}
+
+/***
+ * returns a random noun from nouns.txt
+ */
+public String GetRandomNoun() {
+	try {
+		Scanner scan = new Scanner(nounFile);
+		int count = 0;
+		while (scan.hasNextLine()) {
+		    count++;
+		    scan.nextLine();
+		}
+		scan.close();
+		scan= new Scanner(nounFile);
 		Random rand = new Random();
 		int name = rand.nextInt(count);
 		count = 0;
