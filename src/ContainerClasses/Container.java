@@ -52,6 +52,14 @@ public abstract Container GetNewRandom();
 		num = String.format("+1(%d)%d-%d",a,b,b);
 		return num;
 	}
+	
+	public String GetRandomDOB() {
+		Random ran = new Random();
+		int day = ran.nextInt(30);
+		int month  = ran.nextInt(13);
+		int year = (int) (1950 + ran.nextFloat() * (2000 - 950));
+		return String.format("%d/%d/%d", day,month,year);
+	}
 
 /***
  * returns a random name from our random first name list

@@ -87,8 +87,7 @@ public class CreateRelationTable {
 						+ "dob varchar2(10),"
 						+ "address varchar2(35)," 
 						+ "phoneNumber varchar2(15)," 
-						+ "rewardPoints integer(8),"
-						+ "address varchar2(100) )";
+						+ "rewardPoints integer(8) )";
 			} else if (relation.contentEquals("Sale")) {
 				createTable = "CREATE TABLE Sale (" 
 						+ "saleID varchar2(10),"
