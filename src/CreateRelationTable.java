@@ -125,7 +125,7 @@ public class CreateRelationTable {
 						+ "retailPrice decimal(8,2),"
 						+ "category varchar2(15),"
 						+ "membershipDiscount decimal(8,2),"
-						+ "stockInfo varchar2(1000) )";
+						+ "stockInfo integer(8) )";
 			} else if (relation.contentEquals("ProductShipment")) {
 				createTable = "CREATE TABLE ProductShipment ("
 						+ "incomingDate varchar2(10),"
