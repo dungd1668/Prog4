@@ -3,35 +3,31 @@ package ContainerClasses;
 import java.util.Random;
 import java.util.stream.IntStream;
 
-public class Employee extends Container {
+public class Member extends Container {
 	
-	String employeeID;
+	String memberID;
 	String firstName;
 	String lastName;
-	String gender;
+	String dob;
 	String address;
 	long phoneNumber;
-	int groupID;
-	float salary;
+	int rewardPoints;
 	
-	float minSalary = 10000;
-	float maxSalary = 150000;
 
-	public Employee() {
+	public Member() {
 		
 	}
 	
 	//constructor that takes params for each field
-	public Employee(String newID, String f, String l, String g, String a
-			,long phone, int group, float sal) {
-		employeeID = newID;
+	public Member(String newID, String f, String l, String dob, String a
+			,long phone, int rewards) {
+		memberID = newID;
 		firstName = f;
 		lastName = l;
-		gender = g;
+		this.dob = dob;
 		address = a;
 		phoneNumber = phone;
-		groupID = group;
-		salary = sal;
+		rewardPoints = rewards;
 	}
 	
 	//returns a random employee
@@ -46,36 +42,29 @@ public class Employee extends Container {
 		else
 			gen = "Female";
 		
-		IntStream phone = rand.ints(100000,999999);
-		
-		int group = rand.nextInt(3);
-		
-		float salary = minSalary + rand.nextFloat() * (maxSalary - minSalary);
-		salary = (float) (Math.round(salary * 100.0)/100.0);
+		int rewards = rand.nextInt(200);
+	
 		
 		//make the new employee
-		Employee newEmp = new Employee(getRandID(),
+		Member newEmp = new Member(getRandID(),
 				GetRandomFirstName(),
 				GetRandomLastName(),
-				gen,
+				GetRandomDOB(),
 				GetRandomAddress(),
 				GetRandomPhone(),
-				group,
-				salary
+				rewards
 				);
 		
-		phone.close();
 		//if its a duplicate dont increment id
 		return newEmp;
 	}
-	
 
-	public String getEmployeeID() {
-		return employeeID;
+	public String getMemberID() {
+		return memberID;
 	}
 
-	public void setEmployeeID(String employeeID) {
-		this.employeeID = employeeID;
+	public void setMemberID(String memberID) {
+		this.memberID = memberID;
 	}
 
 	public String getFirstName() {
@@ -94,12 +83,12 @@ public class Employee extends Container {
 		this.lastName = lastName;
 	}
 
-	public String getGender() {
-		return gender;
+	public String getDob() {
+		return dob;
 	}
 
-	public void setGender(String gender) {
-		this.gender = gender;
+	public void setDob(String dob) {
+		this.dob = dob;
 	}
 
 	public String getAddress() {
@@ -118,21 +107,18 @@ public class Employee extends Container {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public int getGroupID() {
-		return groupID;
+	public int getRewardPoints() {
+		return rewardPoints;
 	}
 
-	public void setGroupID(int groupID) {
-		this.groupID = groupID;
+	public void setRewardPoints(int rewardPoints) {
+		this.rewardPoints = rewardPoints;
 	}
+	
 
-	public float getSalary() {
-		return salary;
-	}
 
-	public void setSalary(float salary) {
-		this.salary = salary;
-	}
+
+
 
 	
 	
