@@ -35,6 +35,16 @@ public class Prog4 {
 					+ " password (not your system password).\n");
 			System.exit(-1);
 		}
+		// load the (Oracle) JDBC driver by initializing its base
+        // class, 'oracle.jdbc.OracleDriver'.
+		try {
+            Class.forName("oracle.jdbc.OracleDriver");
+        } catch (ClassNotFoundException e) {
+            System.err.println("*** ClassNotFoundException:  "
+                + "Error loading Oracle JDBC driver.  \n"
+                + "\tPerhaps the driver is not on the Classpath?");
+            System.exit(-1);
+        }
 		// make and return a database connection to the user's Oracle database
 		dbconn = null;
 		try {
