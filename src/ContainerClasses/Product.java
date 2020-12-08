@@ -35,10 +35,11 @@ public class Product extends Container {
 		//random gender
 		Random rand = new Random();
 		
-		float retail = rand.nextFloat() * 100;
-		float price = Math.round(retail);
-	
-		int discount = rand.nextInt((int) (price/3) + 1);
+		float retail = rand.nextFloat() * 100 + 1;
+		float price = 1 + rand.nextFloat() * (1000 - 1);
+		price = (float) (Math.round(price * 100.0)/100.0);
+		
+		int discount = rand.nextInt((int)(price/3) + 1) + 1;
 		
 		int stock = rand.nextInt(1000);
 		
@@ -62,14 +63,6 @@ public class Product extends Container {
 	}
 
 
-
-	
-	
-	
-	
-	
-	
-	
 	
 	public String getProductID() {
 		return productID;
