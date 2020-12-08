@@ -50,6 +50,7 @@ public class WebAppQuery {
 				System.out.println("Reward Points: " + answer.getInt("rewardPoints") + "\n");
 			}
 		} catch (SQLException e) {
+			System.out.println("Problem getting result from ResultSet in function displayMemberByPhoneNum");
 			e.printStackTrace();
 		}
 	}
@@ -83,6 +84,71 @@ public class WebAppQuery {
 				System.out.println("Reward Points: " + answer.getInt("rewardPoints") + "\n");
 			}
 		} catch (SQLException e) {
+			System.out.println("Problem getting result from ResultSet in function displayMemberById");
+			e.printStackTrace();
+		}
+	}
+
+	/** @formatter:off
+	 * --------------------------------------------------------------------------------------------------
+	 * Method: displayCurrenMonthProfit(String mm, String yyyy) displays the profit for the month mm in 
+	 *         year yyyy. Should only be used for current month in the context of this program.
+	 * 
+	 * Parameters: String mm is current month, String yyyy is current year.
+	 * 
+	 * Purpose: To get this month's profit.
+	 * 
+	 * Returns: N/A.
+	 * 
+	 * ----------------------------------------------------------------------------------------------------
+	 * @formatter:on
+	 */
+	public void displayCurrentMonthProfit(String mm, String yyyy) {
+		String query = "SELECT SUM(totalPrice) AS grossSales FROM Sale WHERE date LIKE '" + mm + "____" + yyyy + "'";
+		ResultSet grossSales = executeQuery(query);
+
+		query = "SELECT COUNT(*) AS numMembers FROM Member";
+		ResultSet numMembers = executeQuery(query);
+
+		query = "SELECT SUM(purchasePrice * amount) AS supplyCharge FROM productShipment WHERE incomingDate LIKE '" + mm
+				+ "____" + yyyy + "'";
+		ResultSet supplyCharge = executeQuery(query);
+
+		query = "SELECT SUM(salary) AS laborCost FROM Employee";
+		ResultSet laborCost = executeQuery(query);
+
+		try {
+			float sales = grossSales.getFloat("grossSales");
+			int memberFees = numMembers.getInt("numMembers") * 5;
+			float supply = supplyCharge.getFloat("supplyCharge");
+			float salaries = laborCost.getFloat("laborCost");
+
+			float currMonProfit = (sales + memberFees) - (supply + salaries);
+
+			System.out.println("Profit for " + mm + "-" + yyyy + ": $" + currMonProfit + "\n");
+		} catch (SQLException e) {
+			System.out.println("Problem getting result from ResultSet in function displayMemberById");
+			e.printStackTrace();
+		}
+	}
+
+	public void displayMostProfitableProduct() {
+		String query = "SELECT productId, (amountSold * (retailPrice * membershipDiscount - purchasePrice)) AS profit";
+		query += " FROM (Product JOIN ProductShipment ON (Product.productId = ProductShipment.productId)) JOIN";
+		query += " (SELECT productId, COUNT(*) AS amountSold FROM SubSale GROUP BY productId)";
+		query += " ON (SubSale.productId = ProductShipment.productId) GROUP BY productId ORDER BY profit DESC";
+
+		ResultSet result = executeQuery(query);
+
+		try {
+			String mostProfitableProductId = result.getString("productId");
+
+			query = "SELECT name FROM Product WHERE productId = '" + mostProfitableProductId + "'";
+			result = executeQuery(query);
+
+			System.out.println("Most Profitable Product: " + result.getString("name") + "\n");
+		} catch (SQLException e) {
+			System.out.println("Problem getting result from ResultSet in function displayMostProfitableProduct");
 			e.printStackTrace();
 		}
 	}
