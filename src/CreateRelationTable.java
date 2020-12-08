@@ -20,8 +20,6 @@ public class CreateRelationTable {
 	static String relation; // the name of the table to be created
 	static Action action;
 
-	static String query = ""; // a query string to create the table
-
 	public static void main(String[] args) {
 		// System.out.println("Running");
 
@@ -38,9 +36,6 @@ public class CreateRelationTable {
 					+ "args[3] is the name of the table to be created.\n");
 			System.exit(-1);
 		}
-
-		// create an Action object
-		action = new Action(username, password, dbconn);
 
 		// load the (Oracle) JDBC driver by initializing its base
 		// class, 'oracle.jdbc.OracleDriver'.
@@ -63,97 +58,106 @@ public class CreateRelationTable {
 			System.exit(-1);
 		}
 
-		// Create a statement
-		Statement stmt = null;
-		try {
-			stmt = dbconn.createStatement();
-		} catch (SQLException e1) {
-			e1.printStackTrace();
-		}
+		// create an Action object
+		action = new Action(username, password, dbconn);
 
 		// Create the table
+		// TODO: I don't think we need this outer try catch
 		try {
-			// delete the table if it already exists
-			stmt.executeQuery("DROP TABLE " + relation);
+			try {
+				Statement stmt = dbconn.createStatement();
+				stmt.executeQuery("drop table " + relation);
+				stmt.close();
+			} catch (SQLException e) {
+				System.out.println("Table " + relation + " did not exist: Continuing...");
+			}
 
 			String createTable = null; // the sql string to create a table
 			// create table @formatter:off
 			if (relation.contentEquals("Member")) {
 //				String memberID = generateMemberID();
 				createTable = "CREATE TABLE Member (" 
-						+ "memberID varchar2(10),"
-						+ "firstName varchar2(15)," 
-						+ "lastName varchar2(15)," 
-						+ "dob varchar2(10),"
-						+ "address varchar2(35)," 
-						+ "phoneNumber varchar2(15)," 
-						+ "rewardPoints integer(8),"
-						+ "address varchar2(100) )";
+						+ "memberID varchar2(10) NOT NULL,"
+						+ "firstName varchar2(15) NOT NULL," 
+						+ "lastName varchar2(15) NOT NULL," 
+						+ "dob date,"
+						+ "address varchar2(50)," 
+						+ "phoneNumber integer NOT NULL," 
+						+ "rewardPoints integer )";
 			} else if (relation.contentEquals("Sale")) {
 				createTable = "CREATE TABLE Sale (" 
-						+ "saleID varchar2(10),"
-						+ "date varchar2(10),"
+						+ "saleID varchar2(10) NOT NULL,"
+						+ "date date,"
 						+ "paymentMethod varchar2(20),"
 						+ "totalPrice decimal(8,2),"
-						+ "memberID varchar2(10) )";
+						+ "memberID varchar2(10) NOT NULL )";
 			} else if (relation.contentEquals("SubSale")) {
 				createTable = "CREATE TABLE SubSale (" 
-						+ "saleID varchar2(10),"
+						+ "saleID varchar2(10) NOT NULL,"
 						+ "SubSaleID varchar2(10),"
 						+ "productID varchar2(10),"
 						+ "price decimal(8,2),"
-						+ "amount integer(8) )";
-			} else if (relation.contentEquals("Employee")) {
-				createTable = "CREATE TABLE Employee (" 
-						+ "employeeID varchar2(10),"
-						+ "firstName varchar2(15),"
-						+ "lastName varchar2(15),"
+						+ "amount integer )";
+			} else if (relation.contentEquals("Emp")) {
+				createTable = "CREATE TABLE Emp (" 
+						+ "employeeID varchar2(10) NOT NULL,"
+						+ "firstName varchar2(15) NOT NULL,"
+						+ "lastName varchar2(15) NOT NULL,"
 						+ "gender varchar2(15),"
 						+ "address varchar2(35),"
-						+ "phoneNumber varchar2(15)," 
-						+ "groupID integer(1),"
+						+ "phoneNumber integer NOT NULL," 
+						+ "groupID integer,"
 						+ "salary decimal(8,2) )";
 			} else if (relation.contentEquals("Supplier")) {
 				createTable = "CREATE TABLE Supplier (" 
-						+ "supplierID varchar2(10),"
+						+ "supplierID varchar2(10) NOT NULL,"
 						+ "name varchar2(25),"
 						+ "address varchar2(35),"
 						+ "contactPerson varchar2(25) )";
 			} else if (relation.contentEquals("Product")) {
 				createTable = "CREATE TABLE Product (" 
-						+ "productID varchar2(10),"
+						+ "productID varchar2(10) NOT NULL,"
 						+ "name varchar2(25),"
 						+ "retailPrice decimal(8,2),"
 						+ "category varchar2(15),"
 						+ "membershipDiscount decimal(8,2),"
-						+ "stockInfo varchar2(1000) )";
+						+ "stockInfo integer )";
 			} else if (relation.contentEquals("ProductShipment")) {
 				createTable = "CREATE TABLE ProductShipment ("
-						+ "incomingDate varchar2(10),"
+						+ "incomingDate date NOT NULL,"
 						+ "purchasePrice decimal(8,2),"
-						+ "amount integer(8) )";
+						+ "amount integer )";
 			}
 			// @formatter:on
 
 			// check if the sql command was set
-			assert createTable != null;
-
-			stmt.executeQuery(createTable);
+			assert createTable != null;	
+			try {
+				Statement stmt = dbconn.createStatement();
+				stmt.executeQuery(createTable);
+				stmt.close();
+			} catch (SQLException e) {
+				System.err.println("*** SQLException:  " + "Could not create table " + relation + ".");
+				System.err.println("\tMessage:   " + e.getMessage());
+				System.err.println("\tSQLState:  " + e.getSQLState());
+				System.err.println("\tErrorCode: " + e.getErrorCode());
+				System.exit(-1);
+			}	
 
 			// add the contents of the csv file to the sql table
 			try {
-				int count = addFile(stmt);
+				int count = addFile();
 				System.out.println("records inserted: " + count);
 			} catch (FileNotFoundException e) {
-				e.printStackTrace();
+				System.out.println("Error: Could not open file " + fileName);
+				System.exit(-1);
 			}
 
 			// close the connection to the DBMS
-			stmt.close();
 			dbconn.close();
 
 		} catch (SQLException e) {
-			System.err.println("*** SQLException:  " + "Could not fetch query results.");
+			System.err.println("*** SQLException:  " + "Something went wrong with creating or populating the tables.");
 			System.err.println("\tMessage:   " + e.getMessage());
 			System.err.println("\tSQLState:  " + e.getSQLState());
 			System.err.println("\tErrorCode: " + e.getErrorCode());
@@ -161,7 +165,7 @@ public class CreateRelationTable {
 		}
 	}
 
-	private static int addFile(Statement stmt) throws FileNotFoundException {
+	private static int addFile() throws FileNotFoundException {
 		FileReader file; // used for the input file
 
 		// initialize the file and the buffer
@@ -211,18 +215,8 @@ public class CreateRelationTable {
 				// Split the csv line
 				String[] tempLine = splitLine(line);
 				tempLine = normalize(tempLine);
-				action.insert("Member", tempLine);
-
-				// System.out.println(query);
-				try {
-					stmt = dbconn.createStatement();
-					stmt.executeQuery(query);
-					stmt.close();
-					count++;
-				} catch (SQLException e) {
-					System.out.println(query);
-					e.printStackTrace();
-				}
+				action.insert(relation, tempLine);
+				count++;
 
 				line = in.readLine();
 			} // end while

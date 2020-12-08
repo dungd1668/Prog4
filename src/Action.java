@@ -22,6 +22,7 @@ public class Action {
 	public Action(String usernameIn, String passwordIn, Connection dbconnIn) {
 		this.username = usernameIn;
 		this.password = passwordIn;
+		this.dbconn = dbconnIn;
 	}
 
 	/** @formatter:off
