@@ -74,7 +74,7 @@ public class CreateRelationTable {
 		// Create the table
 		try {
 			// delete the table if it already exists
-			stmt.executeQuery("DROP TABLE " + relation);
+//			stmt.executeQuery("DROP TABLE " + relation);
 
 			String createTable = null; // the sql string to create a table
 			// create table @formatter:off
@@ -86,8 +86,8 @@ public class CreateRelationTable {
 						+ "lastName varchar2(15) NOT NULL," 
 						+ "dob varchar2(10),"
 						+ "address varchar2(35)," 
-						+ "phoneNumber integer(10) NOT NULL," 
-						+ "rewardPoints integer(8) )";
+						+ "phoneNumber integer NOT NULL," 
+						+ "rewardPoints integer )";
 			} else if (relation.contentEquals("Sale")) {
 				createTable = "CREATE TABLE Sale (" 
 						+ "saleID varchar2(10) NOT NULL,"
@@ -101,7 +101,7 @@ public class CreateRelationTable {
 						+ "SubSaleID varchar2(10),"
 						+ "productID varchar2(10),"
 						+ "price decimal(8,2),"
-						+ "amount integer(8) )";
+						+ "amount integer )";
 			} else if (relation.contentEquals("Employee")) {
 				createTable = "CREATE TABLE Employee (" 
 						+ "employeeID varchar2(10) NOT NULL,"
@@ -109,8 +109,8 @@ public class CreateRelationTable {
 						+ "lastName varchar2(15) NOT NULL,"
 						+ "gender varchar2(15),"
 						+ "address varchar2(35),"
-						+ "phoneNumber integer(10) NOT NULL," 
-						+ "groupID integer(1),"
+						+ "phoneNumber integer NOT NULL," 
+						+ "groupID integer,"
 						+ "salary decimal(8,2) )";
 			} else if (relation.contentEquals("Supplier")) {
 				createTable = "CREATE TABLE Supplier (" 
@@ -125,18 +125,20 @@ public class CreateRelationTable {
 						+ "retailPrice decimal(8,2),"
 						+ "category varchar2(15),"
 						+ "membershipDiscount decimal(8,2),"
-						+ "stockInfo integer(8) )";
+						+ "stockInfo integer )";
 			} else if (relation.contentEquals("ProductShipment")) {
 				createTable = "CREATE TABLE ProductShipment ("
 						+ "incomingDate varchar2(10) NOT NULL,"
 						+ "purchasePrice decimal(8,2),"
-						+ "amount integer(8) )";
+						+ "amount integer )";
 			}
 			// @formatter:on
 
 			// check if the sql command was set
 			assert createTable != null;
 
+			System.out.println(createTable);
+			
 			stmt.executeQuery(createTable);
 
 			// add the contents of the csv file to the sql table
@@ -212,7 +214,7 @@ public class CreateRelationTable {
 				tempLine = normalize(tempLine);
 				action.insert(relation, tempLine);
 
-				// System.out.println(query);
+				System.out.println(query);
 				try {
 					stmt = dbconn.createStatement();
 					stmt.executeQuery(query);
