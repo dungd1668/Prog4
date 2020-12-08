@@ -9,10 +9,12 @@ import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 import ContainerClasses.Employee;
 import ContainerClasses.Member;
 import ContainerClasses.Product;
+import ContainerClasses.Sale;
 
 
 /**
@@ -46,12 +48,22 @@ public class InputFileCreator {
 	public static Product product = new Product();
 	public static List<Product> generatedProducts;
 	
+	//these containers hold our sales info
+	public static Sale sale = new Sale();
+	public static List<Sale> generatedSales;
+	
+	
 	
 	//triggers for making files
-	static boolean makeEmps = true;
+	static boolean makeEmps = false;
+	
+	
 	static boolean makeMems = true;
 	static boolean makeProducts = true;
 	
+	//we need the random products and members to generate the sales
+	//we we enable making sales we need to enable mem and produc making
+	static boolean makeAllSales = true;
 	
 	
 	
@@ -90,10 +102,6 @@ public class InputFileCreator {
 
 		}
 		// finished generating employees
-
-		// generating supplier
-
-		// finished supplier
 
 		// generating product file
 		if(makeProducts) {
@@ -165,7 +173,58 @@ public class InputFileCreator {
 		// finished member file
 
 		// generating sales file
+		
+		if (makeAllSales) {
+		
+			generatedSales = new ArrayList<Sale>();
+			
+			
 
+			for (int i = 0; i < 100; i++) {
+
+				//first generate subsales that will make up the sale
+				Random rand = new Random();
+				int items = rand.nextInt(10);
+				float priceTotal = 0;
+				for(int j = 0; j < items; j++) {
+					
+					//generate all the subsales here
+					
+					//add price to priceTotal
+					
+				}
+				
+				//get a random member to make the sale
+				Member madeSale = generatedMembers.get(rand.nextInt(generatedMembers.size()));
+				
+				
+				Sale newSale = (Sale) sale.GetNewRandomSale(madeSale.getMemberID(), priceTotal);
+
+				// check for duplicates
+				while (IsDuplicateSale(newSale) && generatedSales.size() > 1) {
+					System.out.println("Rerolling Duplicate ID");
+					newSale = (Sale) sale.GetNewRandomSale(madeSale.getMemberID(), priceTotal);
+				}
+				// add it to our list
+				generatedSales.add(newSale);
+				String saleLine = GetSaleString(newSale);
+				//System.out.println(memLine);
+				//System.out.println("Duplicates Found:" + duplicatedEmps);
+			}
+
+			try {
+				WriteSales();
+			} catch (IOException e) {
+				System.out.println("Failed to write sales.txt");
+			}
+			
+
+			System.out.println("Wrote Sales");
+			System.out.println("saleID,date,paymentMethod,totalPrice,memberID");
+			
+		}
+		
+		
 		// finished sales file
 
 	}
@@ -355,6 +414,74 @@ public class InputFileCreator {
 	private static String GetProdString(Product randProd) {
 		String memLine = randProd.getProductID() + "," + randProd.getName() + "," + randProd.getRetailPrice() + ","
 				+ randProd.getCategory() + "," + randProd.getMembershipDiscount() + "," + randProd.getStockInfo();
+		return memLine;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/**
+	 * returns weather or not the product id already exists in the system
+	 * 
+	 * @param emp
+	 * @return
+	 */
+	public static boolean IsDuplicateSale(Sale s) {
+		for (Sale curr : generatedSales) {
+			if (s.getSaleID().equals(curr.getSaleID())) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	/**
+	 * writes the products to the product file
+	 * 
+	 * @param emp
+	 * @return
+	 */
+	private static void WriteSales() throws IOException {
+
+		File fout = new File("sales.txt");
+		FileOutputStream fos;
+		fos = new FileOutputStream(fout);
+
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
+		// write header
+		bw.write("saleID,date,paymentMethod,totalPrice,memberID");
+		bw.newLine();
+		// write all other sales
+		for (Sale curr : generatedSales) {
+			bw.write(GetSaleString(curr));
+			bw.newLine();
+		}
+		bw.close();
+	}
+
+	/**
+	 * returns the properly formatted product string
+	 * 
+	 * @param emp
+	 * @return
+	 */
+	private static String GetSaleString(Sale sale) {
+		String memLine = sale.getSaleID() + "," + sale.getDate() + "," + sale.getPaymentMethod() + ","
+				+ sale.getTotalPrice() + "," + sale.getMemberID();
 		return memLine;
 	}
 

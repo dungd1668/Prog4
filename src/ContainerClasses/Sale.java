@@ -42,11 +42,62 @@ public class Sale extends Container {
 			gen = "Cash";
 		return gen;
 	}
+	
+	
+	
+	
+	
+	
 
 	@Override
 	public Container GetNewRandom() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+
+	public String getSaleID() {
+		return saleID;
+	}
+
+	public void setSaleID(String saleID) {
+		this.saleID = saleID;
+	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+	public String getPaymentMethod() {
+		return paymentMethod;
+	}
+
+	public void setPaymentMethod(String paymentMethod) {
+		this.paymentMethod = paymentMethod;
+	}
+
+	public float getTotalPrice() {
+		return totalPrice;
+	}
+
+	public void setTotalPrice(float totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+
+	public String getMemberID() {
+		return memberID;
+	}
+
+	public void setMemberID(String memberID) {
+		this.memberID = memberID;
+	}
+	
+	
+	
+	
 
 }
