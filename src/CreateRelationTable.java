@@ -20,8 +20,6 @@ public class CreateRelationTable {
 	static String relation; // the name of the table to be created
 	static Action action;
 
-	static String query = ""; // a query string to create the table
-
 	public static void main(String[] args) {
 		// System.out.println("Running");
 
@@ -38,9 +36,6 @@ public class CreateRelationTable {
 					+ "args[3] is the name of the table to be created.\n");
 			System.exit(-1);
 		}
-
-		// create an Action object
-		action = new Action(username, password, dbconn);
 
 		// load the (Oracle) JDBC driver by initializing its base
 		// class, 'oracle.jdbc.OracleDriver'.
@@ -63,18 +58,18 @@ public class CreateRelationTable {
 			System.exit(-1);
 		}
 
-		// Create a statement
-		Statement stmt = null;
-		try {
-			stmt = dbconn.createStatement();
-		} catch (SQLException e1) {
-			e1.printStackTrace();
-		}
+		// create an Action object
+		action = new Action(username, password, dbconn);
 
 		// Create the table
 		try {
-			// delete the table if it already exists
-//			stmt.executeQuery("DROP TABLE " + relation);
+			try {
+				Statement stmt = dbconn.createStatement();
+				stmt.executeQuery("drop table " + relation);
+				stmt.close();
+			} catch (SQLException e) {
+				System.out.println("Table " + relation + " did not exist: Continuing...");
+			}
 
 			String createTable = null; // the sql string to create a table
 			// create table @formatter:off
@@ -85,7 +80,7 @@ public class CreateRelationTable {
 						+ "firstName varchar2(15) NOT NULL," 
 						+ "lastName varchar2(15) NOT NULL," 
 						+ "dob varchar2(10),"
-						+ "address varchar2(35)," 
+						+ "address varchar2(50)," 
 						+ "phoneNumber integer NOT NULL," 
 						+ "rewardPoints integer )";
 			} else if (relation.contentEquals("Sale")) {
@@ -135,22 +130,28 @@ public class CreateRelationTable {
 			// @formatter:on
 
 			// check if the sql command was set
-			assert createTable != null;
-
-			System.out.println(createTable);
-			
-			stmt.executeQuery(createTable);
+			assert createTable != null;	
+			try {
+				Statement stmt = dbconn.createStatement();
+				stmt.executeQuery(createTable);
+				stmt.close();
+			} catch (SQLException e) {
+				System.err.println("*** SQLException:  " + "Could not create table " + relation + ".");
+				System.err.println("\tMessage:   " + e.getMessage());
+				System.err.println("\tSQLState:  " + e.getSQLState());
+				System.err.println("\tErrorCode: " + e.getErrorCode());
+				System.exit(-1);
+			}	
 
 			// add the contents of the csv file to the sql table
 			try {
-				int count = addFile(stmt);
+				int count = addFile();
 				System.out.println("records inserted: " + count);
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			}
 
 			// close the connection to the DBMS
-			stmt.close();
 			dbconn.close();
 
 		} catch (SQLException e) {
@@ -162,7 +163,7 @@ public class CreateRelationTable {
 		}
 	}
 
-	private static int addFile(Statement stmt) throws FileNotFoundException {
+	private static int addFile() throws FileNotFoundException {
 		FileReader file; // used for the input file
 
 		// initialize the file and the buffer
@@ -213,17 +214,7 @@ public class CreateRelationTable {
 				String[] tempLine = splitLine(line);
 				tempLine = normalize(tempLine);
 				action.insert(relation, tempLine);
-
-				System.out.println(query);
-				try {
-					stmt = dbconn.createStatement();
-					stmt.executeQuery(query);
-					stmt.close();
-					count++;
-				} catch (SQLException e) {
-					System.out.println(query);
-					e.printStackTrace();
-				}
+				count++;
 
 				line = in.readLine();
 			} // end while
