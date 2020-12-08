@@ -81,46 +81,46 @@ public class CreateRelationTable {
 			if (relation.contentEquals("Member")) {
 //				String memberID = generateMemberID();
 				createTable = "CREATE TABLE Member (" 
-						+ "memberID varchar2(10),"
-						+ "firstName varchar2(15)," 
-						+ "lastName varchar2(15)," 
+						+ "memberID varchar2(10) NOT NULL,"
+						+ "firstName varchar2(15) NOT NULL," 
+						+ "lastName varchar2(15) NOT NULL," 
 						+ "dob varchar2(10),"
 						+ "address varchar2(35)," 
-						+ "phoneNumber varchar2(15)," 
+						+ "phoneNumber varchar2(15) NOT NULL," 
 						+ "rewardPoints integer(8) )";
 			} else if (relation.contentEquals("Sale")) {
 				createTable = "CREATE TABLE Sale (" 
-						+ "saleID varchar2(10),"
+						+ "saleID varchar2(10) NOT NULL,"
 						+ "date varchar2(10),"
 						+ "paymentMethod varchar2(20),"
 						+ "totalPrice decimal(8,2),"
-						+ "memberID varchar2(10) )";
+						+ "memberID varchar2(10) NOT NULL )";
 			} else if (relation.contentEquals("SubSale")) {
 				createTable = "CREATE TABLE SubSale (" 
-						+ "saleID varchar2(10),"
+						+ "saleID varchar2(10) NOT NULL,"
 						+ "SubSaleID varchar2(10),"
 						+ "productID varchar2(10),"
 						+ "price decimal(8,2),"
 						+ "amount integer(8) )";
 			} else if (relation.contentEquals("Employee")) {
 				createTable = "CREATE TABLE Employee (" 
-						+ "employeeID varchar2(10),"
-						+ "firstName varchar2(15),"
-						+ "lastName varchar2(15),"
+						+ "employeeID varchar2(10) NOT NULL,"
+						+ "firstName varchar2(15) NOT NULL,"
+						+ "lastName varchar2(15) NOT NULL,"
 						+ "gender varchar2(15),"
 						+ "address varchar2(35),"
-						+ "phoneNumber varchar2(15)," 
+						+ "phoneNumber varchar2(15) NOT NULL," 
 						+ "groupID integer(1),"
 						+ "salary decimal(8,2) )";
 			} else if (relation.contentEquals("Supplier")) {
 				createTable = "CREATE TABLE Supplier (" 
-						+ "supplierID varchar2(10),"
+						+ "supplierID varchar2(10) NOT NULL,"
 						+ "name varchar2(25),"
 						+ "address varchar2(35),"
 						+ "contactPerson varchar2(25) )";
 			} else if (relation.contentEquals("Product")) {
 				createTable = "CREATE TABLE Product (" 
-						+ "productID varchar2(10),"
+						+ "productID varchar2(10) NOT NULL,"
 						+ "name varchar2(25),"
 						+ "retailPrice decimal(8,2),"
 						+ "category varchar2(15),"
@@ -128,7 +128,7 @@ public class CreateRelationTable {
 						+ "stockInfo integer(8) )";
 			} else if (relation.contentEquals("ProductShipment")) {
 				createTable = "CREATE TABLE ProductShipment ("
-						+ "incomingDate varchar2(10),"
+						+ "incomingDate varchar2(10) NOT NULL,"
 						+ "purchasePrice decimal(8,2),"
 						+ "amount integer(8) )";
 			}
