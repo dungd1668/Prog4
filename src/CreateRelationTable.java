@@ -102,8 +102,8 @@ public class CreateRelationTable {
 						+ "productID varchar2(10),"
 						+ "price decimal(8,2),"
 						+ "amount integer )";
-			} else if (relation.contentEquals("Employee")) {
-				createTable = "CREATE TABLE Employee (" 
+			} else if (relation.contentEquals("Emp")) {
+				createTable = "CREATE TABLE Emp (" 
 						+ "employeeID varchar2(10) NOT NULL,"
 						+ "firstName varchar2(15) NOT NULL,"
 						+ "lastName varchar2(15) NOT NULL,"
