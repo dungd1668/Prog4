@@ -86,7 +86,7 @@ public class CreateRelationTable {
 						+ "lastName varchar2(15) NOT NULL," 
 						+ "dob varchar2(10),"
 						+ "address varchar2(35)," 
-						+ "phoneNumber varchar2(15) NOT NULL," 
+						+ "phoneNumber integer(10) NOT NULL," 
 						+ "rewardPoints integer(8) )";
 			} else if (relation.contentEquals("Sale")) {
 				createTable = "CREATE TABLE Sale (" 
@@ -109,7 +109,7 @@ public class CreateRelationTable {
 						+ "lastName varchar2(15) NOT NULL,"
 						+ "gender varchar2(15),"
 						+ "address varchar2(35),"
-						+ "phoneNumber varchar2(15) NOT NULL," 
+						+ "phoneNumber integer(10) NOT NULL," 
 						+ "groupID integer(1),"
 						+ "salary decimal(8,2) )";
 			} else if (relation.contentEquals("Supplier")) {
