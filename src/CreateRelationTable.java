@@ -62,6 +62,7 @@ public class CreateRelationTable {
 		action = new Action(username, password, dbconn);
 
 		// Create the table
+		// TODO: I don't think we need this outer try catch
 		try {
 			try {
 				Statement stmt = dbconn.createStatement();
@@ -148,14 +149,15 @@ public class CreateRelationTable {
 				int count = addFile();
 				System.out.println("records inserted: " + count);
 			} catch (FileNotFoundException e) {
-				e.printStackTrace();
+				System.out.println("Error: Could not open file " + fileName);
+				System.exit(-1);
 			}
 
 			// close the connection to the DBMS
 			dbconn.close();
 
 		} catch (SQLException e) {
-			System.err.println("*** SQLException:  " + "Could not fetch query results.");
+			System.err.println("*** SQLException:  " + "Something went wrong with creating or populating the tables.");
 			System.err.println("\tMessage:   " + e.getMessage());
 			System.err.println("\tSQLState:  " + e.getSQLState());
 			System.err.println("\tErrorCode: " + e.getErrorCode());
