@@ -48,8 +48,8 @@ public class InputFileCreator {
 	
 	
 	//triggers for making files
-	static boolean makeEmps = false;
-	static boolean makeMems = false;
+	static boolean makeEmps = true;
+	static boolean makeMems = true;
 	static boolean makeProducts = true;
 	
 	
@@ -60,8 +60,8 @@ public class InputFileCreator {
 		if (makeEmps) {
 			// generating the random employees
 			generatedEmployees = new ArrayList<Employee>();
-			System.out.println("employeeID,firstName,lastName,gender,address,phoneNumber,groupID,salary");
-
+			
+			
 			for (int i = 0; i < 100; i++) {
 
 				Employee randEmp = (Employee) employee.GetNewRandom();
@@ -75,8 +75,8 @@ public class InputFileCreator {
 				// add it to our list
 				generatedEmployees.add(randEmp);
 				String empLine = GetEmpString(randEmp);
-				System.out.println(empLine);
-				System.out.println("Duplicates Found:" + duplicatedEmps);
+				//System.out.println(empLine);
+				//System.out.println("Duplicates Found:" + duplicatedEmps);
 			}
 
 			try {
@@ -84,6 +84,10 @@ public class InputFileCreator {
 			} catch (IOException e) {
 				System.out.println("Failed to write employee.txt");
 			}
+			
+			System.out.println("Wrote Employees");
+			System.out.println("employeeID,firstName,lastName,gender,address,phoneNumber,groupID,salary");
+
 		}
 		// finished generating employees
 
@@ -95,7 +99,7 @@ public class InputFileCreator {
 		if(makeProducts) {
 			generatedProducts = new ArrayList<Product>();
 			
-			System.out.println("productID,name,retailPrice,category,membershipDiscount,stockInfo");
+			
 			
 			for (int i = 0; i < 100; i++) {
 
@@ -109,7 +113,7 @@ public class InputFileCreator {
 				// add it to our list
 				generatedProducts.add(randProd);
 				String memLine = GetProdString(randProd);
-				System.out.println(memLine);
+				//System.out.println(memLine);
 				//System.out.println("Duplicates Found:" + duplicatedEmps);
 			}
 
@@ -118,7 +122,9 @@ public class InputFileCreator {
 			} catch (IOException e) {
 				System.out.println("Failed to write employee.txt");
 			}
-			
+
+			System.out.println("Wrote Products");
+			System.out.println("productID,name,retailPrice,category,membershipDiscount,stockInfo");
 		}
 		// finished product file
 
@@ -126,7 +132,7 @@ public class InputFileCreator {
 		if (makeMems) {
 			generatedMembers = new ArrayList<Member>();
 			
-			System.out.println("memberID,firstName,lastName,dob,address,phoneNumber,rewardPoints");
+			
 
 			for (int i = 0; i < 100; i++) {
 
@@ -141,7 +147,7 @@ public class InputFileCreator {
 				// add it to our list
 				generatedMembers.add(radMem);
 				String memLine = GetMemString(radMem);
-				System.out.println(memLine);
+				//System.out.println(memLine);
 				//System.out.println("Duplicates Found:" + duplicatedEmps);
 			}
 
@@ -151,7 +157,9 @@ public class InputFileCreator {
 				System.out.println("Failed to write employee.txt");
 			}
 			
-			
+
+			System.out.println("Wrote Members");
+			System.out.println("memberID,firstName,lastName,dob,address,phoneNumber,rewardPoints");
 			
 		}
 		// finished member file
