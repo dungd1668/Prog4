@@ -10,7 +10,7 @@ public class Employee extends Container {
 	String lastName;
 	String gender;
 	String address;
-	String phoneNumber;
+	long phoneNumber;
 	int groupID;
 	float salary;
 	
@@ -23,7 +23,7 @@ public class Employee extends Container {
 	
 	//constructor that takes params for each field
 	public Employee(String newID, String f, String l, String g, String a
-			,String phone, int group, float sal) {
+			,long phone, int group, float sal) {
 		employeeID = newID;
 		firstName = f;
 		lastName = l;
@@ -110,11 +110,11 @@ public class Employee extends Container {
 		this.address = address;
 	}
 
-	public String getPhoneNumber() {
+	public long getPhoneNumber() {
 		return phoneNumber;
 	}
 
-	public void setPhoneNumber(String phoneNumber) {
+	public void setPhoneNumber(long phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 

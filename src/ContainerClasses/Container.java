@@ -43,13 +43,10 @@ public abstract Container GetNewRandom();
 		
 	}
 	
-	public String GetRandomPhone() {
-		String num = "";
+	public long GetRandomPhone() {
+		long num;
 		Random ran = new Random();
-		int a = (int) (100 + ran.nextFloat() * (999 - 100));
-		int b= (int) (100 + ran.nextFloat() * (999 - 100));
-		int c= (int) (100 + ran.nextFloat() * (999 - 100));
-		num = String.format("+1(%d)%d-%d",a,b,b);
+		num =  (long)(1000000000 + ran.nextFloat() * (9999999999l - 1000000000));
 		return num;
 	}
 	

@@ -55,15 +55,15 @@ public class InputFileCreator {
 	
 	
 	//triggers for making files
-	static boolean makeEmps = false;
+	static boolean makeEmps = true;
 	
 	
-	static boolean makeMems = true;
-	static boolean makeProducts = true;
+	static boolean makeMems = false;
+	static boolean makeProducts = false;
 	
 	//we need the random products and members to generate the sales
 	//we we enable making sales we need to enable mem and produc making
-	static boolean makeAllSales = true;
+	static boolean makeAllSales = false;
 	
 	
 	

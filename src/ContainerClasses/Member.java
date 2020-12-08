@@ -10,7 +10,7 @@ public class Member extends Container {
 	String lastName;
 	String dob;
 	String address;
-	String phoneNumber;
+	long phoneNumber;
 	int rewardPoints;
 	
 
@@ -20,7 +20,7 @@ public class Member extends Container {
 	
 	//constructor that takes params for each field
 	public Member(String newID, String f, String l, String dob, String a
-			,String phone, int rewards) {
+			,long phone, int rewards) {
 		memberID = newID;
 		firstName = f;
 		lastName = l;
@@ -99,11 +99,11 @@ public class Member extends Container {
 		this.address = address;
 	}
 
-	public String getPhoneNumber() {
+	public long getPhoneNumber() {
 		return phoneNumber;
 	}
 
-	public void setPhoneNumber(String phoneNumber) {
+	public void setPhoneNumber(long phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 
