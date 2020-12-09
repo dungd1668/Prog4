@@ -14,6 +14,7 @@ import java.util.Random;
 import ContainerClasses.Employee;
 import ContainerClasses.Member;
 import ContainerClasses.Product;
+import ContainerClasses.ProductShipment;
 import ContainerClasses.Sale;
 import ContainerClasses.SubSale;
 import ContainerClasses.Supplier;
@@ -53,6 +54,10 @@ public class InputFileCreator {
 	//containers for suppliers
 	public static Supplier supply = new Supplier();
 	public static List<Supplier> generatedSuppliers;
+	
+	//container for product shipmetns
+	public static ProductShipment productShipment = new ProductShipment();
+	public static List<ProductShipment> generatedProductShipment;
 
 	// triggers for making files
 	static boolean makeEmps = false;
@@ -271,6 +276,36 @@ public class InputFileCreator {
 			System.out.println("supplierID,name,address,contactPerson");
 
 		}
+		
+		
+			// generating the random employees
+			generatedProductShipment = new ArrayList<ProductShipment>();
+
+			for (int i = 0; i < 100; i++) {
+
+				ProductShipment randEmp =  (ProductShipment) productShipment.GetNewRandom();
+
+				// check for duplicates
+				while (IsDuplicateShipment(randEmp) && generatedProductShipment.size() > 1) {
+					System.out.println("Rerolling Duplicate ID");
+					randEmp = (ProductShipment) productShipment.GetNewRandom();
+				}
+				// add it to our list
+				generatedProductShipment.add(randEmp);
+				// System.out.println(empLine);
+				// System.out.println("Duplicates Found:" + duplicatedEmps);
+			}
+
+			try {
+				WriteProductShipments();
+			} catch (IOException e) {
+				System.out.println("Failed to write productShipment.txt");
+			}
+
+			System.out.println("Wrote Shipments");
+			System.out.println("supplierID,name,address,contactPerson");
+
+		
 		
 		
 	}
@@ -595,6 +630,65 @@ public class InputFileCreator {
 	private static String GetSupplierString(Supplier sale) {
 		String memLine = sale.getSupplierID() + "," + sale.getName() + "," + sale.getAddress() + ","
 				+ sale.getContactPerson();
+		return memLine;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/**
+	 * returns weather or not the supplier id already exists in the system
+	 * 
+	 * @param emp
+	 * @return
+	 */
+	public static boolean IsDuplicateShipment(ProductShipment s) {
+		for (ProductShipment curr : generatedProductShipment) {
+			if (s.getIncomingDate().equals(curr.getIncomingDate())) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * writes the products to the subsale file
+	 * 
+	 * @param emp
+	 * @return
+	 */
+	private static void WriteProductShipments() throws IOException {
+
+		File fout = new File("productshipments.txt");
+		FileOutputStream fos;
+		fos = new FileOutputStream(fout);
+
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
+		// write header
+		bw.write("incomingDate,purchasePrice,amount");
+		bw.newLine();
+		// write all other sales
+		for (ProductShipment curr : generatedProductShipment) {
+			//System.out.println(GetSubSaleString(curr));
+			bw.write(GetProductShipmentString(curr));
+			bw.newLine();
+		}
+		bw.close();
+	}
+
+	/**
+	 * returns the properly formatted subsale string
+	 * 
+	 * @param emp
+	 * @return
+	 */
+	private static String GetProductShipmentString(ProductShipment sale) {
+		String memLine = sale.getIncomingDate() + "," + sale.getPurchasePrice()+ "," + sale.getAmount();
 		return memLine;
 	}
 
