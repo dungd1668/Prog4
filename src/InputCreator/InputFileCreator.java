@@ -197,7 +197,7 @@ public class InputFileCreator {
 					priceTotal += newSub.getPrice();
 					generatedSubSales.add(subSale);
 					String subLine = GetSubSaleString(newSub);
-					System.out.println(subLine);
+					//System.out.println(subLine);
 
 				}
 
