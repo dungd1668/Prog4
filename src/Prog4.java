@@ -9,7 +9,7 @@ public class Prog4 {
 	static String username, password;
 
 	static Connection dbconn = null;
-	
+
 	static Action action;
 
 	public static void main(String[] args) {
@@ -18,11 +18,188 @@ public class Prog4 {
 
 		// create an Action object
 		action = new Action(username, password, dbconn);
-		
-		// get user input
 
+		// get user input
+		launch();
 		// perform action
+
+	}
+
+	private static void launch() {
+		Scanner scan = new Scanner(System.in);
+		String userInput = null;
+		System.out.println("Welcome to the text interface for the Tucson Mall database!");
+		displayMenu();
+		while (true) {
+			userInput = scan.nextLine();
+			if (userInput.equals("0")) {
+				scan.close();
+				break;
+			}
+			if (userInput.length() != 1 || !(userInput.equals("1") || 
+					userInput.equals("2") || userInput.equals("3"))) {
+				errorMessage();
+			} else {
+				if (userInput.equals("1")) {
+					displayInsertMenu();
+					insertRecord(scan);
+				} else if (userInput.equals("2")) {
+					displayUpdateMenu();
+					updateRecord(scan);
+				} else {
+					displayDeleteMenu();
+					deleteRecord(scan);
+				}
+			}
+			displayMenu();
+		}
+		exitProgram();
+	}
+
+	private static void insertRecord(Scanner scan) {
+		Scanner insert = new Scanner(System.in);
+		String userInput = null;
 		
+		userInput = scan.nextLine();
+		if (userInput.equals("0")) {
+			return;
+		}
+		if (userInput.length() != 1 || !(userInput.equals("1") || userInput.equals("2") || userInput.equals("3") 
+			|| userInput.equals("4") || userInput.equals("5") || userInput.equals("6"))) {
+			errorMessage();
+			displayInsertMenu();
+			insertRecord(scan);
+		} else {
+			if (userInput.equals("1")) {
+				// member
+			} else if (userInput.equals("2")) {
+				// emp
+			} else if (userInput.equals("3")) {
+				// product
+			} else if (userInput.equals("4")) {
+				// supplier
+			} else if (userInput.equals("5")) {
+				// sale
+			} else {
+				// subsale
+			}
+		}
+	}
+
+	private static void updateRecord(Scanner scan) {
+		Scanner update = new Scanner(System.in);
+		String userInput = null;
+		
+		userInput = scan.nextLine();
+		if (userInput.equals("0")) {
+			return;
+		}
+		if (userInput.length() != 1 || !(userInput.equals("1") || userInput.equals("2") || userInput.equals("3") 
+			|| userInput.equals("4") || userInput.equals("5") || userInput.equals("6"))) {
+			errorMessage();
+			displayUpdateMenu();
+			updateRecord(scan);
+		} else {
+			if (userInput.equals("1")) {
+				// member
+			} else if (userInput.equals("2")) {
+				// emp
+			} else if (userInput.equals("3")) {
+				// product
+			} else if (userInput.equals("4")) {
+				// supplier
+			} else if (userInput.equals("5")) {
+				// sale
+			} else {
+				// subsale
+			}
+		}
+	}
+
+	private static void deleteRecord(Scanner scan) {
+		Scanner delete = new Scanner(System.in);
+		String userInput = null;
+		userInput = scan.nextLine();
+		if (userInput.equals("0")) {
+			return;
+		}
+		if (userInput.length() != 1 || !(userInput.equals("1") || userInput.equals("2") 
+			|| userInput.equals("3") || userInput.equals("4"))) {
+			errorMessage();
+			displayDeleteMenu();
+			deleteRecord(scan);
+		} else {
+			if (userInput.equals("1")) {
+				// member
+			} else if (userInput.equals("2")) {
+				// emp
+			} else if (userInput.equals("3")) {
+				// product
+			} else {
+				// supplier
+			}
+		}
+	}
+
+	private static void gatherInsertMember() {
+
+	}
+
+	private static void gatherInsertEmp() {
+
+	}
+
+	private static void gatherInsertProduct() {
+
+	}
+
+	private static void gatherInsertSupplier() {
+
+	}
+
+	private static void gatherInsertSale() {
+
+	}
+
+	private static void gatherInsertSubSale() {
+		
+	}
+
+	private static void displayMenu() {
+		System.out.print("Enter 1 to INSERT a record\n" + "Enter 2 to DELETE a record\n"
+				+ "Enter 3 to UPDATE a record\n" + "Enter 0 to EXIT\n" + "Enter here: ");
+	}
+
+	private static void displayInsertMenu() {
+		System.out.print("\nEnter 1 to INSERT a member\n" + "Enter 2 to INSERT an employee\n"
+				+ "Enter 3 to INSERT a product\n" + "Enter 4 to INSERT a supplier\n" + "Enter 5 to INSERT a sale\n"
+				+ "Enter 6 to INSERT a subsale\n" + "Enter 0 to return to main menu\n" + "Enter here: ");
+	}
+
+	private static void displayUpdateMenu() {
+		System.out.print("\nEnter 1 to UPDATE a member\n" + "Enter 2 to UPDATE an employee\n"
+				+ "Enter 3 to UPDATE a product\n" + "Enter 4 to UPDATE a supplier\n" + "Enter 5 to UPDATE a sale\n"
+				+ "Enter 6 to UPDATE a subsale\n" + "Enter 0 to return to main menu\n" + "Enter here: ");
+	}
+
+	private static void displayDeleteMenu() {
+		System.out.print("\nEnter 1 to DELETE a member\n" + "Enter 2 to DELETE an employee\n" + "Enter 3 to DELETE a product\n"
+				+ "Enter 4 to DELETE a supplier\n" + "Enter 0 to return to main menu\n" + "Enter here: ");
+	}
+
+	private static void exitProgram() {
+		try {
+			dbconn.close();
+		} catch (SQLException e) {
+			System.err.println("Error: Could not close dbconn.");
+			System.exit(-1);
+		}
+		System.out.println("Thank you for using the Tucson Mall text interface!" + "\nHave a nice day!");
+		System.exit(0);
+	}
+
+	private static void errorMessage() {
+		System.out.println("\nPlease enter a number from the menu!\n");
 	}
 
 	private static void getLogin(String[] args) {
@@ -36,15 +213,14 @@ public class Prog4 {
 			System.exit(-1);
 		}
 		// load the (Oracle) JDBC driver by initializing its base
-        // class, 'oracle.jdbc.OracleDriver'.
+		// class, 'oracle.jdbc.OracleDriver'.
 		try {
-            Class.forName("oracle.jdbc.OracleDriver");
-        } catch (ClassNotFoundException e) {
-            System.err.println("*** ClassNotFoundException:  "
-                + "Error loading Oracle JDBC driver.  \n"
-                + "\tPerhaps the driver is not on the Classpath?");
-            System.exit(-1);
-        }
+			Class.forName("oracle.jdbc.OracleDriver");
+		} catch (ClassNotFoundException e) {
+			System.err.println("*** ClassNotFoundException:  " + "Error loading Oracle JDBC driver.  \n"
+					+ "\tPerhaps the driver is not on the Classpath?");
+			System.exit(-1);
+		}
 		// make and return a database connection to the user's Oracle database
 		dbconn = null;
 		try {
