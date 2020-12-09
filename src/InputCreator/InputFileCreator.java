@@ -268,7 +268,7 @@ public class InputFileCreator {
 			}
 
 			System.out.println("Wrote Suppliers");
-			System.out.println("employeeID,firstName,lastName,gender,address,phoneNumber,groupID,salary");
+			System.out.println("supplierID,name,address,contactPerson");
 
 		}
 		
