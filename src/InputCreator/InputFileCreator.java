@@ -15,21 +15,16 @@ import ContainerClasses.Employee;
 import ContainerClasses.Member;
 import ContainerClasses.Product;
 import ContainerClasses.Sale;
-
+import ContainerClasses.SubSale;
 
 /**
  * Authot: Cullen Bates
  * 
- * CMD Instructions example:
- *  	not implemented yet
+ * CMD Instructions example: not implemented yet
  * 
- * Will create input files for each table for prog 4.
- * booleans decide which file will be made 
+ * Will create input files for each table for prog 4. booleans decide which file
+ * will be made
  */
-
-
-
-
 
 //creates the input files for use with the database
 public class InputFileCreator {
@@ -43,37 +38,33 @@ public class InputFileCreator {
 	public static Member member = new Member();
 	public static List<Member> generatedMembers;
 	public static int duplicatedMembers = 0;
-	
-	//these containers will be responsible for product info
+
+	// these containers will be responsible for product info
 	public static Product product = new Product();
 	public static List<Product> generatedProducts;
-	
-	//these containers hold our sales info
+
+	// these containers hold our sales info
 	public static Sale sale = new Sale();
 	public static List<Sale> generatedSales;
-	
-	
-	
-	//triggers for making files
-	static boolean makeEmps = true;
-	
-	
-	static boolean makeMems = false;
-	static boolean makeProducts = false;
-	
-	//we need the random products and members to generate the sales
-	//we we enable making sales we need to enable mem and produc making
-	static boolean makeAllSales = false;
-	
-	
-	
+	public static SubSale subSale = new SubSale();
+	public static List<SubSale> generatedSubSales;
+
+	// triggers for making files
+	static boolean makeEmps = false;
+
+	static boolean makeMems = true;
+	static boolean makeProducts = true;
+
+	// we need the random products and members to generate the sales
+	// we we enable making sales we need to enable mem and produc making
+	static boolean makeAllSales = true;
+
 	public static void main(String[] args) {
 
 		if (makeEmps) {
 			// generating the random employees
 			generatedEmployees = new ArrayList<Employee>();
-			
-			
+
 			for (int i = 0; i < 100; i++) {
 
 				Employee randEmp = (Employee) employee.GetNewRandom();
@@ -87,8 +78,8 @@ public class InputFileCreator {
 				// add it to our list
 				generatedEmployees.add(randEmp);
 				String empLine = GetEmpString(randEmp);
-				//System.out.println(empLine);
-				//System.out.println("Duplicates Found:" + duplicatedEmps);
+				// System.out.println(empLine);
+				// System.out.println("Duplicates Found:" + duplicatedEmps);
 			}
 
 			try {
@@ -96,7 +87,7 @@ public class InputFileCreator {
 			} catch (IOException e) {
 				System.out.println("Failed to write employee.txt");
 			}
-			
+
 			System.out.println("Wrote Employees");
 			System.out.println("employeeID,firstName,lastName,gender,address,phoneNumber,groupID,salary");
 
@@ -104,11 +95,9 @@ public class InputFileCreator {
 		// finished generating employees
 
 		// generating product file
-		if(makeProducts) {
+		if (makeProducts) {
 			generatedProducts = new ArrayList<Product>();
-			
-			
-			
+
 			for (int i = 0; i < 100; i++) {
 
 				Product randProd = (Product) product.GetNewRandom();
@@ -121,8 +110,8 @@ public class InputFileCreator {
 				// add it to our list
 				generatedProducts.add(randProd);
 				String memLine = GetProdString(randProd);
-				//System.out.println(memLine);
-				//System.out.println("Duplicates Found:" + duplicatedEmps);
+				// System.out.println(memLine);
+				// System.out.println("Duplicates Found:" + duplicatedEmps);
 			}
 
 			try {
@@ -139,8 +128,6 @@ public class InputFileCreator {
 		// generating member file
 		if (makeMems) {
 			generatedMembers = new ArrayList<Member>();
-			
-			
 
 			for (int i = 0; i < 100; i++) {
 
@@ -155,8 +142,8 @@ public class InputFileCreator {
 				// add it to our list
 				generatedMembers.add(radMem);
 				String memLine = GetMemString(radMem);
-				//System.out.println(memLine);
-				//System.out.println("Duplicates Found:" + duplicatedEmps);
+				// System.out.println(memLine);
+				// System.out.println("Duplicates Found:" + duplicatedEmps);
 			}
 
 			try {
@@ -164,40 +151,28 @@ public class InputFileCreator {
 			} catch (IOException e) {
 				System.out.println("Failed to write employee.txt");
 			}
-			
 
 			System.out.println("Wrote Members");
 			System.out.println("memberID,firstName,lastName,dob,address,phoneNumber,rewardPoints");
-			
+
 		}
 		// finished member file
 
 		// generating sales file
-		
-		if (makeAllSales) {
-		
-			generatedSales = new ArrayList<Sale>();
-			
-			
 
+		if (makeAllSales) {
+
+			generatedSales = new ArrayList<Sale>();
+			generatedSubSales = new ArrayList<SubSale>();
 			for (int i = 0; i < 100; i++) {
 
-				//first generate subsales that will make up the sale
+				// first generate subsales that will make up the sale
 				Random rand = new Random();
 				int items = rand.nextInt(10);
 				float priceTotal = 0;
-				for(int j = 0; j < items; j++) {
-					
-					//generate all the subsales here
-					
-					//add price to priceTotal
-					
-				}
-				
-				//get a random member to make the sale
+
 				Member madeSale = generatedMembers.get(rand.nextInt(generatedMembers.size()));
-				
-				
+
 				Sale newSale = (Sale) sale.GetNewRandomSale(madeSale.getMemberID(), priceTotal);
 
 				// check for duplicates
@@ -205,41 +180,60 @@ public class InputFileCreator {
 					System.out.println("Rerolling Duplicate ID");
 					newSale = (Sale) sale.GetNewRandomSale(madeSale.getMemberID(), priceTotal);
 				}
+
+				for (int j = 0; j < items; j++) {
+
+					Product purchased = generatedProducts.get(rand.nextInt(generatedProducts.size()));
+
+					// generate all the subsales here
+					SubSale newSub = (SubSale) subSale.GetNewRandomSubSale(newSale.getSaleID(),
+							purchased.getProductID(), purchased.getRetailPrice());
+					while (IsDuplicateSubSale(newSub) && generatedSubSales.size() > 1) {
+						System.out.println("Rerolling Duplicate ID");
+						newSub = (SubSale) subSale.GetNewRandomSubSale(newSale.getSaleID(), purchased.getProductID(),
+								purchased.getRetailPrice());
+					}
+					// add price to priceTotal
+					priceTotal += newSub.getPrice();
+					generatedSubSales.add(subSale);
+					String subLine = GetSubSaleString(newSub);
+					System.out.println(subLine);
+
+				}
+
+				// get a random member to make the sale
+
 				// add it to our list
 				generatedSales.add(newSale);
 				String saleLine = GetSaleString(newSale);
-				//System.out.println(memLine);
-				//System.out.println("Duplicates Found:" + duplicatedEmps);
+				// System.out.println(memLine);
+				// System.out.println("Duplicates Found:" + duplicatedEmps);
 			}
+
+			try {
+				WriteSubSales();
+			} catch (IOException e) {
+				System.out.println("Failed to write subsales.txt");
+			}
+
+			System.out.println("Wrote Subsales");
+			System.out.println("saleID,subSaleID,productID,price,amount");
 
 			try {
 				WriteSales();
 			} catch (IOException e) {
 				System.out.println("Failed to write sales.txt");
 			}
-			
 
 			System.out.println("Wrote Sales");
 			System.out.println("saleID,date,paymentMethod,totalPrice,memberID");
-			
+
 		}
-		
-		
+
 		// finished sales file
 
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	/**
 	 * returns weather or not the employeeID already exists in the system
 	 * 
@@ -291,19 +285,7 @@ public class InputFileCreator {
 				+ randEmp.getGroupID() + "," + randEmp.getSalary();
 		return empLine;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	/**
 	 * returns weather or not the memberID already exists in the system
 	 * 
@@ -318,7 +300,7 @@ public class InputFileCreator {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * writes the members to the member file
 	 * 
@@ -356,16 +338,6 @@ public class InputFileCreator {
 		return memLine;
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	/**
 	 * returns weather or not the product id already exists in the system
 	 * 
@@ -380,7 +352,7 @@ public class InputFileCreator {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * writes the products to the product file
 	 * 
@@ -416,26 +388,9 @@ public class InputFileCreator {
 				+ randProd.getCategory() + "," + randProd.getMembershipDiscount() + "," + randProd.getStockInfo();
 		return memLine;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	/**
-	 * returns weather or not the product id already exists in the system
+	 * returns weather or not the sale id already exists in the system
 	 * 
 	 * @param emp
 	 * @return
@@ -448,9 +403,9 @@ public class InputFileCreator {
 		}
 		return false;
 	}
-	
+
 	/**
-	 * writes the products to the product file
+	 * writes the products to the sale file
 	 * 
 	 * @param emp
 	 * @return
@@ -474,7 +429,7 @@ public class InputFileCreator {
 	}
 
 	/**
-	 * returns the properly formatted product string
+	 * returns the properly formatted sale string
 	 * 
 	 * @param emp
 	 * @return
@@ -485,5 +440,55 @@ public class InputFileCreator {
 		return memLine;
 	}
 
-	
+	/**
+	 * returns weather or not the subsale id already exists in the system
+	 * 
+	 * @param emp
+	 * @return
+	 */
+	public static boolean IsDuplicateSubSale(SubSale s) {
+		for (SubSale curr : generatedSubSales) {
+			if (s.getSubSaleID().equals(curr.getSubSaleID())) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * writes the products to the subsale file
+	 * 
+	 * @param emp
+	 * @return
+	 */
+	private static void WriteSubSales() throws IOException {
+
+		File fout = new File("subsales.txt");
+		FileOutputStream fos;
+		fos = new FileOutputStream(fout);
+
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
+		// write header
+		bw.write("saleID,subSaleID,productID,price,amount");
+		bw.newLine();
+		// write all other sales
+		for (SubSale curr : generatedSubSales) {
+			bw.write(GetSubSaleString(curr));
+			bw.newLine();
+		}
+		bw.close();
+	}
+
+	/**
+	 * returns the properly formatted subsale string
+	 * 
+	 * @param emp
+	 * @return
+	 */
+	private static String GetSubSaleString(SubSale sale) {
+		String memLine = sale.getSaleID() + "," + sale.getSubSaleID() + "," + sale.getProductID() + ","
+				+ sale.getPrice() + "," + sale.getAmount();
+		return memLine;
+	}
+
 }
