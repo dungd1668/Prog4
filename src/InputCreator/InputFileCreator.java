@@ -195,7 +195,7 @@ public class InputFileCreator {
 					}
 					// add price to priceTotal
 					priceTotal += newSub.getPrice();
-					generatedSubSales.add(subSale);
+					generatedSubSales.add(newSub);
 					String subLine = GetSubSaleString(newSub);
 					//System.out.println(subLine);
 
@@ -209,7 +209,7 @@ public class InputFileCreator {
 				// System.out.println(memLine);
 				// System.out.println("Duplicates Found:" + duplicatedEmps);
 			}
-
+			System.out.println(generatedSubSales.get(0).getProductID());
 			try {
 				WriteSubSales();
 			} catch (IOException e) {
@@ -473,6 +473,7 @@ public class InputFileCreator {
 		bw.newLine();
 		// write all other sales
 		for (SubSale curr : generatedSubSales) {
+			//System.out.println(GetSubSaleString(curr));
 			bw.write(GetSubSaleString(curr));
 			bw.newLine();
 		}
