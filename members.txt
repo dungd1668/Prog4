@@ -1,101 +1,101 @@
 memberID,firstName,lastName,dob,address,phoneNumber,rewardPoints
-crojtqvgoo,Brittany,Berke,11/8/2147,"701 Mcmeans Ave, Bay Minette AL 36507",9942235136,32
-rxyfckreoz,Karia,Meier,29/8/2748,"2181 Pelham Pkwy, Pelham AL 35124",7820625920,170
-abrepnskkc,Heidie,Agustin,16/10/2024,"3501 20th Av, Valley AL 36854",8821753856,0
-rjxmumkram,Clio,Gilbert,24/2/2015,"910 Wolcott St, Waterbury CT 6705",4738604032,194
-rlclvgwctx,Giorgia,Chalmers,29/2/2172,"750 Middle Country Road, Middle Island NY 11953",5858382336,23
-xehfmeuwlz,Gilemette,Shadow,19/3/2916,"6438 Basile Rowe, East Syracuse NY 13057",8658737152,2
-hadohlvjph,Netti,Freeland,28/7/2400,"301 Massachusetts Ave, Lunenburg MA 1462",8695090176,7
-zlrvkbqvre,Elset,Galvan,21/12/2212,"209 Lakeshore Parkway, Homewood AL 35209",3551739136,120
-ralclhsvmf,Violetta,Briant,29/5/1954,"3100 Hough Rd, Florence AL 35630",3133639168,161
-rfsmydyjwb,Kimbra,Gustavus,3/3/2149,"901 Route 110, Farmingdale NY 11735",2711227904,148
-gggmlqawjq,Addy,Gilbert,15/11/2497,"1400 Farmington Ave, Bristol CT 6010",4348697088,41
-gukzppimoo,Nike,Morse,11/8/2457,"8551 Whitfield Ave, Leeds AL 35094",6068692992,11
-eocxsrgdyn,Elora,Gallagher,20/8/2832,"1972 Hwy 431, Boaz AL 35957",2671820800,126
-lyfnsjktpy,Auroora,Fonz,10/6/2019,"5360 Southwestern Blvd, Hamburg NY 14075",2417300480,82
-mgoqpjfkuh,Hedvig,Wesley,23/4/2053,"13858 Rt 31 W, Albion NY 14411",5486126592,63
-ehxftvbdvb,Fanechka,Abie,7/9/2901,"2780 John Hawkins Pkwy, Hoover AL 35244",8250684416,20
-vsppboqskc,Reggi,Waiter,21/11/2841,"170 Fort Morgan Road, Gulf Shores AL 36542",3107106304,141
-ulznoiobtq,Harrietta,Tod,21/4/2933,"3300 South Oates Street, Dothan AL 36301",8843905024,186
-gtkxquqkvt,Janetta,Ham,9/12/2877,"5783 So Transit Road, Lockport NY 14094",9872431104,127
-rsosdszoys,Jacquetta,Giffie,16/11/2079,"5919 Trussville Crossings Pkwy, Birmingham AL 35235",4994201600,72
-dzvlyrqpxm,Jazmin,Davy,28/5/2193,"3164 Berlin Turnpike, Newington CT 6111",3865007360,147
-nkakndlrdc,Siouxie,Stearn,22/11/2602,"1608 W Magnolia Ave, Geneva AL 36340",1416417792,17
-pyydrkcipu,Isobel,Quentin,23/6/2846,"5360 Southwestern Blvd, Hamburg NY 14075",2515142656,24
-zjpnidjiaq,Ronni,Arlin,5/1/2848,"4538 Us Hwy 231, Wetumpka AL 36092",4394515456,114
-bnbjvosmsv,Rey,Brendon,27/1/2230,"200 Dutch Meadows Ln, Glenville NY 12302",8948246528,120
-gewfpjsvth,Zahara,Gallagher,17/6/2132,"3100 Hough Rd, Florence AL 35630",9456355328,162
-arkqvahgrs,Phaidra,Marco,19/5/2393,"330 Sutton Rd, Huntsville AL 35763",8888950784,120
-xehotxninn,Nancee,Sherwynd,26/8/2575,"1501 Skyland Blvd E, Tuscaloosa AL 35405",6456547328,5
-kpryxlbikx,Sonny,Chan,24/10/2488,"555 East Main St, Orange MA 1364",6133637632,7
-kepugjgcip,Corey,Adrien,14/5/2175,"701 Mcmeans Ave, Bay Minette AL 36507",7707052544,160
-uaolruovhl,Ailina,Augy,10/5/2036,"11 Jungle Road, Leominster MA 1453",2696737280,148
-xlgkrzcvsa,Clementina,Seumas,1/1/2031,"330 Sutton Rd, Huntsville AL 35763",4643945984,82
-ypqkbbfqhw,Jonis,Harbert,1/9/2413,"1537 Hwy 231 South, Ozark AL 36360",5584000000,101
-rhpojxbugx,Amalle,Llewellyn,3/9/2669,"1903 Cobbs Ford Rd, Prattville AL 36066",1054326528,52
-sagzgteqdz,Melisa,Earle,22/7/2052,"1775 Washington St, Hanover MA 2339",4221744896,87
-heqxlmjsmq,Allx,Samson,8/1/2012,"780 Lynnway, Lynn MA 1905",6658982912,42
-lpqjewruue,Rozamond,Kelvin,13/4/2981,"100 Thruway Plaza, Cheektowaga NY 14225",8279128576,146
-ysxzdsdwlu,Jessamyn,Ritchie,10/4/2302,"250 Rt 59, Airmont NY 10901",3037659136,174
-ldzebimjia,Nell,Nickolai,1/0/2829,"515 Sawmill Road, West Haven CT 6516",7743933952,24
-qdnpxbxvmn,Mirabella,Leonard,10/5/2005,"1600 Montclair Rd, Birmingham AL 35210",7868758528,180
-zskkkeyojp,Karalee,Jerad,2/7/2926,"1717 South College Street, Auburn AL 36830",8594726912,57
-bpannjxhpr,Margarethe,Gabi,27/12/2165,"5335 Hwy 280 South, Hoover AL 35242",9737607168,93
-dwdsuggrym,Lela,Shelby,19/9/2156,"900 Boston Post Road, Guilford CT 6437",2137688448,46
-akddrkkfuo,Ranna,Caryl,10/6/2013,"180 River Rd, Lisbon CT 6351",2586214912,128
-jzeynzuqjx,Carina,Alf,25/1/2600,"601 Frank Stottile Blvd, Kingston NY 12401",2563853824,133
-hkjmtycpql,Sacha,Abramo,24/10/2713,"214 Haynes Street, Talladega AL 35160",5441718272,37
-jrpvanagwc,Cristionna,Jared,12/5/2848,"4765 Commercial Drive, New Hartford NY 13413",3682847232,75
-dlqpyklprk,Silvana,Shaine,27/3/2432,"200 Otis Street, Northborough MA 1532",3498851328,118
-iekcpgcjmm,Dacy,Woodrow,5/0/2329,"990 Route 5 20, Geneva NY 14456",5217269248,154
-gotgkxvywk,Carine,Dewey,20/7/2449,"2200 Sparkman Drive, Huntsville AL 35810",2194676224,61
-tklhpykfmg,Enrika,Sarge,28/11/2554,"235 Queen St, Southington CT 6489",8836007936,14
-vlvucgqone,Kori,Olenolin,8/3/2893,"1625 Pelham South, Jacksonville AL 36265",2420793344,179
-oiijlptelq,Dulci,Fonzie,17/9/2036,"10710 Chantilly Pkwy, Montgomery AL 36117",4001587456,140
-irqtitnxet,Sal,Titos,17/0/2387,"1818 State Route 3, Fulton NY 13069",2661673472,47
-silpmmpqtg,Phylis,Kendell,25/11/2626,"155 Waterford Parkway No, Waterford CT 6385",1591903488,170
-faahdrylan,Chad,Gaultiero,15/4/2543,"85 Crooked Hill Road, Commack NY 11725",9240164352,83
-xenkymgmjs,Hettie,Francois,14/3/2698,"295 Plymouth Street, Halifax MA 2338",7778265088,131
-uvvvindsdg,Bonnibelle,Hoebart,22/1/2254,"650 Main Ave, Norwalk CT 6851",4041801984,58
-uajlmtzuzt,Cal,Buck,22/7/2079,"465 Bridgeport Avenue, Shelton CT 6484",5973645312,117
-ivydmxaheo,Gates,Alfie,20/3/2946,"200 Sunrise Mall, Massapequa NY 11758",6328709120,131
-ztofxrvznt,Rani,Leicester,17/5/2041,"501 Willow Lane, Greenville AL 36037",6075033088,47
-gyilvexlap,Alys,Phip,12/6/2025,"550 Providence Hwy, Walpole MA 2081",1970727424,183
-cdbtthpoin,Milissent,Timmie,2/2/2369,"13858 Rt 31 W, Albion NY 14411",2377639424,20
-scwkjxannn,Eartha,Cyrill,28/10/2025,"301 Massachusetts Ave, Lunenburg MA 1462",1651795456,139
-walsqtmato,Merry,Baxie,22/2/2425,"120 Commercial Parkway, Branford CT 6405",9289816064,64
-akuvgtwzik,Winnah,Richy,18/6/2048,"24833 Johnt Reidprkw, Scottsboro AL 35768",1283698816,9
-qvwdmetxks,Sharline,Nowell,4/12/2520,"506 State Road, North Dartmouth MA 2747",2889934336,172
-qmmlurrmzy,Lucine,Lynn,9/9/2019,"1300 Montgomery Highway, Vestavia Hills AL 35216",1713280256,185
-falsuaddhs,Amie,Nelson,9/6/2991,"2780 John Hawkins Pkwy, Hoover AL 35244",6444232704,141
-izajucgzte,Maisey,Salim,4/3/2765,"1400 Farmington Ave, Bristol CT 6010",5199724544,19
-zehujkjlkd,Aime,Van,19/11/2313,"92 Plaza Lane, Oxford AL 36203",8245470720,154
-xwknlxwyjw,Delcine,Camey,5/12/2748,"4975 Transit Rd, Lancaster NY 14086",4287761408,125
-wwtujijzbd,Giorgia,Stefano,4/1/2361,"1549 Rt 9, Halfmoon NY 12065",4371443200,123
-pfxwgaegeg,Monica,Craggy,20/5/2480,"1415 7Th Street South, Clanton AL 35045",1099085056,15
-uoqlnbcpps,Paula,Marsh,19/1/2413,"121 Worcester Rd, Framingham MA 1701",5076925440,35
-gtzecehocm,Livia,Gordy,24/1/2209,"555 East Main St, Orange MA 1364",8612743168,145
-pnzsbrxbfv,Cate,Felice,29/10/2721,"66-4 Parkhurst Rd, Chelmsford MA 1824",2666358272,102
-ncqhiogspg,Serena,Lester,20/3/2058,"36 Paramount Drive, Raynham MA 2767",9781690368,141
-wgjezdecmr,Cate,Christoph,8/7/2577,"470 Route 211 East, Middletown NY 10940",3277875456,39
-iiwkohsaiv,Allx,Brennen,22/8/2369,"1400 Farmington Ave, Bristol CT 6010",3598757376,174
-zfhfqaxfnn,Ryann,Ferd,10/5/2995,"3176 South Eufaula Avenue, Eufaula AL 36027",8607684608,154
-dfdgwqxztd,Dina,Jedediah,22/2/2174,"2453 2Nd Avenue East, Oneonta AL 35121  205-625-647",2931365888,36
-bhnpswsknz,Rhona,Rollie,13/10/2995,"101 Sanford Farm Shpg Center, Amsterdam NY 12010",7201645056,43
-uzwxycltxg,Lebbie,Domingo,16/2/1956,"1608 W Magnolia Ave, Geneva AL 36340",3924717568,133
-uvzcuplgvs,Dierdre,Conn,5/10/1991,"3501 20th Av, Valley AL 36854",2609015296,36
-mwptspkevm,Arabela,Morly,15/5/2305,"3191 County rd 10, Canandaigua NY 14424",8199388672,77
-yrxekaxkrw,Kristan,Huey,11/5/2402,"30 Memorial Drive, Avon MA 2322",5933374976,124
-qplyxufobi,Belia,Goraud,11/7/2542,"27520 Hwy 98, Daphne AL 36526",7543218688,100
-itwobukkme,Heddie,Edsel,15/11/2088,"288 Larkin, Monroe NY 10950",1873255296,51
-hvlnpndnuc,Tobi,Silvan,15/5/2832,"515 Sawmill Road, West Haven CT 6516",5530136064,91
-uvyjjmzlwc,Cynthy,Garek,12/12/2836,"3801 Eastern Blvd, Montgomery AL 36116",6346027008,16
-tpindswwoj,Oliy,Rock,21/7/2109,"685 Schillinger Rd, Mobile AL 36695",5753894400,137
-vbekibpdxn,Fannie,Jammal,9/2/2609,"200 Otis Street, Northborough MA 1532",2422541312,175
-mxelvjfbps,Faydra,Karel,13/11/2249,"103 North Caroline St, Herkimer NY 13350",9353613312,84
-mumoebtppc,Raye,Iago,8/11/2252,"4975 Transit Rd, Lancaster NY 14086",3350647040,93
-skdooctuos,Ketty,Prent,7/2/2091,"235 Queen St, Southington CT 6489",3659182592,130
-ilumpwrypv,Dorri,Laurie,23/6/2584,"121 Worcester Rd, Framingham MA 1701",3298248448,80
-nerwytoqgl,Jorry,Demetri,7/6/2902,"2465 Hempstead Turnpike, East Meadow NY 11554",1420172800,67
-mkkpwqksnd,Fredra,Ethelbert,14/4/2360,"2300 Dixwell Ave, Hamden CT 6514",6808902144,35
-btpevjxlro,Mariquilla,Tyrus,12/10/2051,"80 Town Line Rd, Rocky Hill CT 6067",7377423872,168
+bfzlnttjbx,Nannette,Duncan,9/4/2967,"1365 Boston Post Road, Milford CT 6460",1743939584,184
+btyodxbgku,Gerta,Giacobo,19/2/2091,"66-4 Parkhurst Rd, Chelmsford MA 1824",2923594752,82
+azohvuhccu,Diane-Marie,Krisha,17/9/2631,"67 Newton Rd, Danbury CT 6810",7340870144,81
+jbyoqwygud,Delinda,Alva,3/5/2097,"2041 Douglas Avenue, Brewton AL 36426",3093643264,165
+gsgzmetcxs,Kirstyn,Hillery,18/3/2349,"1706 Military Street South, Hamilton AL 35570",6173308416,121
+cruwtvlcec,Lissie,Bax,3/8/2268,"3300 South Oates Street, Dothan AL 36301",2064699136,138
+drfdduhxou,Simona,Mikey,28/10/2502,"901 Route 110, Farmingdale NY 11735",1661393536,64
+grgpzmtgkn,Jobyna,Northrup,22/8/2780,"2300 Dixwell Ave, Hamden CT 6514",8339355136,196
+yrjglalysb,Rosita,Codi,2/3/2495,"655 Boston Post Rd, Old Saybrook CT 6475",8684533760,25
+gmyoyabbim,Laetitia,Garrard,6/4/2005,"690 Hwy 78, Sumiton AL 35148",4166268672,97
+rwdmtatrsn,Corabelle,Trstram,16/10/2698,"3164 Berlin Turnpike, Newington CT 6111",9119626240,138
+scltofksym,Claire,Garreth,5/8/2723,"5783 So Transit Road, Lockport NY 14094",2631216384,140
+qmnntsakkg,Nelia,Eugenio,1/7/2353,"3300 South Oates Street, Dothan AL 36301",5216626688,98
+vykytqwnns,Anselma,Damian,24/7/1979,"1717 South College Street, Auburn AL 36830",2318965504,139
+xhchnnfsek,Carmine,Herculie,22/5/2629,"7100 Aaron Aronov Drive, Fairfield AL 35064",7845042688,127
+ncnbesfuky,Sissy,Shelton,13/11/2460,"2473 Hackworth Road, Adamsville AL 35005",7050345984,116
+wgnewipxiq,Scarlet,Welch,20/5/2544,"1916 Center Point Rd, Center Point AL 35215",6180323328,133
+kbckmvqpdm,Ashli,Dionysus,22/5/2924,"42417 Hwy 195, Haleyville AL 35565",2198095360,78
+yvijskiskt,Cristina,Berk,21/5/2649,"312 Palisades Blvd, Birmingham AL 35209",6775849472,82
+vagupsdcmz,Adi,Geordie,26/8/2412,"1100 New Haven Road, Naugatuck CT 6770",2361899520,40
+gxavgjhcia,Adrienne,Noam,3/2/2766,"1420 Us 231 South, Troy AL 36081",4691387904,191
+bohitehjfx,Carleen,Horton,22/10/2335,"655 Boston Post Rd, Old Saybrook CT 6475",6687064064,44
+kdedtdprot,Vivi,Mart,18/10/2287,"4310 Montgomery Hwy, Dothan AL 36303",9483708416,37
+ahkpmprqcg,Olwen,Jackson,19/10/2780,"280 Washington Street, Hudson MA 1749",9873139712,185
+wcfgmcates,Darice,Jose,11/7/2334,"5360 Southwestern Blvd, Hamburg NY 14075",5147494400,58
+ejrtoyveaz,Jemimah,Wendall,5/3/2176,"233 5th Ave Ext, Johnstown NY 12095",7831079424,195
+hwukltoypt,Darcee,Isaak,2/8/2468,"42417 Hwy 195, Haleyville AL 35565",8963261440,169
+hkqjvcnlxx,Koral,Currey,26/5/2694,"4765 Commercial Drive, New Hartford NY 13413",7472197120,101
+dbbehxxrew,Faith,Caspar,8/10/2367,"5783 So Transit Road, Lockport NY 14094",3195449088,28
+rfdygmhjlg,Renelle,Odie,29/4/2383,"155 Waterford Parkway No, Waterford CT 6385",8245189120,128
+nfcylbhfmw,Agnesse,Kermy,20/0/2017,"5245 Rangeline Service Rd, Mobile AL 36619",2951559680,34
+ymhafkjaqb,Deeann,Antonius,12/7/2996,"55 Brooksby Village Way, Danvers MA 1923",4894081024,111
+tjpfpuanuc,Merralee,Ingemar,21/12/2863,"3700 Hwy 280-431 N, Phenix City AL 36867",9623812096,18
+lgtdrrmwzg,Virgina,Olin,14/11/2197,"4310 Montgomery Hwy, Dothan AL 36303",5815038976,175
+nihhnhyejz,Jane,Wyndham,18/0/2552,"6265 Brockport Spencerport Rd, Brockport NY 14420",4682953728,144
+qavtpwigah,Erda,Vaughan,29/12/2814,"1501 Skyland Blvd E, Tuscaloosa AL 35405",7381023744,60
+ajqehqepbu,Agneta,Addy,5/4/2555,"1300 Montgomery Highway, Vestavia Hills AL 35216",6384243712,107
+kmcftmvnxv,Erminia,Abeu,8/10/2500,"680 Connecticut Avenue, Norwalk CT 6854",4578923520,8
+lldrljmpga,Mandy,Saundra,16/3/1960,"1470 S Washington St, North Attleboro MA 2760",4257354496,45
+tjpimxjxwy,Kaylee,Rafaellle,16/1/2088,"1903 Cobbs Ford Rd, Prattville AL 36066",7882865664,67
+ikneoofhpg,Zarla,Antonius,2/1/2823,"701 Mcmeans Ave, Bay Minette AL 36507",2933939712,130
+drjprwilei,Lorrayne,Barty,22/7/2639,"4180 Us Hwy 431, Roanoke AL 36274",6548477952,1
+sevsiamfvk,Engracia,Miller,16/5/2482,"72 Main St, North Reading MA 1864",6356995072,175
+jsntvgbyxg,Natalya,Jonathan,29/4/2920,"280 Washington Street, Hudson MA 1749",7362664960,68
+vgomexnhwl,Megan,Rodd,21/12/2405,"5919 Trussville Crossings Pkwy, Birmingham AL 35235",9254905856,154
+ezhqdkxmbw,Celeste,Ramsay,2/7/2653,"150 Barnum Avenue Cutoff, Stratford CT 6614",7939474432,194
+matjjevpnr,Ethyl,Edward,1/11/2692,"6265 Brockport Spencerport Rd, Brockport NY 14420",5180013568,34
+anirkcujgl,Clo,Montgomery,28/0/2987,"1501 Skyland Blvd E, Tuscaloosa AL 35405",4302510080,61
+ihwkcwzuzf,Aurelia,Michal,1/3/2894,"900 Boston Post Road, Guilford CT 6437",4189558784,31
+ywresfdlas,Idaline,Arri,29/12/2218,"591 Memorial Dr, Chicopee MA 1020",1345353728,102
+gaikuvhqru,Gerri,Chas,4/5/2543,"2900 S Mem PkwyDrake Ave, Huntsville AL 35801",9520935936,85
+nwmvedhqss,Katey,Richie,7/9/2358,"3801 Eastern Blvd, Montgomery AL 36116",9554731008,83
+vquimvlubq,Sherry,Morris,14/6/2458,"295 Plymouth Street, Halifax MA 2338",9109552128,93
+ndyoarxlpd,Miguela,Abraham,17/10/2291,"4180 Us Hwy 431, Roanoke AL 36274",7360168960,63
+wexeyscdnd,Marlee,Tuck,23/1/2070,"80 Town Line Rd, Rocky Hill CT 6067",4847423488,5
+cpfdifqknb,Tiffani,Ryley,11/11/2213,"3501 20th Av, Valley AL 36854",7874347520,102
+zdrvsvjked,Ajay,Darwin,14/11/2537,"315 Foxon Blvd, New Haven CT 6513",7487348224,74
+gkbfctjcza,Kristina,Maximo,25/6/2661,"1180 Fall River Avenue, Seekonk MA 2771",3099421184,82
+cvaexolzyv,Pearle,Saxe,14/11/2582,"506 State Road, North Dartmouth MA 2747",2039609088,117
+zmgebywheb,Alma,Cammy,14/9/2923,"2800 Spring Avn SW, Decatur AL 35603",1120230016,42
+ztcijsjzxz,Wendeline,Winslow,20/1/2173,"6438 Basile Rowe, East Syracuse NY 13057",7838504960,108
+zscjebbrar,Zara,Park,28/8/2188,"279 Troy Road, East Greenbush NY 12061",9617082368,185
+gfntqnuglm,Jan,Demetre,13/8/2599,"3100 Hough Rd, Florence AL 35630",6621869056,82
+yfuehzyyvx,Gaby,Travers,16/3/2561,"1950 W Main St, Centre AL 35960",7857204224,72
+ydeyqixady,Malory,Ring,7/3/2419,"67 Newton Rd, Danbury CT 6810",8930422784,40
+fgqwojarpp,Emmalee,Felix,6/3/2870,"5335 Hwy 280 South, Hoover AL 35242",8180125696,12
+jwivmbxewt,Violante,Maurie,14/8/2724,"5033 Transit Road, Clarence NY 14031",1902865920,131
+flkzauzlju,Aryn,Lombard,18/4/2415,"1400 Farmington Ave, Bristol CT 6010",1072238336,11
+drnavvxopo,Michaelina,Si,3/1/2229,"41 Anawana Lake Road, Monticello NY 12701",9286183936,199
+mdeoaydkkt,Anastasie,Ulick,27/5/1967,"4206 N College Ave, Jackson AL 36545",6954274816,71
+klcglgtlxs,Sharlene,Davidde,25/12/2328,"69 Prospect Hill Road, East Windsor CT 6088",2985668608,23
+njwemgxrmw,Tilda,Phineas,11/11/2999,"1400 County Rd 64, Horseheads NY 14845",3125398528,71
+uyekviljjc,Eadie,Barry,14/11/2935,"3191 County rd 10, Canandaigua NY 14424",6515691520,81
+bnqznqkgqv,Christian,Jarrett,7/6/2358,"70 Pleasant Valley Street, Methuen MA 1844",6061890560,106
+vxajsxxyss,Chiarra,Estevan,12/0/2461,"2465 Hempstead Turnpike, East Meadow NY 11554",1100570496,69
+bpvajiydif,Kelli,Sheff,4/8/2747,"4300 Lakeville Road, Geneseo NY 14454",1424215424,44
+sqsnfnhbpa,Celestine,Sinclair,17/5/2933,"777 Brockton Avenue, Abington MA 2351",3670067456,54
+ruszlmlcsf,Clerissa,Obidiah,23/10/2558,"540 West Bypass, Andalusia AL 36420",2397033984,43
+urdmdpavoi,Genia,Udall,1/6/2657,"540 West Bypass, Andalusia AL 36420",3927031808,52
+aiedovnhpl,Adele,Hollis,27/2/2375,"625 School Street, Putnam CT 6260",6262780416,5
+ulouuitwgt,Dona,Jules,29/12/2139,"3018 East Ave, Central Square NY 13036",8064545280,166
+breobgjlzc,Linnell,Jeromy,29/10/2824,"150 Springville Station Blvd, Springville AL 35146",3066358784,41
+twuozrpbrm,Val,Puff,6/4/2704,"3191 County rd 10, Canandaigua NY 14424",7692350976,118
+aoythsxkdf,Gilberta,Colet,8/2/2601,"901 Route 110, Farmingdale NY 11735",9140209664,27
+kljpmrnhnt,Berna,Itch,5/8/2150,"150 Springville Station Blvd, Springville AL 35146",8128147968,171
+mizzxsyogd,Charisse,Cord,29/0/2968,"1365 Boston Post Road, Milford CT 6460",9343792128,150
+axmwojytvq,Anne-Corinne,Artemas,23/0/2114,"20 Soojian Dr, Leicester MA 1524",7389218816,80
+jtmlxqfsum,Delcine,Lyon,13/3/2635,"3133 E Main St, Mohegan Lake NY 10547",8639313920,103
+ijgdpfmkep,Corene,Dannie,24/5/2007,"750 Academy Drive, Bessemer AL 35022",3901988608,174
+yyxkmynwmf,Hulda,Julius,15/5/2715,"280 Washington Street, Hudson MA 1749",8987801600,143
+kfgtdepndp,Ernaline,Karim,29/0/2676,"1300 Gilmer Ave, Tallassee AL 36078",1392175872,50
+izubaivezd,Deonne,Yuri,13/8/2339,"3133 E Main St, Mohegan Lake NY 10547",2017576960,109
+oivfwhtitj,Harriott,Steward,1/7/2367,"301 Massachusetts Ave, Lunenburg MA 1462",3191422464,5
+mnkdpuvprm,Daloris,Taddeo,21/6/2048,"164 Danbury Rd, New Milford CT 6776",1962270336,6
+piuiscbsyi,Angelia,Carny,6/12/2826,"450 Highland Ave, Salem MA 1970",1756789504,41
+lshxfwddhs,Kasey,Connor,26/12/2479,"4180 Us Hwy 431, Roanoke AL 36274",6937252352,86
+wqrovlkwjb,Clary,Aharon,29/0/2752,"1608 W Magnolia Ave, Geneva AL 36340",3549978624,165
+rqyucigout,Germaine,Sigvard,28/5/2821,"139 Merchant Place, Cobleskill NY 12043",2828368896,38
+ymnizcwmiq,Trix,Andy,7/7/2307,"3005 Cranberry Hwy Rt 6 28, Wareham MA 2538",2418444800,69
+mvvzwgagrh,Briney,Barnard,6/10/2631,"690 Hwy 78, Sumiton AL 35148",4076983296,73

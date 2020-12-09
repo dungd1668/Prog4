@@ -16,6 +16,7 @@ import ContainerClasses.Member;
 import ContainerClasses.Product;
 import ContainerClasses.Sale;
 import ContainerClasses.SubSale;
+import ContainerClasses.Supplier;
 
 /**
  * Authot: Cullen Bates
@@ -48,12 +49,17 @@ public class InputFileCreator {
 	public static List<Sale> generatedSales;
 	public static SubSale subSale = new SubSale();
 	public static List<SubSale> generatedSubSales;
+	
+	//containers for suppliers
+	public static Supplier supply = new Supplier();
+	public static List<Supplier> generatedSuppliers;
 
 	// triggers for making files
 	static boolean makeEmps = false;
 
 	static boolean makeMems = true;
 	static boolean makeProducts = true;
+	static boolean makeSuppliers = true;
 
 	// we need the random products and members to generate the sales
 	// we we enable making sales we need to enable mem and produc making
@@ -232,7 +238,50 @@ public class InputFileCreator {
 
 		// finished sales file
 
+			
+		
+		//make suppliers
+		if (makeSuppliers) {
+			// generating the random employees
+			generatedSuppliers = new ArrayList<Supplier>();
+
+			for (int i = 0; i < 100; i++) {
+
+				Supplier randEmp = (Supplier) supply.GetNewRandom();
+
+				// check for duplicates
+				while (IsDuplicateSupplier(randEmp) && generatedSuppliers.size() > 1) {
+					System.out.println("Rerolling Duplicate ID");
+					randEmp = (Supplier) supply.GetNewRandom();
+				}
+				// add it to our list
+				generatedSuppliers.add(randEmp);
+				String empLine = GetSupplierString(randEmp);
+				// System.out.println(empLine);
+				// System.out.println("Duplicates Found:" + duplicatedEmps);
+			}
+
+			try {
+				WriteSuppliers();
+			} catch (IOException e) {
+				System.out.println("Failed to write supplier.txt");
+			}
+
+			System.out.println("Wrote Suppliers");
+			System.out.println("supplierID,name,address,contactPerson");
+
+		}
+		
+		
 	}
+	
+	
+	
+	
+	
+	
+	
+	
 
 	/**
 	 * returns weather or not the employeeID already exists in the system
@@ -489,6 +538,63 @@ public class InputFileCreator {
 	private static String GetSubSaleString(SubSale sale) {
 		String memLine = sale.getSaleID() + "," + sale.getSubSaleID() + "," + sale.getProductID() + ","
 				+ sale.getPrice() + "," + sale.getAmount();
+		return memLine;
+	}
+	
+	
+	
+	
+	
+	
+	/**
+	 * returns weather or not the supplier id already exists in the system
+	 * 
+	 * @param emp
+	 * @return
+	 */
+	public static boolean IsDuplicateSupplier(Supplier s) {
+		for (Supplier curr : generatedSuppliers) {
+			if (s.getSupplierID().equals(curr.getSupplierID())) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * writes the products to the subsale file
+	 * 
+	 * @param emp
+	 * @return
+	 */
+	private static void WriteSuppliers() throws IOException {
+
+		File fout = new File("suppliers.txt");
+		FileOutputStream fos;
+		fos = new FileOutputStream(fout);
+
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
+		// write header
+		bw.write("supplierID,name,address,contactPerson");
+		bw.newLine();
+		// write all other sales
+		for (Supplier curr : generatedSuppliers) {
+			//System.out.println(GetSubSaleString(curr));
+			bw.write(GetSupplierString(curr));
+			bw.newLine();
+		}
+		bw.close();
+	}
+
+	/**
+	 * returns the properly formatted subsale string
+	 * 
+	 * @param emp
+	 * @return
+	 */
+	private static String GetSupplierString(Supplier sale) {
+		String memLine = sale.getSupplierID() + "," + sale.getName() + "," + sale.getAddress() + ","
+				+ sale.getContactPerson();
 		return memLine;
 	}
 
