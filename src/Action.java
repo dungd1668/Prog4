@@ -56,15 +56,15 @@ public class Action {
 					+ "', '" + tempLine[4] + "', '" + tempLine[5] + "', " + "'" + tempLine[6] + "')";
 
 		} else if (relation.contentEquals("Sale")) {
-			ret = "INSERT INTO Sale(saleID, date, paymentMethod, totalPrice, memberID)" + " VALUES('" + tempLine[0]
+			ret = "INSERT INTO Sale(saleID, dateOf, paymentMethod, totalPrice, memberID)" + " VALUES('" + tempLine[0]
 					+ "', '" + tempLine[1] + "', '" + tempLine[2] + "', '" + tempLine[3] + "', '" + tempLine[4] + "')";
 
 		} else if (relation.contentEquals("SubSale")) {
 			ret = "INSERT INTO SubSale(saleID, subSaleID, productID, price, amount)" + " VALUES('" + tempLine[0]
 					+ "', '" + tempLine[1] + "', '" + tempLine[2] + "', '" + tempLine[3] + "', '" + tempLine[4] + "')";
 
-		} else if (relation.contentEquals("Employee")) {
-			ret = "INSERT INTO Employee(employeeID, firstName, lastName, gender, address, phoneNumber, groupID, salary)"
+		} else if (relation.contentEquals("Emp")) {
+			ret = "INSERT INTO Emp(employeeID, firstName, lastName, gender, address, phoneNumber, groupID, salary)"
 					+ " VALUES('" + tempLine[0] + "', '" + tempLine[1] + "', '" + tempLine[2] + "', '" + tempLine[3]
 					+ "', '" + tempLine[4] + "', '" + tempLine[5] + "', " + "'" + tempLine[6] + "', '" + tempLine[7]
 					+ "')";

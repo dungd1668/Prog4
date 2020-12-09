@@ -21,8 +21,6 @@ public class Prog4 {
 
 		// get user input
 		launch();
-		// perform action
-
 	}
 
 	private static void launch() {
@@ -33,6 +31,7 @@ public class Prog4 {
 		while (true) {
 			userInput = scan.nextLine();
 			if (userInput.equals("0")) {
+				// user decided to end program
 				scan.close();
 				break;
 			}
@@ -44,20 +43,20 @@ public class Prog4 {
 					displayInsertMenu();
 					insertRecord(scan);
 				} else if (userInput.equals("2")) {
-					displayUpdateMenu();
-					updateRecord(scan);
-				} else {
 					displayDeleteMenu();
 					deleteRecord(scan);
+				} else {
+					displayUpdateMenu();
+					updateRecord(scan);
 				}
 			}
+			System.out.println();
 			displayMenu();
 		}
 		exitProgram();
 	}
 
 	private static void insertRecord(Scanner scan) {
-		Scanner insert = new Scanner(System.in);
 		String userInput = null;
 		
 		userInput = scan.nextLine();
@@ -72,22 +71,27 @@ public class Prog4 {
 		} else {
 			if (userInput.equals("1")) {
 				// member
+				gatherInsertMember();
 			} else if (userInput.equals("2")) {
 				// emp
+				gatherInsertEmp();
 			} else if (userInput.equals("3")) {
 				// product
+				gatherInsertProduct();
 			} else if (userInput.equals("4")) {
 				// supplier
+				gatherInsertSupplier();
 			} else if (userInput.equals("5")) {
 				// sale
+				gatherInsertSale();
 			} else {
 				// subsale
+				gatherInsertSubSale();
 			}
 		}
 	}
 
 	private static void updateRecord(Scanner scan) {
-		Scanner update = new Scanner(System.in);
 		String userInput = null;
 		
 		userInput = scan.nextLine();
@@ -117,7 +121,6 @@ public class Prog4 {
 	}
 
 	private static void deleteRecord(Scanner scan) {
-		Scanner delete = new Scanner(System.in);
 		String userInput = null;
 		userInput = scan.nextLine();
 		if (userInput.equals("0")) {
@@ -141,8 +144,13 @@ public class Prog4 {
 		}
 	}
 
-	private static void gatherInsertMember() {
+	// these helper methods will be needed for each type of insert, delete, or update
+	// I added all the insert ones but the delete and udpate need to be added as well
 
+	private static void gatherInsertMember() {
+		// use scanner to gather insert member info from user (make sure to validate as shown on spec)
+		
+		// build a string array with the member info and then call action.insert(member, stringArray)
 	}
 
 	private static void gatherInsertEmp() {

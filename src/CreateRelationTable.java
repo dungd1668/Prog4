@@ -81,13 +81,13 @@ public class CreateRelationTable {
 						+ "firstName varchar2(15) NOT NULL," 
 						+ "lastName varchar2(15) NOT NULL," 
 						+ "dob varchar2(10),"
-						+ "address varchar2(50)," 
+						+ "address varchar2(60)," 
 						+ "phoneNumber integer NOT NULL," 
 						+ "rewardPoints integer )";
 			} else if (relation.contentEquals("Sale")) {
 				createTable = "CREATE TABLE Sale (" 
 						+ "saleID varchar2(10) NOT NULL,"
-						+ "date varchar2(10),"
+						+ "dateOf varchar2(10),"
 						+ "paymentMethod varchar2(20),"
 						+ "totalPrice decimal(8,2),"
 						+ "memberID varchar2(10) NOT NULL )";
@@ -104,7 +104,7 @@ public class CreateRelationTable {
 						+ "firstName varchar2(15) NOT NULL,"
 						+ "lastName varchar2(15) NOT NULL,"
 						+ "gender varchar2(15),"
-						+ "address varchar2(35),"
+						+ "address varchar2(60),"
 						+ "phoneNumber integer NOT NULL," 
 						+ "groupID integer,"
 						+ "salary decimal(8,2) )";
@@ -112,7 +112,7 @@ public class CreateRelationTable {
 				createTable = "CREATE TABLE Supplier (" 
 						+ "supplierID varchar2(10) NOT NULL,"
 						+ "name varchar2(25),"
-						+ "address varchar2(35),"
+						+ "address varchar2(50),"
 						+ "contactPerson varchar2(25) )";
 			} else if (relation.contentEquals("Product")) {
 				createTable = "CREATE TABLE Product (" 
