@@ -159,47 +159,54 @@ public class Prog4 {
 		Scanner sc = new Scanner(System.in);
 
 		// arrays of each of the table fields
-		String[] memberFields = { "Member ID (NOT NULL)", "First Name (NOT NULL)", "Last Name (NOT NULL)",
+		String[] memberFields = { "Member ID (NOT NULL) PK", "First Name (NOT NULL)", "Last Name (NOT NULL)",
 				"Date of Birth (MM/DD/YYY)", "Address", "Phone Number (NOT NULL)", "Reward Points" };
-		String[] empFields = { "Employee ID (NOT NULL)", "First Name (NOT NULL)", "Last Name (NOT NULL)", "Gender",
+		String[] empFields = { "Employee ID (NOT NULL) PK", "First Name (NOT NULL)", "Last Name (NOT NULL)", "Gender",
 				"Address", "Phone Number (NOT NULL)", "Group ID", "Salary" };
-		String[] productFields = { "Product ID (NOT NULL)", "Name", "Retail Price", "Category", "Membership Discount",
-				"Stock Info" };
-		String[] supplierFields = { "Supplier ID (NOT NULL)", "Name", "Address", "Contact Person" };
+		String[] productFields = { "Product ID (NOT NULL) PK", "Name", "Retail Price", "Category",
+				"Membership Discount", "Stock Info" };
+		String[] supplierFields = { "Supplier ID (NOT NULL) PK", "Name", "Address", "Contact Person" };
 		String[] saleFields = { "Sale ID (NOT NULL)", "Date (MM/DD/YYY)", "Payment Method", "Total Price",
 				"Member ID (NOT NULL)" };
-		String[] subSaleFields = { "Sale ID (NOT NULL)", "Sub-Sale ID", "Product ID", "Price", "Amount" };
+		String[] subSaleFields = { "Sale ID (NOT NULL) PK", "Sub-Sale ID", "Product ID", "Price", "Amount" };
 
 		// build a string array with the member info and then call
 		// action.insert(member,stringArray)
 
 		// set the length of the general fields array
 		String[] fields;
+		String PK = null;
 		int numberOfFields = 0;
 		if (relation.equals("Member")) {
 			// member
 			numberOfFields = 7;
 			fields = memberFields;
+			PK = "memberID";
 		} else if (relation.equals("Emp")) {
 			// emp
 			numberOfFields = 8;
 			fields = empFields;
+			PK = "employeeID";
 		} else if (relation.equals("Product")) {
 			// product
 			numberOfFields = 6;
 			fields = productFields;
+			PK = "productID";
 		} else if (relation.equals("Supplier")) {
 			// supplier
 			numberOfFields = 4;
 			fields = supplierFields;
+			PK = "supplierID";
 		} else if (relation.equals("Sale")) {
 			// sale
 			numberOfFields = 5;
 			fields = saleFields;
+			PK = "saleID";
 		} else {
 			// subsale
 			numberOfFields = 5;
 			fields = subSaleFields;
+			PK = "subSaleID";
 		}
 
 		// get the user input for each field
@@ -214,8 +221,22 @@ public class Prog4 {
 			String userInput = sc.nextLine();
 			userInput = userInput.trim();
 
+//			// if the input is for a PK, check if the input is valid
+//			if (fields[i].contains("PK")) {
+//				boolean PKexists = action.checkID(relation, userInput);
+//				while (PKexists) {
+//					// prompt the user again
+//					System.out.print("\t" + fields[i] + ":");
+//
+//					userInput = sc.nextLine();
+//					userInput = userInput.trim();
+//				} // end while
+//			}
+			
+			// check if the input is valid
 			while (
-					   (userInput.length() == 0 && fields[i].contains("(NOT NULL)"))
+					(fields[i].contains("PK") && action.checkID(relation, userInput))
+					|| (userInput.length() == 0 && fields[i].contains("(NOT NULL)"))
 					|| ((fields[i].contains("Date") && userInput.length()>0) && userInput.charAt(1) != '/' 
 						&& userInput.charAt(3) != '/')
 					|| ( // check if these fields are numeric
@@ -246,14 +267,18 @@ public class Prog4 {
 						!isNumeric(userInput)) {
 					System.out.println("ERROR: " + fields[i] + " NEEDS TO BE NUMERIC.");
 				}
+				// print primary key needs to be unique
+				if (fields[i].contains("PK") && action.checkID(relation, userInput)) {
+					System.out.println("ERROR: " + fields[i] + " NEEDS TO BE UNIQUE. " + userInput + " ALREADY EXISTS");
+				}
 				
 				// prompt the user again
 				System.out.print("\t" + fields[i] + ":");
 
 				userInput = sc.nextLine();
 				userInput = userInput.trim();
-			}
-		}
+			} // end while
+		} // end for
 
 		action.insert(relation, input);
 		// @formatter:on

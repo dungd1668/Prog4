@@ -77,7 +77,7 @@ public class CreateRelationTable {
 			if (relation.contentEquals("Member")) {
 //				String memberID = generateMemberID();
 				createTable = "CREATE TABLE Member (" 
-						+ "memberID varchar2(10) NOT NULL,"
+						+ "memberID varchar2(10) NOT NULL PRIMARY KEY,"
 						+ "firstName varchar2(15) NOT NULL," 
 						+ "lastName varchar2(15) NOT NULL," 
 						+ "dob varchar2(10),"
@@ -86,7 +86,7 @@ public class CreateRelationTable {
 						+ "rewardPoints integer )";
 			} else if (relation.contentEquals("Sale")) {
 				createTable = "CREATE TABLE Sale (" 
-						+ "saleID varchar2(10) NOT NULL,"
+						+ "saleID varchar2(10) NOT NULL PRIMARY KEY,"
 						+ "date varchar2(10),"
 						+ "paymentMethod varchar2(20),"
 						+ "totalPrice decimal(8,2),"
@@ -94,13 +94,13 @@ public class CreateRelationTable {
 			} else if (relation.contentEquals("SubSale")) {
 				createTable = "CREATE TABLE SubSale (" 
 						+ "saleID varchar2(10) NOT NULL,"
-						+ "SubSaleID varchar2(10),"
+						+ "SubSaleID varchar2(10) NOT NULL PRIMARY KEY,"
 						+ "productID varchar2(10),"
 						+ "price decimal(8,2),"
 						+ "amount integer )";
 			} else if (relation.contentEquals("Emp")) {
 				createTable = "CREATE TABLE Emp (" 
-						+ "employeeID varchar2(10) NOT NULL,"
+						+ "employeeID varchar2(10) NOT NULL PRIMARY KEY,"
 						+ "firstName varchar2(15) NOT NULL,"
 						+ "lastName varchar2(15) NOT NULL,"
 						+ "gender varchar2(15),"
@@ -110,13 +110,13 @@ public class CreateRelationTable {
 						+ "salary decimal(8,2) )";
 			} else if (relation.contentEquals("Supplier")) {
 				createTable = "CREATE TABLE Supplier (" 
-						+ "supplierID varchar2(10) NOT NULL,"
+						+ "supplierID varchar2(10) NOT NULL PRIMARY KEY,"
 						+ "name varchar2(25),"
 						+ "address varchar2(50),"
 						+ "contactPerson varchar2(25) )";
 			} else if (relation.contentEquals("Product")) {
 				createTable = "CREATE TABLE Product (" 
-						+ "productID varchar2(10) NOT NULL,"
+						+ "productID varchar2(10) NOT NULL PRIMARY KEY,"
 						+ "name varchar2(25),"
 						+ "retailPrice decimal(8,2),"
 						+ "category varchar2(15),"

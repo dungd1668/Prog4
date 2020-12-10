@@ -141,6 +141,69 @@ public class Action {
 		return ret;
 	} // end delteHelper
 
+	// check to see if the value exists in the relation
+	// return true if the value exits
+	static boolean checkID(String relation, String value) {
+		String PK = null;
+		if (relation.equals("Member")) {
+			// member
+			PK = "memberID";
+		} else if (relation.equals("Emp")) {
+			// emp
+			PK = "employeeID";
+		} else if (relation.equals("Product")) {
+			// product
+			PK = "productID";
+		} else if (relation.equals("Supplier")) {
+			// supplier
+			PK = "supplierID";
+		} else if (relation.equals("Sale")) {
+			// sale
+			PK = "saleID";
+		} else {
+			// subsale
+			PK = "subSaleID";
+		}
+		String sqlCommand = "SELECT " + PK + " FROM " + relation + " WHERE EXISTS " + "(SELECT " + PK + " FROM "
+				+ relation + " WHERE " + PK + " = " + value + " )";
+
+		// create a statement
+		Statement stmt;
+		try {
+			stmt = dbconn.createStatement();
+		} catch (SQLException e1) {
+			System.out.println("Couldn't create statement.");
+			e1.printStackTrace();
+		}
+
+		// execute the SQL command
+		ResultSet answer = null;
+		try {
+			stmt = dbconn.createStatement();
+			answer = stmt.executeQuery(sqlCommand);
+			stmt.close();
+		} catch (SQLException e) {
+			System.out.println("Couldn't execute query: [" + sqlCommand + "]");
+			e.printStackTrace();
+		}
+
+		// get the answer
+		String validID = null;
+		try {
+			validID = answer.getString(PK);
+		} catch (SQLException e) {
+			System.out.println(value + " is not in the " + relation + " Table");
+			e.printStackTrace();
+		}
+
+		// return true if the value was found
+		if (validID != null) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 	private void executeQuery(String query) {
 		// create a statement
 		Statement stmt;
