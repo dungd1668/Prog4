@@ -149,7 +149,6 @@ public class Prog4 {
 			System.out.println();
 			displayMenu();
 		}
-		exitProgram();
 	} // end launch
 
 	/** @formatter:off
