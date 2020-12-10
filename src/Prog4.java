@@ -35,8 +35,7 @@ public class Prog4 {
 				scan.close();
 				break;
 			}
-			if (userInput.length() != 1 || !(userInput.equals("1") || 
-					userInput.equals("2") || userInput.equals("3"))) {
+			if (userInput.length() != 1 || !(userInput.equals("1") || userInput.equals("2") || userInput.equals("3"))) {
 				errorMessage();
 			} else {
 				if (userInput.equals("1")) {
@@ -58,64 +57,70 @@ public class Prog4 {
 
 	private static void insertRecord(Scanner scan) {
 		String userInput = null;
-		
+
 		userInput = scan.nextLine();
 		if (userInput.equals("0")) {
 			return;
 		}
-		if (userInput.length() != 1 || !(userInput.equals("1") || userInput.equals("2") || userInput.equals("3") 
-			|| userInput.equals("4") || userInput.equals("5") || userInput.equals("6"))) {
+		if (userInput.length() != 1 || !(userInput.equals("1") || userInput.equals("2") || userInput.equals("3")
+				|| userInput.equals("4") || userInput.equals("5") || userInput.equals("6"))) {
 			errorMessage();
 			displayInsertMenu();
 			insertRecord(scan);
 		} else {
 			if (userInput.equals("1")) {
 				// member
-				gatherInsertMember();
+				gatherInsert("Member");
 			} else if (userInput.equals("2")) {
 				// emp
-				gatherInsertEmp();
+				gatherInsert("Emp");
 			} else if (userInput.equals("3")) {
 				// product
-				gatherInsertProduct();
+				gatherInsert("Product");
 			} else if (userInput.equals("4")) {
 				// supplier
-				gatherInsertSupplier();
+				gatherInsert("Supplier");
 			} else if (userInput.equals("5")) {
 				// sale
-				gatherInsertSale();
+				gatherInsert("Sale");
 			} else {
 				// subsale
-				gatherInsertSubSale();
+				gatherInsert("SubSale");
 			}
 		}
 	}
 
 	private static void updateRecord(Scanner scan) {
 		String userInput = null;
-		
+
 		userInput = scan.nextLine();
 		if (userInput.equals("0")) {
 			return;
 		}
-		if (userInput.length() != 1 || !(userInput.equals("1") || userInput.equals("2") || userInput.equals("3") 
-			|| userInput.equals("4") || userInput.equals("5") || userInput.equals("6"))) {
+		if (userInput.length() != 1 || !(userInput.equals("1") || userInput.equals("2") || userInput.equals("3")
+				|| userInput.equals("4") || userInput.equals("5") || userInput.equals("6"))) {
 			errorMessage();
 			displayUpdateMenu();
 			updateRecord(scan);
 		} else {
 			if (userInput.equals("1")) {
 				// member
+				gatherUpdate("Member");
 			} else if (userInput.equals("2")) {
 				// emp
+				gatherUpdate("Emp");
 			} else if (userInput.equals("3")) {
 				// product
+				gatherUpdate("Product");
 			} else if (userInput.equals("4")) {
 				// supplier
+				gatherUpdate("Supplier");
 			} else if (userInput.equals("5")) {
 				// sale
+				gatherUpdate("Sale");
 			} else {
 				// subsale
+				gatherUpdate("SubSale");
 			}
 		}
 	}
@@ -126,52 +131,323 @@ public class Prog4 {
 		if (userInput.equals("0")) {
 			return;
 		}
-		if (userInput.length() != 1 || !(userInput.equals("1") || userInput.equals("2") 
-			|| userInput.equals("3") || userInput.equals("4"))) {
+		if (userInput.length() != 1 || !(userInput.equals("1") || userInput.equals("2") || userInput.equals("3")
+				|| userInput.equals("4"))) {
 			errorMessage();
 			displayDeleteMenu();
 			deleteRecord(scan);
 		} else {
 			if (userInput.equals("1")) {
 				// member
+				gatherDelete("Member");
 			} else if (userInput.equals("2")) {
 				// emp
+				gatherDelete("Emp");
 			} else if (userInput.equals("3")) {
 				// product
+				gatherDelete("Product");
 			} else {
 				// supplier
+				gatherDelete("Supplier");
 			}
 		}
 	}
 
-	// these helper methods will be needed for each type of insert, delete, or update
-	// I added all the insert ones but the delete and udpate need to be added as well
+	private static void gatherInsert(String relation) {
+		// use scanner to gather insert info from user (make sure to validate as
+		// shown on spec)
+		Scanner sc = new Scanner(System.in);
 
-	private static void gatherInsertMember() {
-		// use scanner to gather insert member info from user (make sure to validate as shown on spec)
-		
-		// build a string array with the member info and then call action.insert(member, stringArray)
-	}
+		// arrays of each of the table fields
+		String[] memberFields = { "Member ID (NOT NULL)", "First Name (NOT NULL)", "Last Name (NOT NULL)",
+				"Date of Birth (MM/DD/YYY)", "Address", "Phone Number (NOT NULL)", "Reward Points" };
+		String[] empFields = { "Employee ID (NOT NULL)", "First Name (NOT NULL)", "Last Name (NOT NULL)", "Gender",
+				"Address", "Phone Number (NOT NULL)", "Group ID", "Salary" };
+		String[] productFields = { "Product ID (NOT NULL)", "Name", "Retail Price", "Category", "Membership Discount",
+				"Stock Info" };
+		String[] supplierFields = { "Supplier ID (NOT NULL)", "Name", "Address", "Contact Person" };
+		String[] saleFields = { "Sale ID (NOT NULL)", "Date (MM/DD/YYY)", "Payment Method", "Total Price",
+				"Member ID (NOT NULL)" };
+		String[] subSaleFields = { "Sale ID (NOT NULL)", "Sub-Sale ID", "Product ID", "Price", "Amount" };
 
-	private static void gatherInsertEmp() {
+		// build a string array with the member info and then call
+		// action.insert(member,stringArray)
 
-	}
+		// set the length of the general fields array
+		String[] fields;
+		int numberOfFields = 0;
+		if (relation.equals("Member")) {
+			// member
+			numberOfFields = 7;
+			fields = memberFields;
+		} else if (relation.equals("Emp")) {
+			// emp
+			numberOfFields = 8;
+			fields = empFields;
+		} else if (relation.equals("Product")) {
+			// product
+			numberOfFields = 6;
+			fields = productFields;
+		} else if (relation.equals("Supplier")) {
+			// supplier
+			numberOfFields = 4;
+			fields = supplierFields;
+		} else if (relation.equals("Sale")) {
+			// sale
+			numberOfFields = 5;
+			fields = saleFields;
+		} else {
+			// subsale
+			numberOfFields = 5;
+			fields = subSaleFields;
+		}
 
-	private static void gatherInsertProduct() {
+		// get the user input for each field
+		String[] input = new String[numberOfFields];
 
-	}
+		// @formatter:off
+		System.out.println(
+				"Number of values that need to be provided. Optional fields can be skipped by providing no input.\n");
+		for (int i = 0; i < numberOfFields; i++) {
+			System.out.print("\t" + fields[i] + ":");
 
-	private static void gatherInsertSupplier() {
+			String userInput = sc.nextLine();
+			userInput = userInput.trim();
 
-	}
+			while (
+					   (userInput.length() == 0 && fields[i].contains("(NOT NULL)"))
+					|| ((fields[i].contains("Date") && userInput.length()>0) && userInput.charAt(1) != '/' 
+						&& userInput.charAt(3) != '/')
+					|| ( // check if these fields are numeric
+							fields[i].contains("Phone Number") || fields[i].contains("Salary") || 
+							fields[i].contains("Retail Price") || fields[i].contains("Stock") || 
+							fields[i].contains("Reward Points") || fields[i].contains("Total Price") || 
+							fields[i].contains("Group ID") || fields[i].contains("Membership Discount")
+							&& !isNumeric(userInput) && userInput.length()>0) 
+					) {
+				System.out.println("INVALID INPUT. TRY AGAIN.");
+				
+				// print null value needs to be filled
+				if (userInput.length() == 0 && fields[i].contains("(NOT NULL)")) {
+					System.out.println("ERROR: " + fields[i] + " CANNOT BE EMPTY.");
+				}
+				
+				// print date need to be formatted
+				if ((fields[i].contains("Date") && userInput.length()>0) && userInput.charAt(1) != '/' 
+						&& userInput.charAt(3) != '/') {
+					System.out.println("ERROR: DATE NEEDS TO HAVE THE FORMAT: MM/DD/YYYY.");
+				}
+				
+				// print phone number needs to be numeric
+				if (fields[i].contains("Phone Number") || fields[i].contains("Salary") || 
+						fields[i].contains("Retail Price") || fields[i].contains("Stock") || 
+						fields[i].contains("Reward Points") || fields[i].contains("Total Price") || 
+						fields[i].contains("Group ID") || fields[i].contains("Membership Discount") && 
+						!isNumeric(userInput)) {
+					System.out.println("ERROR: " + fields[i] + " NEEDS TO BE NUMERIC.");
+				}
+				
+				// prompt the user again
+				System.out.print("\t" + fields[i] + ":");
 
-	private static void gatherInsertSale() {
+				userInput = sc.nextLine();
+				userInput = userInput.trim();
+			}
+		}
 
-	}
+		action.insert(relation, input);
+		// @formatter:on
+	} // end gatherInsert
 
-	private static void gatherInsertSubSale() {
-		
-	}
+	private static void gatherUpdate(String relation) {
+		// use scanner to gather insert info from user (make sure to validate as
+		// shown on spec)
+		Scanner sc = new Scanner(System.in);
+
+		// arrays of each of the table field names to be printed
+		String[] memberFields = { "Member ID (NOT NULL)", "First Name (NOT NULL)", "Last Name (NOT NULL)",
+				"Date of Birth (MM/DD/YYY)", "Address", "Phone Number (NOT NULL)", "Reward Points" };
+		String[] empFields = { "Employee ID (NOT NULL)", "First Name (NOT NULL)", "Last Name (NOT NULL)", "Gender",
+				"Address", "Phone Number (NOT NULL)", "Group ID", "Salary" };
+		String[] productFields = { "Product ID (NOT NULL)", "Name", "Retail Price", "Category", "Membership Discount",
+				"Stock Info" };
+		String[] supplierFields = { "Supplier ID (NOT NULL)", "Name", "Address", "Contact Person" };
+		String[] saleFields = { "Sale ID (NOT NULL)", "Date (MM/DD/YYY)", "Payment Method", "Total Price",
+				"Member ID (NOT NULL)" };
+		String[] subSaleFields = { "Sale ID (NOT NULL)", "Sub-Sale ID", "Product ID", "Price", "Amount" };
+
+		// arrays of each of the actual table fields
+		String[] member = { "memberID", "firstName", "lastName", "dob", "address", "phoneNumber", "rewardPoints" };
+		String[] emp = { "employeeID", "firstName", "lastName", "gender", "address", "phoneNumber", "groupID",
+				"salary" };
+		String[] product = { "productID", "name", "retailPrice", "category", "membershipDiscount", "stockInfo" };
+		String[] supplier = { "supplierID", "name", "address", "contactPerson" };
+		String[] sale = { "saleID", "date", "paymentMethod", "totalPrice", "memberID" };
+		String[] subSale = { "saleID", "subSaleID", "productID", "price", "amount" };
+
+		// the field name of the primary key of a table
+		String PK = null;
+
+		// set the length of the general fields array
+		String[] fields;
+		String[] table;
+		int numberOfFields = 0;
+		if (relation.equals("Member")) {
+			// member
+			numberOfFields = 7;
+			fields = memberFields;
+			table = member;
+			PK = "memberID";
+		} else if (relation.equals("Emp")) {
+			// emp
+			numberOfFields = 8;
+			fields = empFields;
+			table = emp;
+			PK = "employeeID";
+		} else if (relation.equals("Product")) {
+			// product
+			numberOfFields = 6;
+			fields = productFields;
+			table = product;
+			PK = "productID";
+		} else if (relation.equals("Supplier")) {
+			// supplier
+			numberOfFields = 4;
+			fields = supplierFields;
+			table = supplier;
+			PK = "supplierID";
+		} else if (relation.equals("Sale")) {
+			// sale
+			numberOfFields = 5;
+			fields = saleFields;
+			table = sale;
+			PK = "saleID";
+		} else {
+			// subsale
+			numberOfFields = 5;
+			fields = subSaleFields;
+			table = subSale;
+			PK = "subSaleID";
+		}
+
+		// get the user input for each field
+		int curr = 0; // keeps track of the current index of the fieldsToUpdate and input arrays
+		String[] fieldsToUpdate = new String[numberOfFields];
+		String[] input = new String[numberOfFields];
+
+		// get the primary key value
+		System.out.print("Enter a primary key value for " + relation + " (" + PK + "):");
+		String PKValue = sc.nextLine();
+		PKValue = PKValue.trim();
+		System.out.println();
+
+		// @formatter:off
+		System.out.println(
+				"Number of values that need to be provided. Optional fields can be skipped by providing no input.\n");
+		for (int i = 0; i < numberOfFields; i++) {
+			
+			// skip the ID fields
+			if (fields[i].contains("ID")) {
+				continue;
+			}
+			
+			System.out.print("\t" + fields[i] + ":");
+
+			String userInput = sc.nextLine();
+			userInput = userInput.trim();
+
+			while (
+					   ((fields[i].contains("Date") && userInput.length()>0) && userInput.charAt(1) != '/' 
+						&& userInput.charAt(3) != '/')
+					|| ( // check if these fields are numeric
+							fields[i].contains("Phone Number") || fields[i].contains("Salary") || 
+							fields[i].contains("Retail Price") || fields[i].contains("Stock") || 
+							fields[i].contains("Reward Points") || fields[i].contains("Total Price") || 
+							fields[i].contains("Group ID") || fields[i].contains("Membership Discount")
+							&& !isNumeric(userInput) && userInput.length()>0)
+					) {
+				
+				if (userInput.length() == 0) {
+					break;
+				}
+				
+				System.out.println("INVALID INPUT. TRY AGAIN.");
+				
+				// print null value needs to be filled
+				if (userInput.length() == 0 && fields[i].contains("(NOT NULL)")) {
+					System.out.println("ERROR: " + fields[i] + " CANNOT BE EMPTY.");
+				}
+				
+				// print date need to be formatted
+				if ((fields[i].contains("Date") && userInput.length()>0) && userInput.charAt(1) != '/' 
+						&& userInput.charAt(3) != '/') {
+					System.out.println("ERROR: DATE NEEDS TO HAVE THE FORMAT: MM/DD/YYYY.");
+				}
+				
+				// print phone number needs to be numeric
+				if (fields[i].contains("Phone Number") || fields[i].contains("Salary") || 
+						fields[i].contains("Retail Price") || fields[i].contains("Stock") || 
+						fields[i].contains("Reward Points") || fields[i].contains("Total Price") || 
+						fields[i].contains("Group ID") || fields[i].contains("Membership Discount") && 
+						!isNumeric(userInput)) {
+					System.out.println("ERROR: " + fields[i] + " NEEDS TO BE NUMERIC.");
+				}
+				
+				// prompt the user again
+				System.out.print("\t" + fields[i] + ":");
+
+				userInput = sc.nextLine();
+				userInput = userInput.trim();
+			}
+			// @formatter:on
+
+			// updated the fields to update if the user provided valid input
+			if (userInput.length() != 0) {
+				fieldsToUpdate[curr] = table[i];
+				input[curr] = userInput;
+				curr++;
+			}
+
+		} // end for loop
+
+		action.update(relation, PK, PKValue, fieldsToUpdate, input);
+	} // end gatherUpdate
+
+	private static void gatherDelete(String relation) {
+		// use scanner to gather delete info from user (make sure to validate as
+		// shown on spec)
+		Scanner sc = new Scanner(System.in);
+
+		// set the length of the general fields array
+		String PK;
+		if (relation.equals("Member")) {
+			// member
+			PK = "memberID";
+		} else if (relation.equals("Emp")) {
+			// emp
+			PK = "employeeID";
+		} else if (relation.equals("Product")) {
+			// product
+			PK = "productID";
+		} else if (relation.equals("Supplier")) {
+			// supplier
+			PK = "supplierID";
+		} else if (relation.equals("Sale")) {
+			// sale
+			PK = "saleID";
+		} else {
+			// subsale
+			PK = "subSaleID";
+		}
+
+		// get the primary key value
+		System.out.print("Enter a primary key value for " + relation + ":");
+		String PKValue = sc.nextLine();
+		PKValue = PKValue.trim();
+		System.out.println();
+
+		action.delete(relation, PK, PKValue);
+	} // end gatherDelete
 
 	private static void displayMenu() {
 		System.out.print("Enter 1 to INSERT a record\n" + "Enter 2 to DELETE a record\n"
@@ -191,8 +467,9 @@ public class Prog4 {
 	}
 
 	private static void displayDeleteMenu() {
-		System.out.print("\nEnter 1 to DELETE a member\n" + "Enter 2 to DELETE an employee\n" + "Enter 3 to DELETE a product\n"
-				+ "Enter 4 to DELETE a supplier\n" + "Enter 0 to return to main menu\n" + "Enter here: ");
+		System.out.print(
+				"\nEnter 1 to DELETE a member\n" + "Enter 2 to DELETE an employee\n" + "Enter 3 to DELETE a product\n"
+						+ "Enter 4 to DELETE a supplier\n" + "Enter 0 to return to main menu\n" + "Enter here: ");
 	}
 
 	private static void exitProgram() {
@@ -241,4 +518,33 @@ public class Prog4 {
 			System.exit(-1);
 		}
 	}
+
+	/**
+	 * --------------------------------------------------------------------------------------------------
+	 * Method: isNumeric(String str) takes a string and determines if it is a
+	 * numerical value. The function works by trying to convert the string into a
+	 * double. If it passes, the string is a numerical value, if it fails, the
+	 * string is not a numerical value.
+	 * 
+	 * Purpose: To determine whether or not a string is a numerical value. Used to
+	 * check phoneNumber, salary, amount, price, groupID, reatailPrice,
+	 * purchasePrice.
+	 * 
+	 * Parameters: String str - a string of a value need to be checked
+	 * 
+	 * Returns: boolean true - if the input string is numerical boolean false - if
+	 * the input string is not numerical
+	 * 
+	 * ----------------------------------------------------------------------------------------------------
+	 */
+	public static boolean isNumeric(String str) {
+		if (str == null)
+			return false;
+		try {
+			double d = Double.parseDouble(str);
+		} catch (NumberFormatException e) {
+			return false;
+		}
+		return true;
+	} // end isNumeric
 }
