@@ -1,3 +1,4 @@
+
 // @authors: David Dung, Graysen Meyers, Cullen Bates
 
 import java.io.*;
@@ -12,23 +13,24 @@ public class Prog4 {
 
 	static Action action;
 	static WebAppQuery query;
-	
-	/** @formatter:off
-	 * --------------------------------------------------------------------------------------------------
-	 * Method: main(String[] args) is the main function of the Prog4 application. 
-	 * The program prompts the user for an input to determine what task to complete. Then the 
-	 * program will prompt the user for field values.
+
+	/**
+	 * @formatter:off --------------------------------------------------------------------------------------------------
+	 *                Method: main(String[] args) is the main function of the Prog4
+	 *                application. The program prompts the user for an input to
+	 *                determine what task to complete. Then the program will prompt
+	 *                the user for field values.
 	 * 
-	 * Parameters: String[] args are the ORACLE login credentials
-	 * 				args[0] should be a username
-	 * 				args[1] should be a password
+	 *                Parameters: String[] args are the ORACLE login credentials
+	 *                args[0] should be a username args[1] should be a password
 	 * 
-	 * Purpose: Start of the Prog4. The method first creates a link using ORACLE and then it 
-	 * 		prompt the user for input, runs the query and prints the results to the screen. 
+	 *                Purpose: Start of the Prog4. The method first creates a link
+	 *                using ORACLE and then it prompt the user for input, runs the
+	 *                query and prints the results to the screen.
 	 * 
-	 * Returns: none
+	 *                Returns: none
 	 * 
-	 * ----------------------------------------------------------------------------------------------------
+	 *                ----------------------------------------------------------------------------------------------------
 	 * @formatter:on
 	 */
 	public static void main(String[] args) {
@@ -37,11 +39,10 @@ public class Prog4 {
 
 		// create an Action object
 		action = new Action(username, password, dbconn);
-		
-		//added this this morning
+
+		// added this this morning
 		query = new WebAppQuery(username, password, dbconn);
-		
-		
+
 		// get user input
 		launch();
 	}
@@ -53,67 +54,68 @@ public class Prog4 {
 		displayMenu();
 		while (true) {
 			userInput = scan.nextInt();
-			
-			
-			switch(userInput) {
-			
-			case(0):
+
+			switch (userInput) {
+
+			case (0):
 				scan.close();
 				exitProgram();
 				break;
 
-			case(1):
+			case (1):
 				displayInsertMenu();
 				insertRecord(scan);
 				break;
 
-			case(2):
+			case (2):
 				displayDeleteMenu();
 				deleteRecord(scan);
 				break;
 
-			case(3):
+			case (3):
 				displayUpdateMenu();
 				updateRecord(scan);
 				break;
-				
-			case(4):
-				//Query here
-				query.displayMemberByPhoneNum(phoneNum);
+			// memebrs by phone num
+			case (4):
+				System.out.println("Please enter 9 digit phone number");
+				String num = scan.nextLine();
+				while (num.length() < 9) {
+					System.out.println("Not a valid number, try again");
+					num = scan.nextLine();
+				}
+				// Query here
+				query.displayMemberByPhoneNum(num);
+				break;
+			// member by id
+			case (5):
+				System.out.println("Please enter 10 digit id");
+				String id = scan.nextLine();
+				while (id.length() != 10) {
+					System.out.println("Not a valid id, try again");
+					id = scan.nextLine();
+				}
+				// Query here
+				query.displayMemberById(id);
 				break;
 
-			case(5):
-				//Query here
+			case (6):
+				System.out.println("Displaying current months profit.");
+				// Query here
+				query.displayCurrentMonthProfit("12", "2020");
 				break;
-			
-			case(6):
-				//Query here
-				break;
-			
+
 			}
 			/*
-			
-			if (userInput.equals("0")) {
-				// user decided to end program
-				scan.close();
-				break;
-			}
-			if (userInput.length() != 1 || !(userInput.equals("1") || userInput.equals("2") || userInput.equals("3"))) {
-				errorMessage();
-			} else {
-				if (userInput.equals("1")) {
-					displayInsertMenu();
-					insertRecord(scan);
-				} else if (userInput.equals("2")) {
-					displayDeleteMenu();
-					deleteRecord(scan);
-				} else {
-					displayUpdateMenu();
-					updateRecord(scan);
-				}
-			}
-			*/
-			
+			 * 
+			 * if (userInput.equals("0")) { // user decided to end program scan.close();
+			 * break; } if (userInput.length() != 1 || !(userInput.equals("1") ||
+			 * userInput.equals("2") || userInput.equals("3"))) { errorMessage(); } else {
+			 * if (userInput.equals("1")) { displayInsertMenu(); insertRecord(scan); } else
+			 * if (userInput.equals("2")) { displayDeleteMenu(); deleteRecord(scan); } else
+			 * { displayUpdateMenu(); updateRecord(scan); } }
+			 */
+
 			System.out.println();
 			displayMenu();
 		}
@@ -284,56 +286,55 @@ public class Prog4 {
 
 			String userInput = sc.nextLine();
 			userInput = userInput.trim();
-			
+
 			// check if the input is valid
 			while (
-					// check if the primary key already exists
-					(fields[i].contains("PK") && action.checkID(relation, userInput))
+			// check if the primary key already exists
+			(fields[i].contains("PK") && action.checkID(relation, userInput))
 					// check if the field can be null
 					|| (userInput.length() == 0 && fields[i].contains("(NOT NULL)"))
 					// check if the date is formatted correctly
-					|| ((fields[i].contains("Date") && userInput.length()>0) && userInput.charAt(2) != '/' 
-						&& userInput.charAt(5) != '/')
+					|| ((fields[i].contains("Date") && userInput.length() > 0) && userInput.charAt(2) != '/'
+							&& userInput.charAt(5) != '/')
 					|| ( // check if the field is numeric
-							(fields[i].contains("Phone Number") || fields[i].contains("Salary") || 
-							fields[i].contains("Retail Price") || fields[i].contains("Stock") || 
-							fields[i].contains("Reward Points") || fields[i].contains("Total Price") || 
-							fields[i].contains("Group ID") || fields[i].contains("Membership Discount"))
-							&& !isNumeric(userInput) && userInput.length()>0)
-					) {
+					(fields[i].contains("Phone Number") || fields[i].contains("Salary")
+							|| fields[i].contains("Retail Price") || fields[i].contains("Stock")
+							|| fields[i].contains("Reward Points") || fields[i].contains("Total Price")
+							|| fields[i].contains("Group ID") || fields[i].contains("Membership Discount"))
+							&& !isNumeric(userInput) && userInput.length() > 0)) {
 				System.out.println("INVALID INPUT. TRY AGAIN.");
-				
+
 				// print null value needs to be filled
 				if (userInput.length() == 0 && fields[i].contains("(NOT NULL)")) {
 					System.out.println("ERROR: " + fields[i] + " CANNOT BE EMPTY.");
 				}
-				
+
 				// print date need to be formatted
-				if ((fields[i].contains("Date") && userInput.length()>0) && userInput.charAt(2) != '/' 
+				if ((fields[i].contains("Date") && userInput.length() > 0) && userInput.charAt(2) != '/'
 						&& userInput.charAt(5) != '/') {
 					System.out.println("ERROR: DATE NEEDS TO HAVE THE FORMAT: MM/DD/YYYY.");
 				}
-				
+
 				// print phone number needs to be numeric
-				if ((fields[i].contains("Phone Number") || fields[i].contains("Salary") || 
-						fields[i].contains("Retail Price") || fields[i].contains("Stock") || 
-						fields[i].contains("Reward Points") || fields[i].contains("Total Price") || 
-						fields[i].contains("Group ID") || fields[i].contains("Membership Discount") ) && 
-						!isNumeric(userInput)) {
+				if ((fields[i].contains("Phone Number") || fields[i].contains("Salary")
+						|| fields[i].contains("Retail Price") || fields[i].contains("Stock")
+						|| fields[i].contains("Reward Points") || fields[i].contains("Total Price")
+						|| fields[i].contains("Group ID") || fields[i].contains("Membership Discount"))
+						&& !isNumeric(userInput)) {
 					System.out.println("ERROR: " + fields[i] + " NEEDS TO BE NUMERIC.");
 				}
 				// print primary key needs to be unique
 				if (fields[i].contains("PK") && action.checkID(relation, userInput)) {
 					System.out.println("ERROR: " + fields[i] + " NEEDS TO BE UNIQUE. " + userInput + " ALREADY EXISTS");
 				}
-				
+
 				// prompt the user again
 				System.out.print("\t" + fields[i] + ":");
 
 				userInput = sc.nextLine();
 				userInput = userInput.trim();
 			} // end while
-			
+
 			input[i] = userInput;
 		} // end for
 
@@ -436,65 +437,61 @@ public class Prog4 {
 		System.out.println(
 				"Number of values that need to be provided. Optional fields can be skipped by providing no input.\n");
 		for (int i = 0; i < numberOfFields; i++) {
-			
+
 			// skip the ID fields
 			if (fields[i].contains("ID")) {
 				continue;
 			}
-			
+
 			System.out.print("\t" + fields[i] + ":");
 
 			String userInput = sc.nextLine();
 			userInput = userInput.trim();
-			
-			while (
-					   ((fields[i].contains("Date") && userInput.length()>0))
-					|| ( // check if these fields are numeric
-							(fields[i].contains("Phone Number") || fields[i].contains("Salary") || 
-							fields[i].contains("Retail Price") || fields[i].contains("Stock") || 
-							fields[i].contains("Reward Points") || fields[i].contains("Total Price") || 
-							fields[i].contains("Group ID") || fields[i].contains("Membership Discount"))
-							&& !isNumeric(userInput) && userInput.length()>0)
-					) {
-				
+
+			while (((fields[i].contains("Date") && userInput.length() > 0)) || ( // check if these fields are numeric
+			(fields[i].contains("Phone Number") || fields[i].contains("Salary") || fields[i].contains("Retail Price")
+					|| fields[i].contains("Stock") || fields[i].contains("Reward Points")
+					|| fields[i].contains("Total Price") || fields[i].contains("Group ID")
+					|| fields[i].contains("Membership Discount")) && !isNumeric(userInput) && userInput.length() > 0)) {
+
 				if (userInput.length() == 0) {
 					break;
 				}
-				
-				if (userInput.charAt(2) == '/' && userInput.charAt(5) == '/' && isNumeric(userInput.substring(0,2)) 
-						&& isNumeric(userInput.substring(3,5)) && isNumeric(userInput.substring(6))) {
+
+				if (userInput.charAt(2) == '/' && userInput.charAt(5) == '/' && isNumeric(userInput.substring(0, 2))
+						&& isNumeric(userInput.substring(3, 5)) && isNumeric(userInput.substring(6))) {
 					break;
 				}
-				
+
 				System.out.println("INVALID INPUT. TRY AGAIN.");
-				
+
 				// print null value needs to be filled
 				if (userInput.length() == 0 && fields[i].contains("(NOT NULL)")) {
 					System.out.println("ERROR: " + fields[i] + " CANNOT BE EMPTY.");
 				}
-				
+
 				// print date need to be formatted
-				if ((fields[i].contains("Date") && userInput.length()>0) && userInput.charAt(2) != '/' 
+				if ((fields[i].contains("Date") && userInput.length() > 0) && userInput.charAt(2) != '/'
 						&& userInput.charAt(5) != '/') {
 					System.out.println("ERROR: DATE NEEDS TO HAVE THE FORMAT: MM/DD/YYYY.");
 				}
-				
+
 				// print phone number needs to be numeric
-				if ((fields[i].contains("Phone Number") || fields[i].contains("Salary") || 
-						fields[i].contains("Retail Price") || fields[i].contains("Stock") || 
-						fields[i].contains("Reward Points") || fields[i].contains("Total Price") || 
-						fields[i].contains("Group ID") || fields[i].contains("Membership Discount")) && 
-						!isNumeric(userInput)) {
+				if ((fields[i].contains("Phone Number") || fields[i].contains("Salary")
+						|| fields[i].contains("Retail Price") || fields[i].contains("Stock")
+						|| fields[i].contains("Reward Points") || fields[i].contains("Total Price")
+						|| fields[i].contains("Group ID") || fields[i].contains("Membership Discount"))
+						&& !isNumeric(userInput)) {
 					System.out.println("ERROR: " + fields[i] + " NEEDS TO BE NUMERIC.");
 				}
-				
+
 				// prompt the user again
 				System.out.print("\t" + fields[i] + ":");
 
 				userInput = sc.nextLine();
 				userInput = userInput.trim();
 			} // end while
-			// @formatter:on
+				// @formatter:on
 
 			// updated the fields to update if the user provided valid input
 			if (userInput.length() != 0 && userInput != null) {
@@ -562,8 +559,10 @@ public class Prog4 {
 	} // end gatherDelete
 
 	private static void displayMenu() {
-		System.out.print("Enter 1 to INSERT a record\n" + "Enter 2 to DELETE a record\n"
-				+ "Enter 3 to UPDATE a record\n" + "Enter 0 to EXIT\n" + "Enter here: ");
+		System.out
+				.print("Enter 1 to INSERT a record\n" + "Enter 2 to DELETE a record\n" + "Enter 3 to UPDATE a record\n"
+						+ "Enter 4 to display members by phone\n" + "Enter 5 to display member by id\n"
+						+ "Enter 6 to display current month profit\n" + "Enter 0 to EXIT\n" + "Enter here: ");
 	}
 
 	private static void displayInsertMenu() {
