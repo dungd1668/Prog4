@@ -38,18 +38,28 @@ public class WebAppQuery {
 	public void displayMemberByPhoneNum(String phoneNum) {
 		String query = "SELECT firstName, lastName, dob, rewardPoints FROM " + username
 				+ ".Member WHERE phoneNumber = '" + phoneNum + "'";
+
+		// create a statement
+		Statement stmt = null;
 		ResultSet answer = null;
 
-		answer = executeQuery(query);
+		try {
+			stmt = dbconn.createStatement();
+			answer = stmt.executeQuery(query);
+		} catch (SQLException e1) {
+			System.out.println("Couldn't create statement.");
+			e1.printStackTrace();
+		}
 
 		try {
-			if (answer == null) {
-				System.out.println("There was no user found with Phone Number: " + phoneNum + "\n");
-			} else {
+			while (answer.next()) {
 				System.out.println("Member: " + answer.getString("firstName") + " " + answer.getString("lastName"));
 				System.out.println("Birth Date: " + answer.getString("dob"));
 				System.out.println("Reward Points: " + answer.getInt("rewardPoints") + "\n");
 			}
+
+			stmt.close();
+
 		} catch (SQLException e) {
 			System.out.println("Couldn't execute query: [" + query + "]");
 			System.out.println("Problem getting result from ResultSet in function displayMemberByPhoneNum");
@@ -73,7 +83,18 @@ public class WebAppQuery {
 	 */
 	public void displayMemberById(String memberId) {
 		String query = "SELECT firstName, lastName, dob, rewardPoints FROM Member WHERE memberID = '" + memberId + "'";
-		ResultSet answer = executeQuery(query);
+
+		// create a statement
+		Statement stmt = null;
+		ResultSet answer = null;
+
+		try {
+			stmt = dbconn.createStatement();
+			answer = stmt.executeQuery(query);
+		} catch (SQLException e1) {
+			System.out.println("Couldn't create statement.");
+			e1.printStackTrace();
+		}
 
 		try {
 			if (answer == null) {
@@ -105,30 +126,63 @@ public class WebAppQuery {
 	 * @formatter:on
 	 */
 	public void displayCurrentMonthProfit(String mm, String yyyy) {
-		String query = "SELECT SUM(totalPrice) AS grossSales FROM Sale WHERE dateOf LIKE '" + mm + "/____/" + yyyy + "'";
-		ResultSet grossSales = executeQuery(query);
 
-		query = "SELECT COUNT(*) AS numMembers FROM Member";
-		ResultSet numMembers = executeQuery(query);
+		ResultSet grossSales = null, numMembers = null, supplyCharge = null, laborCost = null;
+		try {
+			String query = "SELECT SUM(totalPrice) AS grossSales FROM Sale WHERE dateOf LIKE '" + mm + "/____/" + yyyy
+					+ "'";
+			Statement grossStmt = null;
+			grossStmt = dbconn.createStatement();
+			grossSales = grossStmt.executeQuery(query);
 
-		query = "SELECT SUM(purchasePrice * amount) AS supplyCharge FROM productShipment WHERE incomingDate LIKE '" + mm
-				+ "/____/" + yyyy + "'";
-		ResultSet supplyCharge = executeQuery(query);
+			query = "SELECT COUNT(*) AS numMembers FROM Member";
+			Statement numMembersStmt = null;
+			numMembersStmt = dbconn.createStatement();
+			numMembers = numMembersStmt.executeQuery(query);
 
-		query = "SELECT SUM(salary) AS laborCost FROM Employee";
-		ResultSet laborCost = executeQuery(query);
+			query = "SELECT SUM(purchasePrice * amount) AS supplyCharge FROM productShipment WHERE incomingDate LIKE '"
+					+ mm + "/____/" + yyyy + "'";
+			Statement supplyChargeStmt = null;
+			supplyChargeStmt = dbconn.createStatement();
+			supplyCharge = supplyChargeStmt.executeQuery(query);
+
+			query = "SELECT SUM(salary) AS laborCost FROM Employee";
+			Statement laborCostStmt = null;
+			laborCostStmt = dbconn.createStatement();
+			laborCost = laborCostStmt.executeQuery(query);
+		} catch (SQLException e) {
+
+			System.err.println("*** SQLException:  " + "Could not fetch query results.");
+			System.err.println("\tMessage:   " + e.getMessage());
+			System.err.println("\tSQLState:  " + e.getSQLState());
+			System.err.println("\tErrorCode: " + e.getErrorCode());
+			System.exit(-1);
+
+		}
 
 		try {
-			float sales = grossSales.getFloat("grossSales");
-			int memberFees = numMembers.getInt("numMembers") * 5;
-			float supply = supplyCharge.getFloat("supplyCharge");
-			float salaries = laborCost.getFloat("laborCost");
+			float sales = 0, supply = 0, salaries = 0;
+			int memberFees = 0;
+			if (grossSales.next()) {
+				sales = grossSales.getFloat("grossSales");
+			}
+			if (numMembers.next()) {
+				memberFees = numMembers.getInt("numMembers") * 5;
+			}
+			if (supplyCharge.next()) {
+				supply = supplyCharge.getFloat("supplyCharge");
+			}
+			if (laborCost.next()) {
+				salaries = laborCost.getFloat("laborCost");
+			}
 
 			float currMonProfit = (sales + memberFees) - (supply + salaries);
 
 			System.out.println("Profit for " + mm + "-" + yyyy + ": $" + currMonProfit + "\n");
-		} catch (SQLException e) {
-			System.out.println("Couldn't execute query: [" + query + "]");
+		} catch (
+
+		SQLException e) {
+			System.out.println("Couldn't execute query: [queries]");
 			System.out.println("Problem getting result from ResultSet in function displayMemberById");
 			e.printStackTrace();
 		}
@@ -140,13 +194,27 @@ public class WebAppQuery {
 		query += " (SELECT productId, COUNT(*) AS amountSold FROM SubSale GROUP BY productId)";
 		query += " ON (SubSale.productId = ProductShipment.productId) GROUP BY productId ORDER BY profit DESC";
 
-		ResultSet result = executeQuery(query);
+		// create a statement
+		Statement stmt = null;
+		Statement stmt2 = null;
+		ResultSet result = null;
+		ResultSet result2 = null;
+
+		try {
+			stmt = dbconn.createStatement();
+			result = stmt.executeQuery(query);
+
+		} catch (SQLException e1) {
+			System.out.println("Couldn't create statement.");
+			e1.printStackTrace();
+		}
 
 		try {
 			String mostProfitableProductId = result.getString("productId");
 
 			query = "SELECT name FROM Product WHERE productId = '" + mostProfitableProductId + "'";
-			result = executeQuery(query);
+			stmt2 = dbconn.createStatement();
+			result2 = stmt2.executeQuery(query);
 
 			System.out.println("Most Profitable Product: " + result.getString("name") + "\n");
 		} catch (SQLException e) {
@@ -154,29 +222,5 @@ public class WebAppQuery {
 			System.out.println("Problem getting result from ResultSet in function displayMostProfitableProduct");
 			e.printStackTrace();
 		}
-	}
-
-	private ResultSet executeQuery(String query) {
-		// create a statement
-		Statement stmt = null;
-		ResultSet answer = null;
-		try {
-			stmt = dbconn.createStatement();
-		} catch (SQLException e1) {
-			System.out.println("Couldn't create statement.");
-			e1.printStackTrace();
-		}
-
-		// execute the query
-		try {
-			stmt = dbconn.createStatement();
-			answer = stmt.executeQuery(query);
-			stmt.close();
-		} catch (SQLException e) {
-			System.out.println("Couldn't execute query: [" + query + "]");
-			e.printStackTrace();
-		}
-
-		return answer;
 	}
 }
