@@ -60,7 +60,7 @@ public class InputFileCreator {
 	public static List<ProductShipment> generatedProductShipment;
 
 	// triggers for making files
-	static boolean makeEmps = false;
+	static boolean makeEmps = true;
 
 	static boolean makeMems = true;
 	static boolean makeProducts = true;
