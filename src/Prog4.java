@@ -116,14 +116,18 @@ public class Prog4 {
 				break;
 			// memebrs by phone num
 			case (4):
-				String num = null;
 				System.out.print("Please enter 7-11 digit phone number: ");
+				String num = null;
 				num = scan.nextLine();
-				while (num.length() < 7) {
-					System.out.println("Not a valid number, try again.");
-					System.out.print("Please enter 7-11 digit phone number: ");
-					num = scan.nextLine();
+
+				if (num.length() < 7 || num.length() > 11 || !isNumeric(num)) {
+					while (num.length() < 7 || num.length() > 11 || !isNumeric(num)) {
+						System.out.println("Not a valid number, try again.");
+						System.out.print("Please enter 7-11 digit phone number: ");
+						num = scan.nextLine();
+					}
 				}
+
 				// Query here
 				query.displayMemberByPhoneNum(num);
 				break;
@@ -132,11 +136,14 @@ public class Prog4 {
 				System.out.print("Please enter an ID:");
 				String id = null;
 				id = scan.nextLine();
-				while (action.checkID("Member", id)) {
-					System.out.println("Not a valid id, try again.");
-					System.out.print("Please enter an ID:");
-					id = scan.nextLine().trim();
+				if (action.checkID("Member", id)) {
+					while (action.checkID("Member", id)) {
+						System.out.println("Not a valid id, try again.");
+						System.out.print("Please enter an ID:");
+						id = scan.nextLine().trim();
+					}
 				}
+
 				// Query here
 				query.displayMemberById(id);
 				break;
