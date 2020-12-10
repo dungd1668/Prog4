@@ -190,7 +190,11 @@ public class Action {
 		// get the answer
 		String validID = null;
 		try {
-			validID = answer.getString(PK);
+			if (answer == null) {
+				System.out.println("PK is valid.");
+			} else {
+				validID = answer.getString(PK);
+			}
 		} catch (SQLException e) {
 			System.out.println(value + " is not in the " + relation + " Table");
 			e.printStackTrace();
