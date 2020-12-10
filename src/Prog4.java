@@ -1,33 +1,5 @@
+// @authors: David Dung, Graysen Meyers, Cullen Bates
 
-/**
- * @formatter:off
- * 
- * Prog4.java is a Program that prompts the user for input to decide what action to complete.
- * The tables can be accessed using the prefix username.TABLE where TABLE if the table name,
- * 		Member, Emp, Sale, SubSale, Supplier, Product, ProductShipment
- * 
- * Important: the Program also needs valid ORACLE SQL login information provided through the
- * arguments like:
- * 		java Prog3 USERNAME PASSWORD
- * 
- * @formatter:on
- * 
- * CMD Instructions example:
- *  	javac Prog4.java Action.java WebAppQuery.java
- *  	java CreateRelationTable username password fileName relation
- * 
- * The input file should be a csv file 
- * 
- * Instructors: Lester I. McCann
- * 		   TAs: Zheng Tang and Chenghao Xiong
- * 
- *	  Due Date: 12/10/2020
- * 
- * Operational Requirements: JavaSE-1.8
- * 
- * @author Cullen Bates, Nick DiMatteo, David Dung, Graysen Meyers
- * 
- */
 import java.io.*;
 import java.sql.*; // For access to the SQL interaction methods
 import java.util.Scanner;
@@ -39,23 +11,25 @@ public class Prog4 {
 	static Connection dbconn = null;
 
 	static Action action;
+	static WebAppQuery query;
 
-	/** @formatter:off
-	 * --------------------------------------------------------------------------------------------------
-	 * Method: main(String[] args) is the main function of the Prog4 application. 
-	 * The program prompts the user for an input to determine what task to complete. Then the 
-	 * program will prompt the user for field values.
+	/**
+	 * @formatter:off --------------------------------------------------------------------------------------------------
+	 *                Method: main(String[] args) is the main function of the Prog4
+	 *                application. The program prompts the user for an input to
+	 *                determine what task to complete. Then the program will prompt
+	 *                the user for field values.
 	 * 
-	 * Parameters: String[] args are the ORACLE login credentials
-	 * 				args[0] should be a username
-	 * 				args[1] should be a password
+	 *                Parameters: String[] args are the ORACLE login credentials
+	 *                args[0] should be a username args[1] should be a password
 	 * 
-	 * Purpose: Start of the Prog4. The method first creates a link using ORACLE and then it 
-	 * 		prompt the user for input, runs the query and prints the results to the screen. 
+	 *                Purpose: Start of the Prog4. The method first creates a link
+	 *                using ORACLE and then it prompt the user for input, runs the
+	 *                query and prints the results to the screen.
 	 * 
-	 * Returns: none
+	 *                Returns: none
 	 * 
-	 * ----------------------------------------------------------------------------------------------------
+	 *                ----------------------------------------------------------------------------------------------------
 	 * @formatter:on
 	 */
 	public static void main(String[] args) {
@@ -65,21 +39,13 @@ public class Prog4 {
 		// create an Action object
 		action = new Action(username, password, dbconn);
 
+		// added this this morning
+		query = new WebAppQuery(username, password, dbconn);
+
 		// get user input
 		launch();
 	}
 
-	/** @formatter:off
-	 * --------------------------------------------------------------------------------------------------
-	 * Method: launch() is a function that retrieve the user's input 
-	 * 
-	 * Purpose: To get user input and call insertRecord(Scanner), deleteRecord(Scanner), or updateRecord(Scanner). 
-	 * 
-	 * Returns: none
-	 * 
-	 * ----------------------------------------------------------------------------------------------------
-	 * @formatter:on
-	 */
 	private static void launch() {
 		Scanner scan = new Scanner(System.in);
 		int userInput;
@@ -87,85 +53,73 @@ public class Prog4 {
 		displayMenu();
 		while (true) {
 			userInput = scan.nextInt();
-			
-			
-			switch(userInput) {
-			
-			case(0):
+
+			switch (userInput) {
+
+			case (0):
 				scan.close();
 				exitProgram();
 				break;
 
-			case(1):
+			case (1):
 				displayInsertMenu();
 				insertRecord(scan);
 				break;
 
-			case(2):
+			case (2):
 				displayDeleteMenu();
 				deleteRecord(scan);
 				break;
 
-			case(3):
+			case (3):
 				displayUpdateMenu();
 				updateRecord(scan);
 				break;
-				
-			case(4):
-				
+			// memebrs by phone num
+			case (4):
+				System.out.println("Please enter 9 digit phone number");
+				String num = scan.nextLine();
+				while (num.length() < 9) {
+					System.out.println("Not a valid number, try again");
+					num = scan.nextLine();
+				}
+				// Query here
+				query.displayMemberByPhoneNum(num);
+				break;
+			// member by id
+			case (5):
+				System.out.println("Please enter 10 digit id");
+				String id = scan.nextLine();
+				while (id.length() != 10) {
+					System.out.println("Not a valid id, try again");
+					id = scan.nextLine();
+				}
+				// Query here
+				query.displayMemberById(id);
 				break;
 
-			case(5):
-				
+			case (6):
+				System.out.println("Displaying current months profit.");
+				// Query here
+				query.displayCurrentMonthProfit("12", "2020");
 				break;
-			case(6):
-				
-				break;
-			
+
 			}
 			/*
-			
-			if (userInput.equals("0")) {
-				// user decided to end program
-				scan.close();
-				break;
-			}
-			if (userInput.length() != 1 || !(userInput.equals("1") || userInput.equals("2") || userInput.equals("3"))) {
-				errorMessage();
-			} else {
-				if (userInput.equals("1")) {
-					displayInsertMenu();
-					insertRecord(scan);
-				} else if (userInput.equals("2")) {
-					displayDeleteMenu();
-					deleteRecord(scan);
-				} else {
-					displayUpdateMenu();
-					updateRecord(scan);
-				}
-			}
-			*/
-			
+			 * 
+			 * if (userInput.equals("0")) { // user decided to end program scan.close();
+			 * break; } if (userInput.length() != 1 || !(userInput.equals("1") ||
+			 * userInput.equals("2") || userInput.equals("3"))) { errorMessage(); } else {
+			 * if (userInput.equals("1")) { displayInsertMenu(); insertRecord(scan); } else
+			 * if (userInput.equals("2")) { displayDeleteMenu(); deleteRecord(scan); } else
+			 * { displayUpdateMenu(); updateRecord(scan); } }
+			 */
+
 			System.out.println();
 			displayMenu();
 		}
-		exitProgram();
-	} // end launch
+	}
 
-	/** @formatter:off
-	 * --------------------------------------------------------------------------------------------------
-	 * Method: insertRecord(Scanner scan) a function that prompts the user for a table to insert into
-	 * and calls gatherInsert(String relation) to get the input to insert.
-	 * 
-	 * Parameters: Scanner scan is a scanner to get user input
-	 * 
-	 * Purpose: To get user input and insert into a relation table
-	 * 
-	 * Returns: none
-	 * 
-	 * ----------------------------------------------------------------------------------------------------
-	 * @formatter:on
-	 */
 	private static void insertRecord(Scanner scan) {
 		String userInput = null;
 
@@ -201,20 +155,6 @@ public class Prog4 {
 		}
 	}
 
-	/** @formatter:off
-	 * --------------------------------------------------------------------------------------------------
-	 * Method: insertRecord(Scanner scan) a function that prompts the user for a table to update into
-	 * and calls gatherUpdate(String relation) to get the input to insert.
-	 * 
-	 * Parameters: Scanner scan is a scanner to get user input
-	 * 
-	 * Purpose: To get user input and update a table record
-	 * 
-	 * Returns: none
-	 * 
-	 * ----------------------------------------------------------------------------------------------------
-	 * @formatter:on
-	 */
 	private static void updateRecord(Scanner scan) {
 		String userInput = null;
 
@@ -250,20 +190,6 @@ public class Prog4 {
 		}
 	}
 
-	/** @formatter:off
-	 * --------------------------------------------------------------------------------------------------
-	 * Method: deleteRecord(Scanner scan) a function that prompts the user for a table to delete from
-	 * and calls deleteRecord(String relation) to get the input to delete.
-	 * 
-	 * Parameters: Scanner scan is a scanner to get user input
-	 * 
-	 * Purpose: To get user input and delete a table record
-	 * 
-	 * Returns: none
-	 * 
-	 * ----------------------------------------------------------------------------------------------------
-	 * @formatter:on
-	 */
 	private static void deleteRecord(Scanner scan) {
 		String userInput = null;
 		userInput = scan.nextLine();
@@ -292,20 +218,6 @@ public class Prog4 {
 		}
 	}
 
-	/** @formatter:off
-	 * --------------------------------------------------------------------------------------------------
-	 * Method: gatherInsert(String relation) is a function that gets valid user input to insert into a 
-	 * table.
-	 * 
-	 * Parameters: String relation is a string that represents a table name
-	 * 
-	 * Purpose: To get user input to insert into a table
-	 * 
-	 * Returns: none
-	 * 
-	 * ----------------------------------------------------------------------------------------------------
-	 * @formatter:on
-	 */
 	private static void gatherInsert(String relation) {
 		// use scanner to gather insert info from user (make sure to validate as
 		// shown on spec)
@@ -373,56 +285,55 @@ public class Prog4 {
 
 			String userInput = sc.nextLine();
 			userInput = userInput.trim();
-			
+
 			// check if the input is valid
 			while (
-					// check if the primary key already exists
-					(fields[i].contains("PK") && action.checkID(relation, userInput))
+			// check if the primary key already exists
+			(fields[i].contains("PK") && action.checkID(relation, userInput))
 					// check if the field can be null
 					|| (userInput.length() == 0 && fields[i].contains("(NOT NULL)"))
 					// check if the date is formatted correctly
-					|| ((fields[i].contains("Date") && userInput.length()>0) && userInput.charAt(2) != '/' 
-						&& userInput.charAt(5) != '/')
+					|| ((fields[i].contains("Date") && userInput.length() > 0) && userInput.charAt(2) != '/'
+							&& userInput.charAt(5) != '/')
 					|| ( // check if the field is numeric
-							(fields[i].contains("Phone Number") || fields[i].contains("Salary") || 
-							fields[i].contains("Retail Price") || fields[i].contains("Stock") || 
-							fields[i].contains("Reward Points") || fields[i].contains("Total Price") || 
-							fields[i].contains("Group ID") || fields[i].contains("Membership Discount"))
-							&& !isNumeric(userInput) && userInput.length()>0)
-					) {
+					(fields[i].contains("Phone Number") || fields[i].contains("Salary")
+							|| fields[i].contains("Retail Price") || fields[i].contains("Stock")
+							|| fields[i].contains("Reward Points") || fields[i].contains("Total Price")
+							|| fields[i].contains("Group ID") || fields[i].contains("Membership Discount"))
+							&& !isNumeric(userInput) && userInput.length() > 0)) {
 				System.out.println("INVALID INPUT. TRY AGAIN.");
-				
+
 				// print null value needs to be filled
 				if (userInput.length() == 0 && fields[i].contains("(NOT NULL)")) {
 					System.out.println("ERROR: " + fields[i] + " CANNOT BE EMPTY.");
 				}
-				
+
 				// print date need to be formatted
-				if ((fields[i].contains("Date") && userInput.length()>0) && userInput.charAt(2) != '/' 
+				if ((fields[i].contains("Date") && userInput.length() > 0) && userInput.charAt(2) != '/'
 						&& userInput.charAt(5) != '/') {
 					System.out.println("ERROR: DATE NEEDS TO HAVE THE FORMAT: MM/DD/YYYY.");
 				}
-				
+
 				// print phone number needs to be numeric
-				if ((fields[i].contains("Phone Number") || fields[i].contains("Salary") || 
-						fields[i].contains("Retail Price") || fields[i].contains("Stock") || 
-						fields[i].contains("Reward Points") || fields[i].contains("Total Price") || 
-						fields[i].contains("Group ID") || fields[i].contains("Membership Discount") ) && 
-						!isNumeric(userInput)) {
+				if ((fields[i].contains("Phone Number") || fields[i].contains("Salary")
+						|| fields[i].contains("Retail Price") || fields[i].contains("Stock")
+						|| fields[i].contains("Reward Points") || fields[i].contains("Total Price")
+						|| fields[i].contains("Group ID") || fields[i].contains("Membership Discount"))
+						&& !isNumeric(userInput)) {
 					System.out.println("ERROR: " + fields[i] + " NEEDS TO BE NUMERIC.");
 				}
 				// print primary key needs to be unique
 				if (fields[i].contains("PK") && action.checkID(relation, userInput)) {
 					System.out.println("ERROR: " + fields[i] + " NEEDS TO BE UNIQUE. " + userInput + " ALREADY EXISTS");
 				}
-				
+
 				// prompt the user again
 				System.out.print("\t" + fields[i] + ":");
 
 				userInput = sc.nextLine();
 				userInput = userInput.trim();
 			} // end while
-			
+
 			input[i] = userInput;
 		} // end for
 
@@ -430,20 +341,6 @@ public class Prog4 {
 		// @formatter:on
 	} // end gatherInsert
 
-	/** @formatter:off
-	 * --------------------------------------------------------------------------------------------------
-	 * Method: gatherUpdate(String relation) is a function that gets valid user input to update a record
-	 * in a table
-	 * 
-	 * Parameters: String relation is a string that represents a table name
-	 * 
-	 * Purpose: To get user input to update a table record
-	 * 
-	 * Returns: none
-	 * 
-	 * ----------------------------------------------------------------------------------------------------
-	 * @formatter:on
-	 */
 	private static void gatherUpdate(String relation) {
 		// use scanner to gather insert info from user (make sure to validate as
 		// shown on spec)
@@ -539,65 +436,61 @@ public class Prog4 {
 		System.out.println(
 				"Number of values that need to be provided. Optional fields can be skipped by providing no input.\n");
 		for (int i = 0; i < numberOfFields; i++) {
-			
+
 			// skip the ID fields
 			if (fields[i].contains("ID")) {
 				continue;
 			}
-			
+
 			System.out.print("\t" + fields[i] + ":");
 
 			String userInput = sc.nextLine();
 			userInput = userInput.trim();
-			
-			while (
-					   ((fields[i].contains("Date") && userInput.length()>0))
-					|| ( // check if these fields are numeric
-							(fields[i].contains("Phone Number") || fields[i].contains("Salary") || 
-							fields[i].contains("Retail Price") || fields[i].contains("Stock") || 
-							fields[i].contains("Reward Points") || fields[i].contains("Total Price") || 
-							fields[i].contains("Group ID") || fields[i].contains("Membership Discount"))
-							&& !isNumeric(userInput) && userInput.length()>0)
-					) {
-				
+
+			while (((fields[i].contains("Date") && userInput.length() > 0)) || ( // check if these fields are numeric
+			(fields[i].contains("Phone Number") || fields[i].contains("Salary") || fields[i].contains("Retail Price")
+					|| fields[i].contains("Stock") || fields[i].contains("Reward Points")
+					|| fields[i].contains("Total Price") || fields[i].contains("Group ID")
+					|| fields[i].contains("Membership Discount")) && !isNumeric(userInput) && userInput.length() > 0)) {
+
 				if (userInput.length() == 0) {
 					break;
 				}
-				
-				if (userInput.charAt(2) == '/' && userInput.charAt(5) == '/' && isNumeric(userInput.substring(0,2)) 
-						&& isNumeric(userInput.substring(3,5)) && isNumeric(userInput.substring(6))) {
+
+				if (userInput.charAt(2) == '/' && userInput.charAt(5) == '/' && isNumeric(userInput.substring(0, 2))
+						&& isNumeric(userInput.substring(3, 5)) && isNumeric(userInput.substring(6))) {
 					break;
 				}
-				
+
 				System.out.println("INVALID INPUT. TRY AGAIN.");
-				
+
 				// print null value needs to be filled
 				if (userInput.length() == 0 && fields[i].contains("(NOT NULL)")) {
 					System.out.println("ERROR: " + fields[i] + " CANNOT BE EMPTY.");
 				}
-				
+
 				// print date need to be formatted
-				if ((fields[i].contains("Date") && userInput.length()>0) && userInput.charAt(2) != '/' 
+				if ((fields[i].contains("Date") && userInput.length() > 0) && userInput.charAt(2) != '/'
 						&& userInput.charAt(5) != '/') {
 					System.out.println("ERROR: DATE NEEDS TO HAVE THE FORMAT: MM/DD/YYYY.");
 				}
-				
+
 				// print phone number needs to be numeric
-				if ((fields[i].contains("Phone Number") || fields[i].contains("Salary") || 
-						fields[i].contains("Retail Price") || fields[i].contains("Stock") || 
-						fields[i].contains("Reward Points") || fields[i].contains("Total Price") || 
-						fields[i].contains("Group ID") || fields[i].contains("Membership Discount")) && 
-						!isNumeric(userInput)) {
+				if ((fields[i].contains("Phone Number") || fields[i].contains("Salary")
+						|| fields[i].contains("Retail Price") || fields[i].contains("Stock")
+						|| fields[i].contains("Reward Points") || fields[i].contains("Total Price")
+						|| fields[i].contains("Group ID") || fields[i].contains("Membership Discount"))
+						&& !isNumeric(userInput)) {
 					System.out.println("ERROR: " + fields[i] + " NEEDS TO BE NUMERIC.");
 				}
-				
+
 				// prompt the user again
 				System.out.print("\t" + fields[i] + ":");
 
 				userInput = sc.nextLine();
 				userInput = userInput.trim();
 			} // end while
-			// @formatter:on
+				// @formatter:on
 
 			// updated the fields to update if the user provided valid input
 			if (userInput.length() != 0 && userInput != null) {
@@ -607,6 +500,7 @@ public class Prog4 {
 				input[curr] = userInput;
 				curr++;
 			}
+
 		} // end for loop
 
 		// normalize the arrays
@@ -617,20 +511,6 @@ public class Prog4 {
 		action.update(relation, PK, PKValue, fieldsToUpdate, input);
 	} // end gatherUpdate
 
-	/** @formatter:off
-	 * --------------------------------------------------------------------------------------------------
-	 * Method: gatherDelete(String relation) is a function that gets valid user input to delete a record
-	 * in a table
-	 * 
-	 * Parameters: String relation is a string that represents a table name
-	 * 
-	 * Purpose: To get user input to delete a table record
-	 * 
-	 * Returns: none
-	 * 
-	 * ----------------------------------------------------------------------------------------------------
-	 * @formatter:on
-	 */
 	private static void gatherDelete(String relation) {
 		// use scanner to gather delete info from user (make sure to validate as
 		// shown on spec)
@@ -678,40 +558,30 @@ public class Prog4 {
 	} // end gatherDelete
 
 	private static void displayMenu() {
-		System.out.print("Enter 1 to INSERT a record\n" + "Enter 2 to DELETE a record\n"
-				+ "Enter 3 to UPDATE a record\n" + "Enter 0 to EXIT\n" + "Enter here: ");
-	} // end displayMenu
+		System.out
+				.print("Enter 1 to INSERT a record\n" + "Enter 2 to DELETE a record\n" + "Enter 3 to UPDATE a record\n"
+						+ "Enter 4 to display members by phone\n" + "Enter 5 to display member by id\n"
+						+ "Enter 6 to display current month profit\n" + "Enter 0 to EXIT\n" + "Enter here: ");
+	}
 
 	private static void displayInsertMenu() {
 		System.out.print("\nEnter 1 to INSERT a member\n" + "Enter 2 to INSERT an employee\n"
 				+ "Enter 3 to INSERT a product\n" + "Enter 4 to INSERT a supplier\n" + "Enter 5 to INSERT a sale\n"
 				+ "Enter 6 to INSERT a subsale\n" + "Enter 0 to return to main menu\n" + "Enter here: ");
-	} // end displayInsertMenu
+	}
 
 	private static void displayUpdateMenu() {
 		System.out.print("\nEnter 1 to UPDATE a member\n" + "Enter 2 to UPDATE an employee\n"
 				+ "Enter 3 to UPDATE a product\n" + "Enter 4 to UPDATE a supplier\n" + "Enter 5 to UPDATE a sale\n"
 				+ "Enter 6 to UPDATE a subsale\n" + "Enter 0 to return to main menu\n" + "Enter here: ");
-	} // end displayUpdateMenu
+	}
 
 	private static void displayDeleteMenu() {
 		System.out.print(
 				"\nEnter 1 to DELETE a member\n" + "Enter 2 to DELETE an employee\n" + "Enter 3 to DELETE a product\n"
 						+ "Enter 4 to DELETE a supplier\n" + "Enter 0 to return to main menu\n" + "Enter here: ");
-	} // end displayDeleteMenu
+	}
 
-	/** @formatter:off
-	 * --------------------------------------------------------------------------------------------------
-	 * Method: exitProgram() is a function that closes the database connection dbconn and closes the 
-	 * program.
-	 * 
-	 * Purpose: To close the program
-	 * 
-	 * Returns: none
-	 * 
-	 * ----------------------------------------------------------------------------------------------------
-	 * @formatter:on
-	 */
 	private static void exitProgram() {
 		try {
 			dbconn.close();
@@ -721,28 +591,12 @@ public class Prog4 {
 		}
 		System.out.println("Thank you for using the Tucson Mall text interface!" + "\nHave a nice day!");
 		System.exit(0);
-	} // end exitProgram
+	}
 
 	private static void errorMessage() {
 		System.out.println("\nPlease enter a number from the menu!\n");
-	} // end errrMessage
+	}
 
-	/** @formatter:off
-	 * --------------------------------------------------------------------------------------------------
-	 * Method: getLogin(String[] args) is a fuction that sets the username and password from args[] and 
-	 * creates a database connection.
-	 * 
-	 * Parameters: String[] args are the ORACLE login credentials
-	 * 				args[0] should be a username
-	 * 				args[1] should be a password
-	 * 
-	 * Purpose: To set the username and password and to create the database connection
-	 * 
-	 * Returns: none
-	 * 
-	 * ----------------------------------------------------------------------------------------------------
-	 * @formatter:on
-	 */
 	private static void getLogin(String[] args) {
 		if (args.length == 2) { // get username/password from cmd line args
 			username = args[0];
@@ -773,7 +627,7 @@ public class Prog4 {
 			System.err.println("\tErrorCode: " + e.getErrorCode());
 			System.exit(-1);
 		}
-	} // end getLegin
+	}
 
 	/**
 	 * --------------------------------------------------------------------------------------------------
@@ -804,21 +658,6 @@ public class Prog4 {
 		return true;
 	} // end isNumeric
 
-	/** @formatter:off
-	 * --------------------------------------------------------------------------------------------------
-	 * Method: normalize(String[] tempLine) formats a String array by deleting null
-	 * and empty strings.
-	 * 
-	 * Purpose: to format a String array
-	 * 
-	 * Parameters: String[] tempLine - a string array
-	 * 				int size - the number of valid values in the array tempLine
-	 * 
-	 * Returns: a String array of a normalized array
-	 * 
-	 * ----------------------------------------------------------------------------------------------------
-	 * @formatter:on
-	 */
 	private static String[] normalize(String[] tempLine, int size) {
 		String[] ret = new String[size];
 		for (int i = 0; i < size; i++) {
