@@ -188,24 +188,16 @@ public class Action {
 		}
 
 		// get the answer
-		String validID = null;
+		boolean validID = false;
 		try {
-			if (answer == null) {
-				System.out.println("PK is valid.");
-			} else {
-				validID = answer.getString(PK);
-			}
+			answer.next();
 		} catch (SQLException e) {
 			System.out.println(value + " is not in the " + relation + " Table");
 			e.printStackTrace();
 		}
 
-		// return true if the value was found
-		if (validID != null) {
-			return true;
-		} else {
-			return false;
-		}
+		// return the result
+		return validID;
 	}
 
 	private void executeQuery(String query) {
