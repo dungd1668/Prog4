@@ -87,7 +87,7 @@ public class CreateRelationTable {
 			} else if (relation.contentEquals("Sale")) {
 				createTable = "CREATE TABLE Sale (" 
 						+ "saleID varchar2(10) NOT NULL,"
-						+ "dateOf varchar2(10),"
+						+ "date varchar2(10),"
 						+ "paymentMethod varchar2(20),"
 						+ "totalPrice decimal(8,2),"
 						+ "memberID varchar2(10) NOT NULL )";
