@@ -277,6 +277,7 @@ public class Prog4 {
 		// @formatter:on
 	} // end gatherInsert
 
+
 	private static void gatherUpdate(String relation) {
 		// use scanner to gather insert info from user (make sure to validate as
 		// shown on spec)
@@ -434,8 +435,8 @@ public class Prog4 {
 
 			// updated the fields to update if the user provided valid input
 			if (userInput.length() != 0 && userInput != null) {
-				System.out.println(fields[i]+">>>"+table[i]);
-				System.out.println(input[curr]+">>>"+userInput);
+				System.out.println(fields[i] + ">>>" + table[i]);
+				System.out.println(input[curr] + ">>>" + userInput);
 				fieldsToUpdate[curr] = table[i];
 				input[curr] = userInput;
 				curr++;
