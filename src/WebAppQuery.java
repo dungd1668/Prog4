@@ -36,20 +36,22 @@ public class WebAppQuery {
 	 * @formatter:on
 	 */
 	public void displayMemberByPhoneNum(String phoneNum) {
-		String query = "SELECT firstName, lastName, dob, rewardPoints FROM Member WHERE phoneNumber = " + phoneNum;
-		ResultSet answer = executeQuery(query);
+		String query = "SELECT firstName, lastName, dob, rewardPoints FROM " + username
+				+ ".Member WHERE phoneNumber = '" + phoneNum + "'";
+		ResultSet answer = null;
+
+		answer = executeQuery(query);
 
 		try {
-			if (!answer.next()) {
+			if (answer == null) {
 				System.out.println("There was no user found with Phone Number: " + phoneNum + "\n");
 			} else {
-				answer.beforeFirst();
-
 				System.out.println("Member: " + answer.getString("firstName") + " " + answer.getString("lastName"));
 				System.out.println("Birth Date: " + answer.getString("dob"));
 				System.out.println("Reward Points: " + answer.getInt("rewardPoints") + "\n");
 			}
 		} catch (SQLException e) {
+			System.out.println("Couldn't execute query: [" + query + "]");
 			System.out.println("Problem getting result from ResultSet in function displayMemberByPhoneNum");
 			e.printStackTrace();
 		}
@@ -70,20 +72,19 @@ public class WebAppQuery {
 	 * @formatter:on
 	 */
 	public void displayMemberById(String memberId) {
-		String query = "SELECT firstName, lastName, dob, rewardPoints FROM Member WHERE memberID = " + memberId;
+		String query = "SELECT firstName, lastName, dob, rewardPoints FROM Member WHERE memberID = '" + memberId + "'";
 		ResultSet answer = executeQuery(query);
 
 		try {
-			if (!answer.next()) {
+			if (answer == null) {
 				System.out.println("There was no user found with Member Id: " + memberId + "\n");
 			} else {
-				answer.beforeFirst();
-
 				System.out.println("Member: " + answer.getString("firstName") + " " + answer.getString("lastName"));
 				System.out.println("Birth Date: " + answer.getString("dob"));
 				System.out.println("Reward Points: " + answer.getInt("rewardPoints") + "\n");
 			}
 		} catch (SQLException e) {
+			System.out.println("Couldn't execute query: [" + query + "]");
 			System.out.println("Problem getting result from ResultSet in function displayMemberById");
 			e.printStackTrace();
 		}
@@ -104,14 +105,14 @@ public class WebAppQuery {
 	 * @formatter:on
 	 */
 	public void displayCurrentMonthProfit(String mm, String yyyy) {
-		String query = "SELECT SUM(totalPrice) AS grossSales FROM Sale WHERE dateOf LIKE '" + mm + "____" + yyyy + "'";
+		String query = "SELECT SUM(totalPrice) AS grossSales FROM Sale WHERE dateOf LIKE '" + mm + "/____/" + yyyy + "'";
 		ResultSet grossSales = executeQuery(query);
 
 		query = "SELECT COUNT(*) AS numMembers FROM Member";
 		ResultSet numMembers = executeQuery(query);
 
 		query = "SELECT SUM(purchasePrice * amount) AS supplyCharge FROM productShipment WHERE incomingDate LIKE '" + mm
-				+ "____" + yyyy + "'";
+				+ "/____/" + yyyy + "'";
 		ResultSet supplyCharge = executeQuery(query);
 
 		query = "SELECT SUM(salary) AS laborCost FROM Employee";
@@ -127,6 +128,7 @@ public class WebAppQuery {
 
 			System.out.println("Profit for " + mm + "-" + yyyy + ": $" + currMonProfit + "\n");
 		} catch (SQLException e) {
+			System.out.println("Couldn't execute query: [" + query + "]");
 			System.out.println("Problem getting result from ResultSet in function displayMemberById");
 			e.printStackTrace();
 		}
@@ -148,6 +150,7 @@ public class WebAppQuery {
 
 			System.out.println("Most Profitable Product: " + result.getString("name") + "\n");
 		} catch (SQLException e) {
+			System.out.println("Couldn't execute query: [" + query + "]");
 			System.out.println("Problem getting result from ResultSet in function displayMostProfitableProduct");
 			e.printStackTrace();
 		}
@@ -164,7 +167,7 @@ public class WebAppQuery {
 			e1.printStackTrace();
 		}
 
-		// execute the insert query
+		// execute the query
 		try {
 			stmt = dbconn.createStatement();
 			answer = stmt.executeQuery(query);
