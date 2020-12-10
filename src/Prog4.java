@@ -116,36 +116,16 @@ public class Prog4 {
 				break;
 			// memebrs by phone num
 			case (4):
+
 				System.out.print("Please enter 7-11 digit phone number: ");
-				String num = null;
-				num = scan.nextLine();
 
-				if (num.length() < 7 || num.length() > 11 || !isNumeric(num)) {
-					while (num.length() < 7 || num.length() > 11 || !isNumeric(num)) {
-						System.out.println("Not a valid number, try again.");
-						System.out.print("Please enter 7-11 digit phone number: ");
-						num = scan.nextLine();
-					}
-				}
-
-				// Query here
-				query.displayMemberByPhoneNum(num);
+				query1();
 				break;
 			// member by id
 			case (5):
-				System.out.print("Please enter an ID:");
-				String id = null;
-				id = scan.nextLine();
-				if (action.checkID("Member", id)) {
-					while (action.checkID("Member", id)) {
-						System.out.println("Not a valid id, try again.");
-						System.out.print("Please enter an ID:");
-						id = scan.nextLine().trim();
-					}
-				}
 
-				// Query here
-				query.displayMemberById(id);
+				System.out.print("Please enter an ID:");
+				query2();
 				break;
 
 			case (6):
@@ -168,6 +148,40 @@ public class Prog4 {
 			System.out.println();
 			displayMenu();
 		}
+	}
+
+	private static void query2() {
+		Scanner sc = new Scanner(System.in);
+		String id = null;
+		id = sc.nextLine();
+
+		if (!action.checkID("Member", id)) {
+			while (action.checkID("Member", id)) {
+				System.out.println("Not a valid id, try again.");
+				System.out.print("Please enter an ID:");
+				id = sc.nextLine().trim();
+			}
+		}
+
+		// Query here
+		query.displayMemberById(id);
+	}
+
+	private static void query1() {
+		Scanner sc = new Scanner(System.in);
+		String num = null;
+		num = sc.nextLine();
+		num = num.trim();
+		if (num.length() < 7 || num.length() > 11 || !isNumeric(num)) {
+			while (num.length() < 7 || num.length() > 11 || !isNumeric(num)) {
+				System.out.println("Not a valid number, try again.");
+				System.out.print("Please enter 7-11 digit phone number: ");
+				num = sc.nextLine();
+			}
+		}
+
+		// Query here
+		query.displayMemberByPhoneNum(num);
 	}
 
 	/** @formatter:off
@@ -615,8 +629,8 @@ public class Prog4 {
 
 			// updated the fields to update if the user provided valid input
 			if (userInput.length() != 0 && userInput != null) {
-				System.out.println(fields[i] + ">>>" + table[i]);
-				System.out.println(input[curr] + ">>>" + userInput);
+//				System.out.println(fields[i] + ">>>" + table[i]);
+//				System.out.println(input[curr] + ">>>" + userInput);
 				fieldsToUpdate[curr] = table[i];
 				input[curr] = userInput;
 				curr++;

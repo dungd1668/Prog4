@@ -251,7 +251,7 @@ public class Action {
 					stmt.close();
 					return false;
 				} else {
-					System.out.println(value + " Exists in " + relation);
+//					System.out.println(value + " Exists in " + relation);
 					stmt.close();
 					return true;
 				}

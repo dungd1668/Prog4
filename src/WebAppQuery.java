@@ -97,13 +97,12 @@ public class WebAppQuery {
 		}
 
 		try {
-			if (answer == null) {
-				System.out.println("There was no user found with Member Id: " + memberId + "\n");
-			} else {
+			while (answer.next()) {
 				System.out.println("Member: " + answer.getString("firstName") + " " + answer.getString("lastName"));
 				System.out.println("Birth Date: " + answer.getString("dob"));
 				System.out.println("Reward Points: " + answer.getInt("rewardPoints") + "\n");
 			}
+
 		} catch (SQLException e) {
 			System.out.println("Couldn't execute query: [" + query + "]");
 			System.out.println("Problem getting result from ResultSet in function displayMemberById");
