@@ -82,11 +82,49 @@ public class Prog4 {
 	 */
 	private static void launch() {
 		Scanner scan = new Scanner(System.in);
-		String userInput = null;
+		int userInput;
 		System.out.println("Welcome to the text interface for the Tucson Mall database!");
 		displayMenu();
 		while (true) {
-			userInput = scan.nextLine();
+			userInput = scan.nextInt();
+			
+			
+			switch(userInput) {
+			
+			case(0):
+				scan.close();
+				exitProgram();
+				break;
+
+			case(1):
+				displayInsertMenu();
+				insertRecord(scan);
+				break;
+
+			case(2):
+				displayDeleteMenu();
+				deleteRecord(scan);
+				break;
+
+			case(3):
+				displayUpdateMenu();
+				updateRecord(scan);
+				break;
+				
+			case(4):
+				
+				break;
+
+			case(5):
+				
+				break;
+			case(6):
+				
+				break;
+			
+			}
+			/*
+			
 			if (userInput.equals("0")) {
 				// user decided to end program
 				scan.close();
@@ -106,6 +144,8 @@ public class Prog4 {
 					updateRecord(scan);
 				}
 			}
+			*/
+			
 			System.out.println();
 			displayMenu();
 		}
