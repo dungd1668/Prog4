@@ -116,10 +116,12 @@ public class Prog4 {
 				break;
 			// memebrs by phone num
 			case (4):
-				System.out.println("Please enter 9 digit phone number");
-				String num = scan.nextLine();
-				while (num.length() < 9) {
-					System.out.println("Not a valid number, try again");
+				String num = null;
+				System.out.print("Please enter 7-11 digit phone number: ");
+				num = scan.nextLine();
+				while (num.length() < 7) {
+					System.out.println("Not a valid number, try again.");
+					System.out.print("Please enter 7-11 digit phone number: ");
 					num = scan.nextLine();
 				}
 				// Query here
@@ -127,11 +129,13 @@ public class Prog4 {
 				break;
 			// member by id
 			case (5):
-				System.out.println("Please enter 10 digit id");
-				String id = scan.nextLine();
-				while (id.length() != 10) {
-					System.out.println("Not a valid id, try again");
-					id = scan.nextLine();
+				System.out.print("Please enter an ID:");
+				String id = null;
+				id = scan.nextLine();
+				while (action.checkID("Member", id)) {
+					System.out.println("Not a valid id, try again.");
+					System.out.print("Please enter an ID:");
+					id = scan.nextLine().trim();
 				}
 				// Query here
 				query.displayMemberById(id);
@@ -320,7 +324,7 @@ public class Prog4 {
 
 		// arrays of each of the table fields
 		String[] memberFields = { "Member ID (NOT NULL) PK", "First Name (NOT NULL)", "Last Name (NOT NULL)",
-				"Date of Birth (MM/DD/YYTY)", "Address", "Phone Number (NOT NULL)", "Reward Points" };
+				"Date of Birth (MM/DD/YYYY)", "Address", "Phone Number (NOT NULL)", "Reward Points" };
 		String[] empFields = { "Employee ID (NOT NULL) PK", "First Name (NOT NULL)", "Last Name (NOT NULL)", "Gender",
 				"Address", "Phone Number (NOT NULL)", "Group ID", "Salary" };
 		String[] productFields = { "Product ID (NOT NULL) PK", "Name", "Retail Price", "Category",
