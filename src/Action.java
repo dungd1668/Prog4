@@ -119,11 +119,11 @@ public class Action {
 		ret += "UPDATE " + relation + " ";
 		ret += "SET ";
 		for (int i = 0; i < fieldsToUpdate.length; i++) {
-			ret += fieldsToUpdate[i] + " = " + tempLine[i];
+			ret += fieldsToUpdate[i] + " = '" + tempLine[i];
 			if (i + 1 < fieldsToUpdate.length) {
-				ret += ", ";
+				ret += "', ";
 			} else {
-				ret += " ";
+				ret += "' ";
 			}
 		}
 		ret += "WHERE " + PK + " = '" + PKValue + "' ";
