@@ -160,7 +160,7 @@ public class Prog4 {
 
 		// arrays of each of the table fields
 		String[] memberFields = { "Member ID (NOT NULL) PK", "First Name (NOT NULL)", "Last Name (NOT NULL)",
-				"Date of Birth (MM/DD/YYY)", "Address", "Phone Number (NOT NULL)", "Reward Points" };
+				"Date of Birth (MM/DD/YYTY)", "Address", "Phone Number (NOT NULL)", "Reward Points" };
 		String[] empFields = { "Employee ID (NOT NULL) PK", "First Name (NOT NULL)", "Last Name (NOT NULL)", "Gender",
 				"Address", "Phone Number (NOT NULL)", "Group ID", "Salary" };
 		String[] productFields = { "Product ID (NOT NULL) PK", "Name", "Retail Price", "Category",
@@ -223,11 +223,14 @@ public class Prog4 {
 			
 			// check if the input is valid
 			while (
+					// check if the primary key already exists
 					(fields[i].contains("PK") && action.checkID(relation, userInput))
+					// check if the field can be null
 					|| (userInput.length() == 0 && fields[i].contains("(NOT NULL)"))
+					// check if the date is formatted correctly
 					|| ((fields[i].contains("Date") && userInput.length()>0) && userInput.charAt(2) != '/' 
 						&& userInput.charAt(5) != '/')
-					|| ( // check if these fields are numeric
+					|| ( // check if the field is numeric
 							(fields[i].contains("Phone Number") || fields[i].contains("Salary") || 
 							fields[i].contains("Retail Price") || fields[i].contains("Stock") || 
 							fields[i].contains("Reward Points") || fields[i].contains("Total Price") || 
@@ -430,7 +433,9 @@ public class Prog4 {
 			// @formatter:on
 
 			// updated the fields to update if the user provided valid input
-			if (userInput.length() != 0) {
+			if (userInput.length() != 0 && userInput != null) {
+				System.out.println(fields[i]+">>>"+table[i]);
+				System.out.println(input[curr]+">>>"+userInput);
 				fieldsToUpdate[curr] = table[i];
 				input[curr] = userInput;
 				curr++;
@@ -439,9 +444,9 @@ public class Prog4 {
 		} // end for loop
 
 		// normalize the arrays
-		fieldsToUpdate = normalize(fieldsToUpdate);
-		input = normalize(input);
-		
+		fieldsToUpdate = normalize(fieldsToUpdate, curr);
+		input = normalize(input, curr);
+
 		// call the update function
 		action.update(relation, PK, PKValue, fieldsToUpdate, input);
 	} // end gatherUpdate
@@ -478,6 +483,16 @@ public class Prog4 {
 		String PKValue = sc.nextLine();
 		PKValue = PKValue.trim();
 		System.out.println();
+
+		while (!action.checkID(relation, PKValue)) {
+			System.out.println(PKValue + " does not exist in " + relation);
+
+			// get the primary key value
+			System.out.print("Enter a primary key value for " + relation + ":");
+			PKValue = sc.nextLine();
+			PKValue = PKValue.trim();
+			System.out.println();
+		}
 
 		action.delete(relation, PK, PKValue);
 	} // end gatherDelete
@@ -581,30 +596,19 @@ public class Prog4 {
 		return true;
 	} // end isNumeric
 
-	private static String[] normalize(String[] tempLine) {
-		String[] ret = new String[tempLine.length];
-		int i = 0;
-		for (String field : tempLine) {
-
+	private static String[] normalize(String[] tempLine, int size) {
+		String[] ret = new String[size];
+		for (int i = 0; i < size; i++) {
+			String field = tempLine[i];
 			if (field == null) {
 				ret[i] = null;
-				i++;
 				continue;
 			} else if (field == "") {
 				ret[i] = "";
-				i++;
 				continue;
+			} else {
+				ret[i] = field;
 			}
-
-			String n = "";
-			for (int j = 0; j < field.length(); j++) {
-				if (field.charAt(j) == '\'') {
-					n += "'";
-				}
-				n += field.charAt(j);
-			}
-			ret[i] = n;
-			i++;
 		}
 		return ret;
 	} // end normalize
