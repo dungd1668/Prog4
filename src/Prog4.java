@@ -12,6 +12,24 @@ public class Prog4 {
 
 	static Action action;
 
+	/** @formatter:off
+	 * --------------------------------------------------------------------------------------------------
+	 * Method: main(String[] args) is the main function of the Prog4 application. 
+	 * The program prompts the user for an input to determine what task to complete. Then the 
+	 * program will prompt the user for field values.
+	 * 
+	 * Parameters: String[] args are the ORACLE login credentials
+	 * 				args[0] should be a username
+	 * 				args[1] should be a password
+	 * 
+	 * Purpose: Start of the Prog4. The method first creates a link using ORACLE and then it 
+	 * 		prompt the user for input, runs the query and prints the results to the screen. 
+	 * 
+	 * Returns: none
+	 * 
+	 * ----------------------------------------------------------------------------------------------------
+	 * @formatter:on
+	 */
 	public static void main(String[] args) {
 		// get the username and password
 		getLogin(args);
@@ -434,8 +452,8 @@ public class Prog4 {
 
 			// updated the fields to update if the user provided valid input
 			if (userInput.length() != 0 && userInput != null) {
-				System.out.println(fields[i]+">>>"+table[i]);
-				System.out.println(input[curr]+">>>"+userInput);
+				System.out.println(fields[i] + ">>>" + table[i]);
+				System.out.println(input[curr] + ">>>" + userInput);
 				fieldsToUpdate[curr] = table[i];
 				input[curr] = userInput;
 				curr++;
