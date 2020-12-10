@@ -168,7 +168,7 @@ public class Prog4 {
 		String[] supplierFields = { "Supplier ID (NOT NULL) PK", "Name", "Address", "Contact Person" };
 		String[] saleFields = { "Sale ID (NOT NULL)", "Date (MM/DD/YYY)", "Payment Method", "Total Price",
 				"Member ID (NOT NULL)" };
-		String[] subSaleFields = { "Sale ID (NOT NULL) PK", "Sub-Sale ID", "Product ID", "Price", "Amount" };
+		String[] subSaleFields = { "Sale ID (NOT NULL)", "Sub-Sale ID (NOT NULL) PK", "Product ID", "Price", "Amount" };
 
 		// build a string array with the member info and then call
 		// action.insert(member,stringArray)
@@ -232,7 +232,7 @@ public class Prog4 {
 							fields[i].contains("Retail Price") || fields[i].contains("Stock") || 
 							fields[i].contains("Reward Points") || fields[i].contains("Total Price") || 
 							fields[i].contains("Group ID") || fields[i].contains("Membership Discount"))
-							&& !isNumeric(userInput) && userInput.length()>0) 
+							&& !isNumeric(userInput) && userInput.length()>0)
 					) {
 				System.out.println("INVALID INPUT. TRY AGAIN.");
 				
@@ -356,6 +356,15 @@ public class Prog4 {
 		PKValue = PKValue.trim();
 		System.out.println();
 
+		while (!action.checkID(relation, PKValue)) {
+			System.out.println("Invalid Primary Key.");
+			// get the primary key value
+			System.out.print("Enter a primary key value for " + relation + " (" + PK + "):");
+			PKValue = sc.nextLine();
+			PKValue = PKValue.trim();
+			System.out.println();
+		}
+
 		// @formatter:off
 		System.out.println(
 				"Number of values that need to be provided. Optional fields can be skipped by providing no input.\n");
@@ -372,8 +381,7 @@ public class Prog4 {
 			userInput = userInput.trim();
 			
 			while (
-					   ((fields[i].contains("Date") && userInput.length()>0) && userInput.charAt(2) != '/' 
-						&& userInput.charAt(5) != '/')
+					   ((fields[i].contains("Date") && userInput.length()>0))
 					|| ( // check if these fields are numeric
 							(fields[i].contains("Phone Number") || fields[i].contains("Salary") || 
 							fields[i].contains("Retail Price") || fields[i].contains("Stock") || 
@@ -383,6 +391,11 @@ public class Prog4 {
 					) {
 				
 				if (userInput.length() == 0) {
+					break;
+				}
+				
+				if (userInput.charAt(2) == '/' && userInput.charAt(5) == '/' && isNumeric(userInput.substring(0,2)) 
+						&& isNumeric(userInput.substring(3,5)) && isNumeric(userInput.substring(6))) {
 					break;
 				}
 				
@@ -413,7 +426,7 @@ public class Prog4 {
 
 				userInput = sc.nextLine();
 				userInput = userInput.trim();
-			}
+			} // end while
 			// @formatter:on
 
 			// updated the fields to update if the user provided valid input
@@ -425,6 +438,11 @@ public class Prog4 {
 
 		} // end for loop
 
+		// normalize the arrays
+		fieldsToUpdate = normalize(fieldsToUpdate);
+		input = normalize(input);
+		
+		// call the update function
 		action.update(relation, PK, PKValue, fieldsToUpdate, input);
 	} // end gatherUpdate
 
@@ -562,4 +580,32 @@ public class Prog4 {
 		}
 		return true;
 	} // end isNumeric
+
+	private static String[] normalize(String[] tempLine) {
+		String[] ret = new String[tempLine.length];
+		int i = 0;
+		for (String field : tempLine) {
+
+			if (field == null) {
+				ret[i] = null;
+				i++;
+				continue;
+			} else if (field == "") {
+				ret[i] = "";
+				i++;
+				continue;
+			}
+
+			String n = "";
+			for (int j = 0; j < field.length(); j++) {
+				if (field.charAt(j) == '\'') {
+					n += "'";
+				}
+				n += field.charAt(j);
+			}
+			ret[i] = n;
+			i++;
+		}
+		return ret;
+	} // end normalize
 }

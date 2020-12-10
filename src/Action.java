@@ -126,7 +126,7 @@ public class Action {
 				ret += " ";
 			}
 		}
-		ret += "WHERE " + PK + " = " + PKValue;
+		ret += "WHERE " + PK + " = '" + PKValue + "' ";
 		return ret;
 	} // end updateHelper
 
@@ -137,7 +137,7 @@ public class Action {
 
 	private String deleteHelper(String relation, String PK, String PKValue) {
 		String ret = "";
-		ret += "DELETE FROM " + relation + " WHERE " + PK + " = " + PKValue;
+		ret += "DELETE FROM " + relation + " WHERE " + PK + " = '" + PKValue + "' ";
 		return ret;
 	} // end delteHelper
 
@@ -184,7 +184,7 @@ public class Action {
 
 			if (answer != null) {
 				answer.next();
-				
+
 				int count = answer.getInt("count");
 				if (count == 0) {
 					stmt.close();

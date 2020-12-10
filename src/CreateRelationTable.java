@@ -326,35 +326,4 @@ public class CreateRelationTable {
 		return ret;
 	} // end normalize
 
-	// private static String generateMemberID() {
-	// Statement idToCheck = null;
-	// ResultSet answer = null;
-	// try {
-	// idToCheck = dbconn.createStatement();
-	// } catch (SQLException e) {
-	// e.printStackTrace();
-	// }
-	//
-	// // check if the generated ID already exists
-	// String idCheck = "SELECT memberID FROM Member WHERE EXISTS (" + "SELECT
-	// memberID FROM Member WHERE memberID = "
-	// + idToCheck + ")";
-	// boolean idExists = false;
-	// try {
-	// answer = idToCheck.executeQuery(idCheck);
-	// } catch (SQLException e) {
-	// e.printStackTrace();
-	// }
-	// try {
-	// if (answer != null) {
-	// answer.next();
-	// if (answer.getBoolean(columnLabel))
-	// idExists = true;
-	// }
-	// } catch (SQLException e) {
-	// e.printStackTrace();
-	// }
-	//
-	// return null;
-	// }
 }
