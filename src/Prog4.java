@@ -11,7 +11,8 @@ public class Prog4 {
 	static Connection dbconn = null;
 
 	static Action action;
-
+	static WebAppQuery query;
+	
 	/** @formatter:off
 	 * --------------------------------------------------------------------------------------------------
 	 * Method: main(String[] args) is the main function of the Prog4 application. 
@@ -36,7 +37,11 @@ public class Prog4 {
 
 		// create an Action object
 		action = new Action(username, password, dbconn);
-
+		
+		//added this this morning
+		query = new WebAppQuery(username, password, dbconn);
+		
+		
 		// get user input
 		launch();
 	}
@@ -73,14 +78,16 @@ public class Prog4 {
 				break;
 				
 			case(4):
-				
+				//Query here
+				query.displayMemberByPhoneNum(phoneNum);
 				break;
 
 			case(5):
-				
+				//Query here
 				break;
+			
 			case(6):
-				
+				//Query here
 				break;
 			
 			}
