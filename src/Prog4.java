@@ -297,7 +297,7 @@ public class Prog4 {
 		String[] productFields = { "Product ID (NOT NULL)", "Name", "Retail Price", "Category", "Membership Discount",
 				"Stock Info" };
 		String[] supplierFields = { "Supplier ID (NOT NULL)", "Name", "Address", "Contact Person" };
-		String[] saleFields = { "Sale ID (NOT NULL)", "Date (MM/DD/YYY)", "Payment Method", "Total Price",
+		String[] saleFields = { "Sale ID (NOT NULL)", "Date Of Sale (MM/DD/YYY)", "Payment Method", "Total Price",
 				"Member ID (NOT NULL)" };
 		String[] subSaleFields = { "Sale ID (NOT NULL)", "Sub-Sale ID", "Product ID", "Price", "Amount" };
 
@@ -307,7 +307,7 @@ public class Prog4 {
 				"salary" };
 		String[] product = { "productID", "name", "retailPrice", "category", "membershipDiscount", "stockInfo" };
 		String[] supplier = { "supplierID", "name", "address", "contactPerson" };
-		String[] sale = { "saleID", "date", "paymentMethod", "totalPrice", "memberID" };
+		String[] sale = { "saleID", "dateOf", "paymentMethod", "totalPrice", "memberID" };
 		String[] subSale = { "saleID", "subSaleID", "productID", "price", "amount" };
 
 		// the field name of the primary key of a table

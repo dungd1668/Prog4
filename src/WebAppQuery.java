@@ -104,7 +104,7 @@ public class WebAppQuery {
 	 * @formatter:on
 	 */
 	public void displayCurrentMonthProfit(String mm, String yyyy) {
-		String query = "SELECT SUM(totalPrice) AS grossSales FROM Sale WHERE date LIKE '" + mm + "____" + yyyy + "'";
+		String query = "SELECT SUM(totalPrice) AS grossSales FROM Sale WHERE dateOf LIKE '" + mm + "____" + yyyy + "'";
 		ResultSet grossSales = executeQuery(query);
 
 		query = "SELECT COUNT(*) AS numMembers FROM Member";
