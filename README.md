@@ -5,6 +5,6 @@ CSC 460 Program 4
 
 
 2. Cullen: Created system for generating randomly filled input files for each database we create. Added query options to the main program. Made the documentation pdf for turning in.
-David:
+David: Created the insert, update, and delete functions. Created the general table creations. Worked on Prog4.java. Fixed bugs with query.
 Nick:
 Greysen:
