@@ -1,13 +1,33 @@
-
 /**
+ * @formatter:off
+ * 
+ * CreateRelationTable.java is a Program that creates an tables for a SQL database containing the Tucson mall 
+ * database for Black Friday.
+ * The tables can be accessed using the prefix dungd.TABLE where TABLE if the table name,
+ * 		Member, Emp, Sale, SubSale, Supplier, Product, ProductShipment
+ * 
+ * Important: the Program also needs valid ORACLE SQL login information provided through the
+ * arguments like:
+ * 		java Prog3 USERNAME PASSWORD
+ * 
+ * @formatter:on
  * 
  * CMD Instructions example:
  *  	javac CreateRelationTable.java
  *  	java CreateRelationTable username password fileName relation
  * 
  * The input file should be a csv file 
+ * 
+ * Instructors: Lester I. McCann
+ * 		   TAs: Zheng Tang and Chenghao Xiong
+ * 
+ *	  Due Date: 12/10/2020
+ * 
+ * Operational Requirements: JavaSE-1.8
+ * 
+ * @author David Dung
+ * 
  */
-
 import java.io.*;
 import java.text.Normalizer;
 import java.sql.*;
@@ -20,6 +40,25 @@ public class CreateRelationTable {
 	static String relation; // the name of the table to be created
 	static Action action;
 
+	/** @formatter:off
+	 * --------------------------------------------------------------------------------------------------
+	 * Method: main(String[] args) is the main function of the CreateRelationTable application. 
+	 * The program create a table using the contents of the file provided with the name, relation.
+	 * 
+	 * Parameters: String[] args are the ORACLE login credentials, username, password, filename, relation
+	 * 				args[0] should be a username
+	 * 				args[1] should be a password
+	 * 				args[2] should be the filename
+	 * 				args[3] should be the table relation
+	 * 
+	 * Purpose: Start of the CreateTableRelation. The method first creates a link using ORACLE and then it 
+	 * 		prompt the user for input, runs the query and prints the results to the screen. 
+	 * 
+	 * Returns: none
+	 * 
+	 * ----------------------------------------------------------------------------------------------------
+	 * @formatter:on
+	 */
 	public static void main(String[] args) {
 		// System.out.println("Running");
 
@@ -62,109 +101,117 @@ public class CreateRelationTable {
 		action = new Action(username, password, dbconn);
 
 		// Create the table
-		// TODO: I don't think we need this outer try catch
 		try {
-			try {
-				Statement stmt = dbconn.createStatement();
-				stmt.executeQuery("drop table " + relation);
-				stmt.close();
-			} catch (SQLException e) {
-				System.out.println("Table " + relation + " did not exist: Continuing...");
-			}
-
-			String createTable = null; // the sql string to create a table
-			// create table @formatter:off
-			if (relation.contentEquals("Member")) {
-//				String memberID = generateMemberID();
-				createTable = "CREATE TABLE Member (" 
-						+ "memberID varchar2(10) NOT NULL PRIMARY KEY,"
-						+ "firstName varchar2(15) NOT NULL," 
-						+ "lastName varchar2(15) NOT NULL," 
-						+ "dob varchar2(10),"
-						+ "address varchar2(60)," 
-						+ "phoneNumber integer NOT NULL," 
-						+ "rewardPoints integer )";
-			} else if (relation.contentEquals("Sale")) {
-				createTable = "CREATE TABLE Sale (" 
-						+ "saleID varchar2(10) NOT NULL PRIMARY KEY,"
-						+ "dateOf varchar2(10),"
-						+ "paymentMethod varchar2(20),"
-						+ "totalPrice decimal(8,2),"
-						+ "memberID varchar2(10) NOT NULL )";
-			} else if (relation.contentEquals("SubSale")) {
-				createTable = "CREATE TABLE SubSale (" 
-						+ "saleID varchar2(10) NOT NULL,"
-						+ "SubSaleID varchar2(10) NOT NULL PRIMARY KEY,"
-						+ "productID varchar2(10),"
-						+ "price decimal(8,2),"
-						+ "amount integer )";
-			} else if (relation.contentEquals("Emp")) {
-				createTable = "CREATE TABLE Emp (" 
-						+ "employeeID varchar2(10) NOT NULL PRIMARY KEY,"
-						+ "firstName varchar2(15) NOT NULL,"
-						+ "lastName varchar2(15) NOT NULL,"
-						+ "gender varchar2(15),"
-						+ "address varchar2(60),"
-						+ "phoneNumber integer NOT NULL," 
-						+ "groupID integer,"
-						+ "salary decimal(8,2) )";
-			} else if (relation.contentEquals("Supplier")) {
-				createTable = "CREATE TABLE Supplier (" 
-						+ "supplierID varchar2(10) NOT NULL PRIMARY KEY,"
-						+ "name varchar2(25),"
-						+ "address varchar2(60),"
-						+ "contactPerson varchar2(25) )";
-			} else if (relation.contentEquals("Product")) {
-				createTable = "CREATE TABLE Product (" 
-						+ "productID varchar2(10) NOT NULL PRIMARY KEY,"
-						+ "name varchar2(25),"
-						+ "retailPrice decimal(8,2),"
-						+ "category varchar2(15),"
-						+ "membershipDiscount decimal(8,2),"
-						+ "stockInfo integer )";
-			} else if (relation.contentEquals("ProductShipment")) {
-				createTable = "CREATE TABLE ProductShipment ("
-						+ "incomingDate varchar2(10) NOT NULL,"
-						+ "purchasePrice decimal(8,2),"
-						+ "amount integer )";
-			}
-			// @formatter:on
-
-			// check if the sql command was set
-			assert createTable != null;	
-			try {
-				Statement stmt = dbconn.createStatement();
-				stmt.executeQuery(createTable);
-				stmt.close();
-			} catch (SQLException e) {
-				System.err.println("*** SQLException:  " + "Could not create table " + relation + ".");
-				System.err.println("\tMessage:   " + e.getMessage());
-				System.err.println("\tSQLState:  " + e.getSQLState());
-				System.err.println("\tErrorCode: " + e.getErrorCode());
-				System.exit(-1);
-			}	
-
-			// add the contents of the csv file to the sql table
-			try {
-				int count = addFile();
-				System.out.println("records inserted: " + count);
-			} catch (FileNotFoundException e) {
-				System.out.println("Error: Could not open file " + fileName);
-				System.exit(-1);
-			}
-
-			// close the connection to the DBMS
-			dbconn.close();
-
+			Statement stmt = dbconn.createStatement();
+			stmt.executeQuery("drop table " + relation);
+			stmt.close();
 		} catch (SQLException e) {
-			System.err.println("*** SQLException:  " + "Something went wrong with creating or populating the tables.");
+			System.out.println("Table " + relation + " did not exist: Continuing...");
+		}
+
+		String createTable = null; // the sql string to create a table
+		// create table @formatter:off
+		if (relation.contentEquals("Member")) {
+			createTable = "CREATE TABLE Member (" 
+					+ "memberID varchar2(10) NOT NULL PRIMARY KEY,"
+					+ "firstName varchar2(15) NOT NULL," 
+					+ "lastName varchar2(15) NOT NULL," 
+					+ "dob varchar2(10),"
+					+ "address varchar2(60)," 
+					+ "phoneNumber integer NOT NULL," 
+					+ "rewardPoints integer )";
+		} else if (relation.contentEquals("Sale")) {
+			createTable = "CREATE TABLE Sale (" 
+					+ "saleID varchar2(10) NOT NULL PRIMARY KEY,"
+					+ "dateOf varchar2(10),"
+					+ "paymentMethod varchar2(20),"
+					+ "totalPrice decimal(8,2),"
+					+ "memberID varchar2(10) NOT NULL )";
+		} else if (relation.contentEquals("SubSale")) {
+			createTable = "CREATE TABLE SubSale (" 
+					+ "saleID varchar2(10) NOT NULL,"
+					+ "SubSaleID varchar2(10) NOT NULL PRIMARY KEY,"
+					+ "productID varchar2(10),"
+					+ "price decimal(8,2),"
+					+ "amount integer )";
+		} else if (relation.contentEquals("Emp")) {
+			createTable = "CREATE TABLE Emp (" 
+					+ "employeeID varchar2(10) NOT NULL PRIMARY KEY,"
+					+ "firstName varchar2(15) NOT NULL,"
+					+ "lastName varchar2(15) NOT NULL,"
+					+ "gender varchar2(15),"
+					+ "address varchar2(60),"
+					+ "phoneNumber integer NOT NULL," 
+					+ "groupID integer,"
+					+ "salary decimal(8,2) )";
+		} else if (relation.contentEquals("Supplier")) {
+			createTable = "CREATE TABLE Supplier (" 
+					+ "supplierID varchar2(10) NOT NULL PRIMARY KEY,"
+					+ "name varchar2(25),"
+					+ "address varchar2(60),"
+					+ "contactPerson varchar2(25) )";
+		} else if (relation.contentEquals("Product")) {
+			createTable = "CREATE TABLE Product (" 
+					+ "productID varchar2(10) NOT NULL PRIMARY KEY,"
+					+ "name varchar2(25),"
+					+ "retailPrice decimal(8,2),"
+					+ "category varchar2(15),"
+					+ "membershipDiscount decimal(8,2),"
+					+ "stockInfo integer )";
+		} else if (relation.contentEquals("ProductShipment")) {
+			createTable = "CREATE TABLE ProductShipment ("
+					+ "incomingDate varchar2(10) NOT NULL,"
+					+ "purchasePrice decimal(8,2),"
+					+ "amount integer )";
+		}
+		// @formatter:on
+
+		// check if the sql command was set
+		assert createTable != null;
+		try {
+			Statement stmt = dbconn.createStatement();
+			stmt.executeQuery(createTable);
+			stmt.close();
+		} catch (SQLException e) {
+			System.err.println("*** SQLException:  " + "Could not create table " + relation + ".");
 			System.err.println("\tMessage:   " + e.getMessage());
 			System.err.println("\tSQLState:  " + e.getSQLState());
 			System.err.println("\tErrorCode: " + e.getErrorCode());
 			System.exit(-1);
 		}
-	}
 
+		// add the contents of the csv file to the sql table
+		try {
+			int count = addFile();
+			System.out.println("records inserted: " + count);
+		} catch (FileNotFoundException e) {
+			System.out.println("Error: Could not open file " + fileName);
+			System.exit(-1);
+		}
+
+		// close the connection to the DBMS
+		try {
+
+			dbconn.close();
+		} catch (SQLException e) {
+			System.err.println("Unable to close connection.");
+			e.printStackTrace();
+		}
+
+	} // end main
+
+	/** @formatter:off
+	 * --------------------------------------------------------------------------------------------------
+	 * Method: addFile() opens a file and inserts each record into the database using an Action object.
+	 * Action.insert(...) is used. 
+	 * 
+	 * Purpose: To insert a csv file into the database
+	 * 
+	 * Returns: count is the number of records inserted into the table
+	 * 
+	 * ----------------------------------------------------------------------------------------------------
+	 * @formatter:on
+	 */
 	private static int addFile() throws FileNotFoundException {
 		FileReader file; // used for the input file
 
@@ -231,6 +278,24 @@ public class CreateRelationTable {
 		return count;
 	} // end addFile
 
+	/** @formatter:off
+	 * --------------------------------------------------------------------------------------------------
+	 * Method: splitLine(String line) takes a csv String line and iterates through
+	 * the string and splits the string into fields separated by commma's. 
+	 * 
+	 * Note: comma's inside of quotations and comma's following a backslash will not
+	 * be counted commas. Quotation marks following a backslash will not be counted.
+	 * i.e. The comma's in "first,second" and "third\,fourth" don't count
+	 * 
+	 * Purpose: To split a csv string into fields and return it as an array
+	 * 
+	 * Parameters: String line is a line
+	 * 
+	 * Returns: tempLine is an array of the fields
+	 * 
+	 * ----------------------------------------------------------------------------------------------------
+	 * @formatter:on
+	 */
 	private static String[] splitLine(String line) {
 		// normalize the line
 		line = Normalizer.normalize(line, Normalizer.Form.NFKD).replaceAll("[^\\p{ASCII}]", "");
@@ -298,6 +363,20 @@ public class CreateRelationTable {
 		return tempLine;
 	} // end splitLine
 
+	/** @formatter:off
+	 * --------------------------------------------------------------------------------------------------
+	 * Method: normalize(String[] tempLine) formats a String array by deleting null
+	 * and empty strings.
+	 * 
+	 * Purpose: to format a String array
+	 * 
+	 * Parameters: String[] tempLine - a string array
+	 * 
+	 * Returns: a String array of a normalized array
+	 * 
+	 * ----------------------------------------------------------------------------------------------------
+	 * @formatter:on
+	 */
 	private static String[] normalize(String[] tempLine) {
 		String[] ret = new String[tempLine.length];
 		int i = 0;
@@ -326,4 +405,4 @@ public class CreateRelationTable {
 		return ret;
 	} // end normalize
 
-}
+} // end CreateRelationTable
