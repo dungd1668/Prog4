@@ -112,7 +112,7 @@ public class CreateRelationTable {
 				createTable = "CREATE TABLE Supplier (" 
 						+ "supplierID varchar2(10) NOT NULL PRIMARY KEY,"
 						+ "name varchar2(25),"
-						+ "address varchar2(50),"
+						+ "address varchar2(60),"
 						+ "contactPerson varchar2(25) )";
 			} else if (relation.contentEquals("Product")) {
 				createTable = "CREATE TABLE Product (" 
