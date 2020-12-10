@@ -165,7 +165,7 @@ public class Action {
 			PK = "subSaleID";
 		}
 		String sqlCommand = "SELECT " + PK + " FROM " + relation + " WHERE EXISTS " + "(SELECT " + PK + " FROM "
-				+ relation + " WHERE " + PK + " = " + value + " )";
+				+ relation + " WHERE " + PK + " = '" + value + "' )";
 
 		// create a statement
 		Statement stmt;
