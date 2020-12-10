@@ -556,8 +556,9 @@ public class Prog4 {
 			String userInput = sc.nextLine();
 			userInput = userInput.trim();
 
-			while (((fields[i].contains("Date") && userInput.length() > 0)) || ( // check if these fields are numeric
-			(fields[i].contains("Phone Number") || fields[i].contains("Salary") || fields[i].contains("Retail Price")
+			while (((fields[i].contains("Date") && userInput.length() > 0)) || ( 
+					// check if these fields are numeric
+					(fields[i].contains("Phone Number") || fields[i].contains("Salary") || fields[i].contains("Retail Price")
 					|| fields[i].contains("Stock") || fields[i].contains("Reward Points")
 					|| fields[i].contains("Total Price") || fields[i].contains("Group ID")
 					|| fields[i].contains("Membership Discount")) && !isNumeric(userInput) && userInput.length() > 0)) {
