@@ -3,7 +3,7 @@
  * 
  * CreateRelationTable.java is a Program that creates an tables for a SQL database containing the Tucson mall 
  * database for Black Friday.
- * The tables can be accessed using the prefix dungd.TABLE where TABLE if the table name,
+ * The tables can be accessed using the prefix username.TABLE where TABLE if the table name,
  * 		Member, Emp, Sale, SubSale, Supplier, Product, ProductShipment
  * 
  * Important: the Program also needs valid ORACLE SQL login information provided through the

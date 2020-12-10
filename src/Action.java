@@ -30,7 +30,7 @@ public class Action {
 	 * Method: insert(String relation, String tempLine[]) inserts a record into a relation table with 
 	 * 		the attributes of tempLine.
 	 * 
-	 * Parameters: String relation is the table be inserted into
+	 * Parameters:  String relation is the table be inserted into
 	 * 				String array tempLine is an array of the values of the fields
 	 * 
 	 * Purpose: To set the query string for a record insertion
@@ -47,6 +47,20 @@ public class Action {
 
 	} // end insert
 
+	/** @formatter:off
+	 * --------------------------------------------------------------------------------------------------
+	 * Method: insertHelper(String relation, String[] tempLine) sets the query string of an insert.
+	 * 
+	 * Parameters:  String relation is the table be inserted into
+	 * 				String array tempLine is an array of the values of the fields
+	 * 
+	 * Purpose: To set the query string for a record insertion
+	 * 
+	 * Returns: ret - a string representation of an insert query
+	 * 
+	 * ----------------------------------------------------------------------------------------------------
+	 * @formatter:on
+	 */
 	private String insertHelper(String relation, String[] tempLine) {
 		String ret = ""; // the SQL insertion line
 
@@ -90,15 +104,13 @@ public class Action {
 	 * Method: update(String relation, String[] fieldsToUpdate, String tempLine[]) updates a record 
 	 * 		with a relation table with the attributes of tempLine given a Primary key.
 	 * 
-	 * Parameters: String relation is the table be inserted into
+	 * Parameters:  String relation is the table be inserted into
 	 * 				String PK is the primary key field name to identify the record
 	 * 				String PKValue is the value of the primary key
 	 * 				String fieldsToUpdate is an array of the fields that are being updated
 	 * 				String array tempLine is an array of the values of the fields
 	 * 
-	 * Purpose: To set the query string for a record insertion
-	 * 
-	 * Returns: ret - a string representation of an insert query
+	 * Purpose: To update a record in a table
 	 * 
 	 * IMPORTANT: The fieldsToUpdate and the tempLine values must be in the same order and the same size
 	 * 
@@ -113,6 +125,26 @@ public class Action {
 		executeQuery(query);
 	} // end update
 
+	/** @formatter:off
+	 * --------------------------------------------------------------------------------------------------
+	 * Method: updateHelper(String relation, String PK, String PKValue, String[] fieldsToUpdate,
+			String tempLine[]) sets the query string of an update.
+	 * 
+	 * Parameters:  String relation is the table be inserted into
+	 * 				String PK is the primary key field name to identify the record
+	 * 				String PKValue is the value of the primary key
+	 * 				String fieldsToUpdate is an array of the fields that are being updated
+	 * 				String array tempLine is an array of the values of the fields
+	 * 
+	 * Purpose: To set the query string for a record insertion
+	 * 
+	 * Returns: ret - a string representation of an insert query
+	 * 
+	 * IMPORTANT: The fieldsToUpdate and the tempLine values must be in the same order and the same size
+	 * 
+	 * ----------------------------------------------------------------------------------------------------
+	 * @formatter:on
+	 */
 	private String updateHelper(String relation, String PK, String PKValue, String[] fieldsToUpdate,
 			String tempLine[]) {
 		String ret = "";
@@ -130,11 +162,40 @@ public class Action {
 		return ret;
 	} // end updateHelper
 
+	/** @formatter:off
+	 * --------------------------------------------------------------------------------------------------
+	 * Method: delete(String relation, String PK, String PKValue) deletes a record into a relation table 
+	 * 		with a give PKValue.
+	 * 
+	 * Parameters:  String relation is the table be inserted into
+	 * 				String PK is the primary key field name to identify the record
+	 * 				String PKValue is the value of the primary key
+	 * 
+	 * Purpose: To delete a record from a table
+	 * 
+	 * ----------------------------------------------------------------------------------------------------
+	 * @formatter:on
+	 */
 	public void delete(String relation, String PK, String PKValue) {
 		String query = deleteHelper(relation, PK, PKValue);
 		executeQuery(query);
 	} // end delete
 
+	/** @formatter:off
+	 * --------------------------------------------------------------------------------------------------
+	 * Method: deleteHelper(String relation, String PK, String PKValue) sets the query string of a delete.
+	 * 
+	 * Parameters:  String relation is the table be inserted into
+	 * 				String PK is the primary key field name to identify the record
+	 * 				String PKValue is the value of the primary key
+	 * 
+	 * Purpose: To set the query string for a record deletion
+	 * 
+	 * Returns: ret - a string representation of an delete query
+	 * 
+	 * ----------------------------------------------------------------------------------------------------
+	 * @formatter:on
+	 */
 	private String deleteHelper(String relation, String PK, String PKValue) {
 		String ret = "";
 		ret += "DELETE FROM " + relation + " WHERE " + PK + " = '" + PKValue + "' ";
@@ -205,6 +266,19 @@ public class Action {
 		return false;
 	}
 
+	/** @formatter:off
+	 * --------------------------------------------------------------------------------------------------
+	 * Method: executeQuery(String query) executes a query.
+	 * 
+	 * Parameters:  String query - a string representation of an SQL query.
+	 * 
+	 * Purpose: To execute a query
+	 * 
+	 * Returns: none
+	 * 
+	 * ----------------------------------------------------------------------------------------------------
+	 * @formatter:on
+	 */
 	private void executeQuery(String query) {
 		// create a statement
 		Statement stmt;
