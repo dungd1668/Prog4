@@ -220,30 +220,18 @@ public class Prog4 {
 
 			String userInput = sc.nextLine();
 			userInput = userInput.trim();
-
-//			// if the input is for a PK, check if the input is valid
-//			if (fields[i].contains("PK")) {
-//				boolean PKexists = action.checkID(relation, userInput);
-//				while (PKexists) {
-//					// prompt the user again
-//					System.out.print("\t" + fields[i] + ":");
-//
-//					userInput = sc.nextLine();
-//					userInput = userInput.trim();
-//				} // end while
-//			}
 			
 			// check if the input is valid
 			while (
 					(fields[i].contains("PK") && action.checkID(relation, userInput))
 					|| (userInput.length() == 0 && fields[i].contains("(NOT NULL)"))
-					|| ((fields[i].contains("Date") && userInput.length()>0) && userInput.charAt(1) != '/' 
-						&& userInput.charAt(3) != '/')
+					|| ((fields[i].contains("Date") && userInput.length()>0) && userInput.charAt(2) != '/' 
+						&& userInput.charAt(5) != '/')
 					|| ( // check if these fields are numeric
-							fields[i].contains("Phone Number") || fields[i].contains("Salary") || 
+							(fields[i].contains("Phone Number") || fields[i].contains("Salary") || 
 							fields[i].contains("Retail Price") || fields[i].contains("Stock") || 
 							fields[i].contains("Reward Points") || fields[i].contains("Total Price") || 
-							fields[i].contains("Group ID") || fields[i].contains("Membership Discount")
+							fields[i].contains("Group ID") || fields[i].contains("Membership Discount"))
 							&& !isNumeric(userInput) && userInput.length()>0) 
 					) {
 				System.out.println("INVALID INPUT. TRY AGAIN.");
@@ -254,16 +242,16 @@ public class Prog4 {
 				}
 				
 				// print date need to be formatted
-				if ((fields[i].contains("Date") && userInput.length()>0) && userInput.charAt(1) != '/' 
-						&& userInput.charAt(3) != '/') {
+				if ((fields[i].contains("Date") && userInput.length()>0) && userInput.charAt(2) != '/' 
+						&& userInput.charAt(5) != '/') {
 					System.out.println("ERROR: DATE NEEDS TO HAVE THE FORMAT: MM/DD/YYYY.");
 				}
 				
 				// print phone number needs to be numeric
-				if (fields[i].contains("Phone Number") || fields[i].contains("Salary") || 
+				if ((fields[i].contains("Phone Number") || fields[i].contains("Salary") || 
 						fields[i].contains("Retail Price") || fields[i].contains("Stock") || 
 						fields[i].contains("Reward Points") || fields[i].contains("Total Price") || 
-						fields[i].contains("Group ID") || fields[i].contains("Membership Discount") && 
+						fields[i].contains("Group ID") || fields[i].contains("Membership Discount") ) && 
 						!isNumeric(userInput)) {
 					System.out.println("ERROR: " + fields[i] + " NEEDS TO BE NUMERIC.");
 				}
@@ -278,6 +266,8 @@ public class Prog4 {
 				userInput = sc.nextLine();
 				userInput = userInput.trim();
 			} // end while
+			
+			input[i] = userInput;
 		} // end for
 
 		action.insert(relation, input);
@@ -380,15 +370,15 @@ public class Prog4 {
 
 			String userInput = sc.nextLine();
 			userInput = userInput.trim();
-
+			
 			while (
-					   ((fields[i].contains("Date") && userInput.length()>0) && userInput.charAt(1) != '/' 
-						&& userInput.charAt(3) != '/')
+					   ((fields[i].contains("Date") && userInput.length()>0) && userInput.charAt(2) != '/' 
+						&& userInput.charAt(5) != '/')
 					|| ( // check if these fields are numeric
-							fields[i].contains("Phone Number") || fields[i].contains("Salary") || 
+							(fields[i].contains("Phone Number") || fields[i].contains("Salary") || 
 							fields[i].contains("Retail Price") || fields[i].contains("Stock") || 
 							fields[i].contains("Reward Points") || fields[i].contains("Total Price") || 
-							fields[i].contains("Group ID") || fields[i].contains("Membership Discount")
+							fields[i].contains("Group ID") || fields[i].contains("Membership Discount"))
 							&& !isNumeric(userInput) && userInput.length()>0)
 					) {
 				
@@ -404,16 +394,16 @@ public class Prog4 {
 				}
 				
 				// print date need to be formatted
-				if ((fields[i].contains("Date") && userInput.length()>0) && userInput.charAt(1) != '/' 
-						&& userInput.charAt(3) != '/') {
+				if ((fields[i].contains("Date") && userInput.length()>0) && userInput.charAt(2) != '/' 
+						&& userInput.charAt(5) != '/') {
 					System.out.println("ERROR: DATE NEEDS TO HAVE THE FORMAT: MM/DD/YYYY.");
 				}
 				
 				// print phone number needs to be numeric
-				if (fields[i].contains("Phone Number") || fields[i].contains("Salary") || 
+				if ((fields[i].contains("Phone Number") || fields[i].contains("Salary") || 
 						fields[i].contains("Retail Price") || fields[i].contains("Stock") || 
 						fields[i].contains("Reward Points") || fields[i].contains("Total Price") || 
-						fields[i].contains("Group ID") || fields[i].contains("Membership Discount") && 
+						fields[i].contains("Group ID") || fields[i].contains("Membership Discount")) && 
 						!isNumeric(userInput)) {
 					System.out.println("ERROR: " + fields[i] + " NEEDS TO BE NUMERIC.");
 				}

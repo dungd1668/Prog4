@@ -164,8 +164,8 @@ public class Action {
 			// subsale
 			PK = "subSaleID";
 		}
-		String sqlCommand = "SELECT " + PK + " FROM " + relation + " WHERE EXISTS " + "(SELECT " + PK + " FROM "
-				+ relation + " WHERE " + PK + " = '" + value + "' )";
+		String sqlCommand = "SELECT COUNT(" + PK + ") AS count FROM " + relation + " WHERE " + PK + " = '" + value
+				+ "'";
 
 		// create a statement
 		Statement stmt;
@@ -181,23 +181,28 @@ public class Action {
 		try {
 			stmt = dbconn.createStatement();
 			answer = stmt.executeQuery(sqlCommand);
-			stmt.close();
+
+			if (answer != null) {
+				answer.next();
+				
+				int count = answer.getInt("count");
+				if (count == 0) {
+					stmt.close();
+					return false;
+				} else {
+					System.out.println(value + " Exists in " + relation);
+					stmt.close();
+					return true;
+				}
+			}
 		} catch (SQLException e) {
 			System.out.println("Couldn't execute query: [" + sqlCommand + "]");
 			e.printStackTrace();
 		}
 
-		// get the answer
-		boolean validID = false;
-		try {
-			answer.next();
-		} catch (SQLException e) {
-			System.out.println(value + " is not in the " + relation + " Table");
-			e.printStackTrace();
-		}
-
 		// return the result
-		return validID;
+		System.out.println("Error: Failed to check if PK exists.");
+		return false;
 	}
 
 	private void executeQuery(String query) {
