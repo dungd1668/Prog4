@@ -1,6 +1,33 @@
 
-// @authors: David Dung, Graysen Meyers, Cullen Bates
-
+/**
+ * @formatter:off
+ * 
+ * Prog4.java is a Program that prompts the user for input to decide what action to complete.
+ * The tables can be accessed using the prefix username.TABLE where TABLE if the table name,
+ * 		Member, Emp, Sale, SubSale, Supplier, Product, ProductShipment
+ * 
+ * Important: the Program also needs valid ORACLE SQL login information provided through the
+ * arguments like:
+ * 		java Prog3 USERNAME PASSWORD
+ * 
+ * @formatter:on
+ * 
+ * CMD Instructions example:
+ *  	javac Prog4.java Action.java WebAppQuery.java
+ *  	java CreateRelationTable username password fileName relation
+ * 
+ * The input file should be a csv file 
+ * 
+ * Instructors: Lester I. McCann
+ * 		   TAs: Zheng Tang and Chenghao Xiong
+ * 
+ *	  Due Date: 12/10/2020
+ * 
+ * Operational Requirements: JavaSE-1.8
+ * 
+ * @author Cullen Bates, Nick DiMatteo, David Dung, Graysen Meyers
+ * 
+ */
 import java.io.*;
 import java.sql.*; // For access to the SQL interaction methods
 import java.util.Scanner;
@@ -47,6 +74,17 @@ public class Prog4 {
 		launch();
 	}
 
+	/** @formatter:off
+	 * --------------------------------------------------------------------------------------------------
+	 * Method: launch() is a function that retrieve the user's input 
+	 * 
+	 * Purpose: To get user input and call insertRecord(Scanner), deleteRecord(Scanner), or updateRecord(Scanner). 
+	 * 
+	 * Returns: none
+	 * 
+	 * ----------------------------------------------------------------------------------------------------
+	 * @formatter:on
+	 */
 	private static void launch() {
 		Scanner scan = new Scanner(System.in);
 		int userInput;
@@ -121,6 +159,20 @@ public class Prog4 {
 		}
 	}
 
+	/** @formatter:off
+	 * --------------------------------------------------------------------------------------------------
+	 * Method: insertRecord(Scanner scan) a function that prompts the user for a table to insert into
+	 * and calls gatherInsert(String relation) to get the input to insert.
+	 * 
+	 * Parameters: Scanner scan is a scanner to get user input
+	 * 
+	 * Purpose: To get user input and insert into a relation table
+	 * 
+	 * Returns: none
+	 * 
+	 * ----------------------------------------------------------------------------------------------------
+	 * @formatter:on
+	 */
 	private static void insertRecord(Scanner scan) {
 		String userInput = null;
 
@@ -156,6 +208,20 @@ public class Prog4 {
 		}
 	}
 
+	/** @formatter:off
+	 * --------------------------------------------------------------------------------------------------
+	 * Method: updateRecord(Scanner scan) a function that prompts the user for a table to update into
+	 * and calls gatherUpdate(String relation) to get the input to insert.
+	 * 
+	 * Parameters: Scanner scan is a scanner to get user input
+	 * 
+	 * Purpose: To get user input and update a table record
+	 * 
+	 * Returns: none
+	 * 
+	 * ----------------------------------------------------------------------------------------------------
+	 * @formatter:on
+	 */
 	private static void updateRecord(Scanner scan) {
 		String userInput = null;
 
@@ -191,6 +257,20 @@ public class Prog4 {
 		}
 	}
 
+	/** @formatter:off
+	 * --------------------------------------------------------------------------------------------------
+	 * Method: deleteRecord(Scanner scan) a function that prompts the user for a table to delete from
+	 * and calls deleteRecord(String relation) to get the input to delete.
+	 * 
+	 * Parameters: Scanner scan is a scanner to get user input
+	 * 
+	 * Purpose: To get user input and delete a table record
+	 * 
+	 * Returns: none
+	 * 
+	 * ----------------------------------------------------------------------------------------------------
+	 * @formatter:on
+	 */
 	private static void deleteRecord(Scanner scan) {
 		String userInput = null;
 		userInput = scan.nextLine();
@@ -219,6 +299,20 @@ public class Prog4 {
 		}
 	}
 
+	/** @formatter:off
+	 * --------------------------------------------------------------------------------------------------
+	 * Method: gatherInsert(String relation) is a function that gets valid user input to insert into a 
+	 * table.
+	 * 
+	 * Parameters: String relation is a string that represents a table name
+	 * 
+	 * Purpose: To get user input to insert into a table
+	 * 
+	 * Returns: none
+	 * 
+	 * ----------------------------------------------------------------------------------------------------
+	 * @formatter:on
+	 */
 	private static void gatherInsert(String relation) {
 		// use scanner to gather insert info from user (make sure to validate as
 		// shown on spec)
@@ -342,6 +436,20 @@ public class Prog4 {
 		// @formatter:on
 	} // end gatherInsert
 
+	/** @formatter:off
+	 * --------------------------------------------------------------------------------------------------
+	 * Method: gatherUpdate(String relation) is a function that gets valid user input to update a record
+	 * in a table
+	 * 
+	 * Parameters: String relation is a string that represents a table name
+	 * 
+	 * Purpose: To get user input to update a table record
+	 * 
+	 * Returns: none
+	 * 
+	 * ----------------------------------------------------------------------------------------------------
+	 * @formatter:on
+	 */
 	private static void gatherUpdate(String relation) {
 		// use scanner to gather insert info from user (make sure to validate as
 		// shown on spec)
@@ -512,6 +620,20 @@ public class Prog4 {
 		action.update(relation, PK, PKValue, fieldsToUpdate, input);
 	} // end gatherUpdate
 
+	/** @formatter:off
+	 * --------------------------------------------------------------------------------------------------
+	 * Method: gatherDelete(String relation) is a function that gets valid user input to delete a record
+	 * in a table
+	 * 
+	 * Parameters: String relation is a string that represents a table name
+	 * 
+	 * Purpose: To get user input to delete a table record
+	 * 
+	 * Returns: none
+	 * 
+	 * ----------------------------------------------------------------------------------------------------
+	 * @formatter:on
+	 */
 	private static void gatherDelete(String relation) {
 		// use scanner to gather delete info from user (make sure to validate as
 		// shown on spec)
@@ -583,6 +705,18 @@ public class Prog4 {
 						+ "Enter 4 to DELETE a supplier\n" + "Enter 0 to return to main menu\n" + "Enter here: ");
 	}
 
+	/** @formatter:off
+	 * --------------------------------------------------------------------------------------------------
+	 * Method: exitProgram() is a function that closes the database connection dbconn and closes the 
+	 * program.
+	 * 
+	 * Purpose: To close the program
+	 * 
+	 * Returns: none
+	 * 
+	 * ----------------------------------------------------------------------------------------------------
+	 * @formatter:on
+	 */
 	private static void exitProgram() {
 		try {
 			dbconn.close();
@@ -598,6 +732,22 @@ public class Prog4 {
 		System.out.println("\nPlease enter a number from the menu!\n");
 	}
 
+	/** @formatter:off
+	 * --------------------------------------------------------------------------------------------------
+	 * Method: getLogin(String[] args) is a fuction that sets the username and password from args[] and 
+	 * creates a database connection.
+	 * 
+	 * Parameters: String[] args are the ORACLE login credentials
+	 * 				args[0] should be a username
+	 * 				args[1] should be a password
+	 * 
+	 * Purpose: To set the username and password and to create the database connection
+	 * 
+	 * Returns: none
+	 * 
+	 * ----------------------------------------------------------------------------------------------------
+	 * @formatter:on
+	 */
 	private static void getLogin(String[] args) {
 		if (args.length == 2) { // get username/password from cmd line args
 			username = args[0];
@@ -659,6 +809,21 @@ public class Prog4 {
 		return true;
 	} // end isNumeric
 
+	/** @formatter:off
+	 * --------------------------------------------------------------------------------------------------
+	 * Method: normalize(String[] tempLine) formats a String array by deleting null
+	 * and empty strings.
+	 * 
+	 * Purpose: to format a String array
+	 * 
+	 * Parameters: String[] tempLine - a string array
+	 * 				int size - the number of valid values in the array tempLine
+	 * 
+	 * Returns: a String array of a normalized array
+	 * 
+	 * ----------------------------------------------------------------------------------------------------
+	 * @formatter:on
+	 */
 	private static String[] normalize(String[] tempLine, int size) {
 		String[] ret = new String[size];
 		for (int i = 0; i < size; i++) {
